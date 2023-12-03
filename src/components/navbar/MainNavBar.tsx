@@ -11,9 +11,9 @@ import {
   NavbarMenu,
 } from "@nextui-org/react";
 import { GrSearch } from "react-icons/gr";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { MainNavBarComponent } from "@/constants/constant";
-import { Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
+import PreviousSearch from "./PreviousSearch";
 
 type NavBarProps = {
   className: string;
@@ -21,6 +21,43 @@ type NavBarProps = {
 
 export default function MainNavBar({ className }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [cursor, setCursor] = useState(-1);
+  const [input, setInput] = useState("");
+
+  const searchCompleteRef = useRef<HTMLFormElement>(null);
+
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (
+        searchCompleteRef.current &&
+        !searchCompleteRef.current.contains(e.target as Node)
+      ) {
+        setSearchOpen(false);
+      }
+    },
+    [setSearchOpen]
+  );
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [handleClickOutside]);
+
+  const keyboardNavigation = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // switch (e.key) {
+    //   case "ArrowDown":
+    //     searchOpen ?
+    //       setCursor(index => index < )
+    //     break;
+    //   case "ArrowUp":
+    //     break;
+    //   case "Enter":
+    //     break;
+    //   case "Escape":
+    //     break;
+    // }
+  };
 
   return (
     <Navbar
@@ -42,7 +79,7 @@ export default function MainNavBar({ className }: NavBarProps) {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <form className="relative group">
+          <form className="relative group" ref={searchCompleteRef}>
             <Input
               className="w-[576px] peer"
               classNames={{
@@ -59,8 +96,12 @@ export default function MainNavBar({ className }: NavBarProps) {
                   <GrSearch className="text-primary" />
                 </button>
               }
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onFocus={() => setSearchOpen(true)}
+              onKeyDown={(e) => keyboardNavigation(e)}
             />
-            <div className="hidden peer-focus:flex">dsaddasd</div>
+            <PreviousSearch isOpen={searchOpen} setInput={setInput} />
           </form>
         </NavbarItem>
       </NavbarContent>
@@ -68,7 +109,7 @@ export default function MainNavBar({ className }: NavBarProps) {
       <NavbarContent justify="end">
         <NavbarItem>
           {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-          <Link href="/auth/signin">Sign-in</Link>
+          <Link href="/auth/signin">회원가입</Link>
         </NavbarItem>
       </NavbarContent>
 

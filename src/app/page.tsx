@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <section className="border h-[640px] w-full">
-        <Image src="" width={640} height={640} alt="tempImage" />
+        <div />
       </section>
     </>
   );
