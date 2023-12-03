@@ -11,9 +11,10 @@ import {
   NavbarMenu,
 } from "@nextui-org/react";
 import { GrSearch } from "react-icons/gr";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { MainNavBarComponent } from "@/constants/constant";
 import PreviousSearch from "./PreviousSearch";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 type NavBarProps = {
   className: string;
@@ -24,8 +25,20 @@ export default function MainNavBar({ className }: NavBarProps) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [cursor, setCursor] = useState(-1);
   const [input, setInput] = useState("");
-
+  const { value: searchHistory, setValue: setSearchHistory } = useLocalStorage(
+    MainNavBarComponent.searchHistory,
+    []
+  );
   const searchCompleteRef = useRef<HTMLFormElement>(null);
+
+  const searchToggle = useCallback((bool: boolean) => {
+    if (bool) {
+      setSearchOpen(true);
+    } else if (!bool) {
+      setSearchOpen(false);
+      setCursor(-1);
+    }
+  }, []);
 
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
@@ -33,10 +46,10 @@ export default function MainNavBar({ className }: NavBarProps) {
         searchCompleteRef.current &&
         !searchCompleteRef.current.contains(e.target as Node)
       ) {
-        setSearchOpen(false);
+        searchToggle(false);
       }
     },
-    [setSearchOpen]
+    [searchToggle]
   );
 
   useEffect(() => {
@@ -45,19 +58,42 @@ export default function MainNavBar({ className }: NavBarProps) {
   }, [handleClickOutside]);
 
   const keyboardNavigation = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // switch (e.key) {
-    //   case "ArrowDown":
-    //     searchOpen ?
-    //       setCursor(index => index < )
-    //     break;
-    //   case "ArrowUp":
-    //     break;
-    //   case "Enter":
-    //     break;
-    //   case "Escape":
-    //     break;
-    // }
+    switch (e.key) {
+      case "ArrowDown":
+        searchOpen
+          ? setCursor((index) =>
+              index < history.length - 1 ? index + 1 : index
+            )
+          : searchToggle(true);
+        break;
+      case "ArrowUp":
+        cursor === 0
+          ? searchToggle(false)
+          : setCursor((index) => (index > 0 ? index - 1 : index));
+        break;
+      case "Enter":
+        break;
+      case "Escape":
+        searchToggle(false);
+        break;
+    }
   };
+
+  const onSubmit = () => {
+    if (searchHistory && !searchHistory.includes(input)) {
+      const newHistory = [...searchHistory, input];
+      setSearchHistory(newHistory);
+    } else {
+      setSearchHistory([input]);
+    }
+  };
+
+  const history: string[] = useMemo(() => {
+    if (searchHistory && searchHistory.length > 0) {
+      return searchHistory.filter((text: string) => text.includes(input));
+    }
+    return [];
+  }, [input, searchHistory]);
 
   return (
     <Navbar
@@ -79,7 +115,12 @@ export default function MainNavBar({ className }: NavBarProps) {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <form className="relative group" ref={searchCompleteRef}>
+          <form
+            autoComplete="off"
+            className="relative group"
+            ref={searchCompleteRef}
+            onSubmit={onSubmit}
+          >
             <Input
               className="w-[576px] peer"
               classNames={{
@@ -101,7 +142,12 @@ export default function MainNavBar({ className }: NavBarProps) {
               onFocus={() => setSearchOpen(true)}
               onKeyDown={(e) => keyboardNavigation(e)}
             />
-            <PreviousSearch isOpen={searchOpen} setInput={setInput} />
+            <PreviousSearch
+              isOpen={searchOpen}
+              cursorLocation={cursor}
+              history={history}
+              setSearchHistory={setSearchHistory}
+            />
           </form>
         </NavbarItem>
       </NavbarContent>

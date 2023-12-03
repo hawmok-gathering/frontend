@@ -1,44 +1,26 @@
-export default function useLocalStorage(key: string) {
-  const setItem = (value: unknown) => {
-    const find = localStorage.getItem(key);
-    const prev = find && JSON.parse(find);
+import { useState, useEffect } from "react";
 
-    try {
-      if (value instanceof Object && !Array.isArray(value)) {
-        window.localStorage.setItem(
-          key,
-          find
-            ? JSON.stringify({ ...prev, ...value })
-            : JSON.stringify({ ...value })
-        );
-        console.log(value);
-      } else if (Array.isArray(value)) {
-        window.localStorage.setItem(
-          key,
-          find
-            ? JSON.stringify([...prev, ...value])
-            : JSON.stringify([...value])
-        );
-        console.log(value);
-      } else {
-        window.localStorage.setItem(
-          key,
-          find ? JSON.stringify(prev + "," + value) : JSON.stringify(value)
-        );
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+function getSavedValue(key: string, initialValue: any) {
+  const savedValue = JSON.parse(localStorage.getItem(key) as string);
+  if (savedValue) {
+    return savedValue;
+  }
 
-  const getItem = () => {
-    try {
-      const find = localStorage.getItem(key);
-      return find && JSON.parse(find);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  if (initialValue instanceof Function) {
+    return initialValue();
+  }
 
-  return { setItem, getItem };
+  return initialValue;
+}
+
+export default function useLocalStorage(key: string, initialValue: any) {
+  const [value, setValue] = useState(() => {
+    return getSavedValue(key, initialValue);
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value, key]);
+
+  return { setValue, value };
 }

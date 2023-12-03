@@ -1,18 +1,30 @@
+"use client";
+
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { MainNavBarComponent } from "@/constants/constant";
 
 type PreviousSearchProps = {
   isOpen: boolean;
-  setInput: (text: string) => void;
+  cursorLocation: number;
+  history: string[];
+  setSearchHistory: (value: any) => void;
 };
 
 export default function PreviousSearch({
   isOpen,
-  setInput,
+  cursorLocation,
+  history,
+  setSearchHistory,
 }: PreviousSearchProps) {
   const ref = useRef<HTMLDivElement>(null);
+
+  const onDelete = () => {
+    setSearchHistory(() => []);
+  };
 
   if (!isOpen) {
     return null;
@@ -20,19 +32,32 @@ export default function PreviousSearch({
   return (
     <Card className="absolute w-full " radius="sm" ref={ref}>
       <CardHeader className="h-12 ">
-        <p className="text-sm">최근 검색어</p>
+        <p className="text-xs font-bold">최근 검색어</p>
         <Button
           variant="light"
           color="secondary"
           className="ml-auto hover:bg-none"
+          onPress={onDelete}
         >
           전체 삭제
         </Button>
       </CardHeader>
       <CardBody>
-        <Link href={"/auth"} onClick={() => setInput("임시")}>
-          이동
-        </Link>
+        {history && history.length > 0 ? (
+          history.map((text, index) => (
+            <Link
+              key={text}
+              href={`/${text}`}
+              className={`${cursorLocation === index ? "bg-secondary" : ""}`}
+            >
+              {text}
+            </Link>
+          ))
+        ) : (
+          <div className="flex justify-center items-center text-secondary text-xs p-8">
+            최근 검색어가 없습니다.
+          </div>
+        )}
       </CardBody>
     </Card>
   );
