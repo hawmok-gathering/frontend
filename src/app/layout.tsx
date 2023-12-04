@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Providers } from "./providers";
-import MainNavBar from "@/components/navbar/MainNavBar";
+import MainNavBar from "@/components/main/navbar/MainNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 

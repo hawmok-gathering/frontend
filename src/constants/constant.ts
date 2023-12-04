@@ -4,7 +4,7 @@ export const MainNavBarComponent = Object.freeze({
 });
 
 export const ContentBoxPosition = Object.freeze({
-  desktopWidth: 1280,
+  desktopWidth: "1280px",
   desktopPaddingXClassName: "p-6",
   desktopPaddingX: "24px",
   desktopPaddingXRem: "1.5rem",

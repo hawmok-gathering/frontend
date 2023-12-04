@@ -1,3 +1,4 @@
+import { ContentBoxPosition } from "@/constants/constant";
 import { Autocomplete } from "@nextui-org/autocomplete";
 import { Button } from "@nextui-org/button";
 import { Spacer } from "@nextui-org/spacer";
@@ -37,14 +38,14 @@ export default function Hero({
   imgUrl,
   width = "100%",
   height = "100%",
-  innerWidth = "1280px",
+  innerWidth = ContentBoxPosition.desktopWidth,
   ...rest
 }: HeroBackgroundProps) {
   const { style } = rest;
   return (
     // background Div
     <div
-      className="bg-origin-border bg-cover flex flex-col justify-center items-center bg-center"
+      className="bg-origin-border bg-cover"
       {...rest}
       style={{
         backgroundImage: `${imgUrl}`,
@@ -55,7 +56,7 @@ export default function Hero({
     >
       {/* inner div for fixed with. */}
       <div
-        className="flex flex-col justify-center items-start p-6"
+        className={`flex flex-col justify-center items-start m-auto ${ContentBoxPosition.desktopPaddingXClassName}`}
         style={{
           width: `${innerWidth}`,
           height: `${height}`,

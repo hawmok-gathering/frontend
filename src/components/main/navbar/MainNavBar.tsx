@@ -80,12 +80,13 @@ export default function MainNavBar({ className }: NavBarProps) {
   };
 
   const onSubmit = () => {
-    if (searchHistory && searchHistory.includes(input)) {
-      // setSearchHistory([...searchHistory]);
-    }
+    // if (searchHistory && searchHistory.includes(input)) {
+    //   // setSearchHistory([...searchHistory]);
+    // }
     if (searchHistory && !searchHistory.includes(input)) {
       setSearchHistory([...searchHistory, input]);
     }
+    searchToggle(false);
   };
 
   const history: string[] = useMemo(() => {
