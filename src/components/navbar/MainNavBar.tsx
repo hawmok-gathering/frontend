@@ -80,11 +80,11 @@ export default function MainNavBar({ className }: NavBarProps) {
   };
 
   const onSubmit = () => {
+    if (searchHistory && searchHistory.includes(input)) {
+      // setSearchHistory([...searchHistory]);
+    }
     if (searchHistory && !searchHistory.includes(input)) {
-      const newHistory = [...searchHistory, input];
-      setSearchHistory(newHistory);
-    } else {
-      setSearchHistory([input]);
+      setSearchHistory([...searchHistory, input]);
     }
   };
 
@@ -97,11 +97,11 @@ export default function MainNavBar({ className }: NavBarProps) {
 
   return (
     <Navbar
-      maxWidth="full"
       onMenuOpenChange={setIsMenuOpen}
+      maxWidth="xl"
       isBordered
       height={"80px"}
-      className={twMerge("px-3")}
+      className={twMerge("px-3 ")}
     >
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
       {/* <NavbarItem>

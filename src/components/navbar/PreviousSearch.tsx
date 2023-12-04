@@ -3,9 +3,7 @@
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { useRef, useMemo } from "react";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import { MainNavBarComponent } from "@/constants/constant";
+import { useRef } from "react";
 
 type PreviousSearchProps = {
   isOpen: boolean;
