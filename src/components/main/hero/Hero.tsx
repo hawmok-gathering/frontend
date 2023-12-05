@@ -1,10 +1,10 @@
 import { ContentBoxPosition } from "@/constants/constant";
-import { Autocomplete } from "@nextui-org/autocomplete";
 import { Button } from "@nextui-org/button";
 import { Spacer } from "@nextui-org/spacer";
-import { CSSProperties, ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { MdOutlinePersonOutline } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
+import ClientAutoComplete from "./ClientAutoComplete";
 
 const autoOne = [
   { label: "서울", value: "서울" },
@@ -80,44 +80,43 @@ export default function Hero({
 
         {/* auto complete for selecting area and portion of party */}
         <div style={{ display: "flex", gap: "10px" }}>
-          <Autocomplete
-            className="w-[138px] h-[44px]"
+          <ClientAutoComplete
             items={autoOne}
+            className="w-[138px] h-[44px]"
             labelPlacement="outside"
-            // label="지역"
             placeholder="지역"
             startContent={<SlLocationPin className="text-6xl font-bold" />}
-            classNames={{}}
             radius="none"
             popoverProps={{
               radius: "none",
+              offset: 0,
             }}
             selectorButtonProps={{
               color: "primary",
             }}
-          >
-            {}
-          </Autocomplete>
-          <Autocomplete
-            className="w-[138px] h-[44px]"
+            aria-labelledby="party-area 지역"
+          />
+
+          <ClientAutoComplete
             items={autoOne}
+            className="w-[138px] h-[44px]"
             labelPlacement="outside"
-            // label="인원"
             placeholder="인원"
             startContent={
               <MdOutlinePersonOutline className="text-6xl font-bold" />
             }
-            classNames={{}}
             radius="none"
             popoverProps={{
               radius: "none",
+              offset: 0,
             }}
             selectorButtonProps={{
               color: "primary",
             }}
-          >
-            {}
-          </Autocomplete>
+            aria-labelledby="party-portion 인원"
+            role="party"
+          />
+
           <Spacer x={5} />
 
           {/* buttons */}

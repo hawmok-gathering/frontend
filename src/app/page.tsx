@@ -1,4 +1,4 @@
-import LoginRequest from "@/components/LoginRequest";
+import LoginRequest from "@/components/main/LoginRequest";
 import Hero from "@/components/main/hero/Hero";
 import { ContentBoxPosition } from "@/constants/constant";
 

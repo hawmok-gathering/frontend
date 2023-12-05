@@ -4,6 +4,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Providers } from "./providers";
 import MainNavBar from "@/components/main/navbar/MainNavBar";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="light h-[100dvh] bg-background">
-      <body className={twMerge(inter.className, "w-screen h-[100dvh] light")}>
+      <body className={twMerge(inter.className, "w-full h-[100dvh] light")}>
         <Providers className="min-h-full bg-background text-foreground">
           <MainNavBar className="" />
           <main className="flex flex-col h-full">{children}</main>

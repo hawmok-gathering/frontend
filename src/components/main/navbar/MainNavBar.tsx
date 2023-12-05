@@ -25,10 +25,9 @@ export default function MainNavBar({ className }: NavBarProps) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [cursor, setCursor] = useState(-1);
   const [input, setInput] = useState("");
-  const { value: searchHistory, setValue: setSearchHistory } = useLocalStorage(
-    MainNavBarComponent.searchHistory,
-    []
-  );
+  const { value: searchHistory, setValue: setSearchHistory } = useLocalStorage<
+    any[]
+  >(MainNavBarComponent.searchHistory, []);
   const searchCompleteRef = useRef<HTMLFormElement>(null);
 
   const searchToggle = useCallback((bool: boolean) => {
@@ -80,9 +79,6 @@ export default function MainNavBar({ className }: NavBarProps) {
   };
 
   const onSubmit = () => {
-    // if (searchHistory && searchHistory.includes(input)) {
-    //   // setSearchHistory([...searchHistory]);
-    // }
     if (searchHistory && !searchHistory.includes(input)) {
       setSearchHistory([...searchHistory, input]);
     }

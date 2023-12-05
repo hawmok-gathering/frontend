@@ -43,13 +43,11 @@ export default function PreviousSearch({
       <CardBody>
         {history && history.length > 0 ? (
           history.map((text, index) => (
-            <Link
+            <PreviousSearch.searchHistory
               key={text}
-              href={`/${text}`}
-              className={`${cursorLocation === index ? "bg-secondary" : ""}`}
-            >
-              {text}
-            </Link>
+              cursor={index === cursorLocation}
+              name={text}
+            />
           ))
         ) : (
           <div className="flex justify-center items-center text-secondary text-xs p-8">
@@ -60,3 +58,20 @@ export default function PreviousSearch({
     </Card>
   );
 }
+
+type SearchHistory = {
+  name: string;
+  cursor: boolean;
+};
+
+PreviousSearch.searchHistory = ({ name, cursor }: SearchHistory) => {
+  return (
+    <Link
+      key={name}
+      href={`/${name}`}
+      className={`${cursor ? "bg-[#ddd]" : ""} rounded-md p-2`}
+    >
+      {name}
+    </Link>
+  );
+};
