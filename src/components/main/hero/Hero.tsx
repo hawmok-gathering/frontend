@@ -60,7 +60,7 @@ export default function Hero({
   return (
     // background Div
     <div
-      className="bg-origin-border bg-cover"
+      className="bg-origin-border bg-cover bg-center"
       {...rest}
       style={{
         backgroundImage: `${imgUrl}`,
@@ -71,7 +71,7 @@ export default function Hero({
     >
       {/* inner div for fixed with. */}
       <div
-        className={`flex flex-col justify-center items-start m-auto ${ContentBoxPosition.desktopPaddingXClassName}`}
+        className={`flex flex-col justify-center items-start m-auto ${ContentBoxPosition.desktopPaddingXClassName} `}
         style={{
           width: `${innerWidth}`,
           height: `${height}`,

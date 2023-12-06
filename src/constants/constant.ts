@@ -9,3 +9,10 @@ export const ContentBoxPosition = Object.freeze({
   desktopPaddingX: "24px",
   desktopPaddingXRem: "1.5rem",
 });
+
+export const CardSize = Object.freeze({
+  CarouselWidth: "250px",
+  CarouselWidthNumber: 250,
+  CarouselGap: 5,
+  CarouselGapSize: 5,
+});

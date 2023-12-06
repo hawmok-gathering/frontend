@@ -46,6 +46,7 @@ export default function MainNavBar({ className }: NavBarProps) {
     }
   }, []);
 
+  // for blur effect of search bar autocomplete begin
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
       if (
@@ -62,7 +63,9 @@ export default function MainNavBar({ className }: NavBarProps) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [handleClickOutside]);
+  // for blur effect of search bar autocomplete end.
 
+  // behavior for search bar autocomplete
   const keyboardNavigation = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case "ArrowDown":
@@ -95,6 +98,7 @@ export default function MainNavBar({ className }: NavBarProps) {
     }
   };
 
+  // form onSubmit handler. may conflicting occur with search bar autocomplete enter event.
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input || input.trim() === "") {
@@ -112,8 +116,6 @@ export default function MainNavBar({ className }: NavBarProps) {
   //   }
   //   return [];
   // }, [input, searchHistory]);
-
-  const history = searchHistory;
 
   return (
     <Navbar
@@ -165,7 +167,7 @@ export default function MainNavBar({ className }: NavBarProps) {
             <PreviousSearch
               isOpen={searchOpen}
               cursorLocation={cursor}
-              history={history}
+              history={searchHistory}
               setSearchHistory={setSearchHistory}
             />
           </form>

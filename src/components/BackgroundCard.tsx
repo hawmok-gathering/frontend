@@ -1,7 +1,23 @@
-import React from 'react'
+import { Card } from "@nextui-org/react";
+import { ComponentPropsWithoutRef } from "react";
 
-export default function BackgroundCard() {
+type BackgroundCardProps = {
+  imgUrl: string;
+} & ComponentPropsWithoutRef<typeof Card>;
+
+export default function BackgroundCard({
+  imgUrl,
+
+  ...rest
+}: BackgroundCardProps) {
+  const { style, children, className } = rest;
   return (
-    <div>BackgroundCard</div>
-  )
+    <Card
+      {...rest}
+      className={className}
+      style={{ ...style, backgroundImage: `${imgUrl}` }}
+    >
+      {children}
+    </Card>
+  );
 }
