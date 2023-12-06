@@ -66,22 +66,26 @@ export default function MainNavBar({ className }: NavBarProps) {
   const keyboardNavigation = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case "ArrowDown":
-        searchOpen
-          ? setCursor((index) => {
-              const newIndex = index < history.length - 1 ? index + 1 : index;
-              setInput(searchHistory[newIndex]);
-              return newIndex;
-            })
-          : searchToggle(true);
+        if (searchOpen && history.length > 0) {
+          setCursor((index) => {
+            const newIndex = index < history.length - 1 ? index + 1 : index;
+            setInput(searchHistory[newIndex].text);
+            return newIndex;
+          });
+        } else {
+          searchToggle(true);
+        }
         break;
       case "ArrowUp":
-        cursor === 0
-          ? searchToggle(false)
-          : setCursor((index) => {
-              const newIndex = index > 0 ? index - 1 : index;
-              setInput(searchHistory[newIndex]);
-              return newIndex;
-            });
+        if (cursor <= 0) {
+          searchToggle(false);
+        } else {
+          setCursor((index) => {
+            const newIndex = index > 0 ? index - 1 : index;
+            setInput(searchHistory[newIndex].text);
+            return newIndex;
+          });
+        }
         break;
       case "Enter":
         break;
@@ -97,7 +101,7 @@ export default function MainNavBar({ className }: NavBarProps) {
       return;
     }
     if (searchHistory && !searchHistory.includes(input)) {
-      setSearchHistory([...searchHistory, { text: input, date: new Date() }]);
+      setSearchHistory([{ text: input, date: new Date() }, ...searchHistory]);
     }
     searchToggle(false);
   };

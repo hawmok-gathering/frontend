@@ -118,7 +118,7 @@ export default function Hero({
             }}
             listboxProps={{
               classNames: {
-                base: "p-2",
+                base: "p-2 py-3",
               },
             }}
           />
@@ -149,7 +149,7 @@ export default function Hero({
             }}
             listboxProps={{
               classNames: {
-                base: "p-2",
+                base: "p-2 py-3",
               },
             }}
           />
