@@ -4,10 +4,8 @@ import {
   AutocompleteItem,
   AutocompleteSection,
 } from "@nextui-org/autocomplete";
-import { Checkbox } from "@nextui-org/checkbox";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+("next/navigation");
 import { ComponentPropsWithoutRef } from "react";
-import { cn } from "@nextui-org/react";
 
 type AutocompleteItem = {
   sectionTitle: string;
@@ -47,7 +45,6 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
           title={item.sectionTitle}
           key={item.sectionTitle}
           classNames={{
-            // heading: "font-bold px-2 py-4",
             heading:
               "flex w-full sticky top-1 z-20 py-1.5 px-2 rounded-small font-bold",
           }}

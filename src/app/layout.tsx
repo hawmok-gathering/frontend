@@ -4,7 +4,6 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { Providers } from "./providers";
 import MainNavBar from "@/components/main/navbar/MainNavBar";
-import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
