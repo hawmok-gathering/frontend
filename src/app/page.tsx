@@ -16,7 +16,7 @@ export default function Home() {
       )}
       <section className="py-12 h-[680px]">
         <div
-          className={`max-w-[${ContentBoxPosition.desktopWidth}] mx-auto ${ContentBoxPosition.desktopPaddingXClassName}`}
+          className={`max-w-[${ContentBoxPosition.desktopWidth}] mx-auto ${ContentBoxPosition.desktopPaddingXClassName} h-[498px] border`}
         >
           <h2 className="text-3xl font-bold">이런 장소를 찾고 있나요</h2>
           <div className="w-full h-full">백그라운드가 필요해</div>

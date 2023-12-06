@@ -11,7 +11,14 @@ import {
   NavbarMenu,
 } from "@nextui-org/react";
 import { GrSearch } from "react-icons/gr";
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  FormEvent,
+} from "react";
 import { MainNavBarComponent } from "@/constants/constant";
 import PreviousSearch from "./PreviousSearch";
 import useLocalStorage from "@/hooks/useLocalStorage";
@@ -60,15 +67,21 @@ export default function MainNavBar({ className }: NavBarProps) {
     switch (e.key) {
       case "ArrowDown":
         searchOpen
-          ? setCursor((index) =>
-              index < history.length - 1 ? index + 1 : index
-            )
+          ? setCursor((index) => {
+              const newIndex = index < history.length - 1 ? index + 1 : index;
+              setInput(searchHistory[newIndex]);
+              return newIndex;
+            })
           : searchToggle(true);
         break;
       case "ArrowUp":
         cursor === 0
           ? searchToggle(false)
-          : setCursor((index) => (index > 0 ? index - 1 : index));
+          : setCursor((index) => {
+              const newIndex = index > 0 ? index - 1 : index;
+              setInput(searchHistory[newIndex]);
+              return newIndex;
+            });
         break;
       case "Enter":
         break;
@@ -78,19 +91,25 @@ export default function MainNavBar({ className }: NavBarProps) {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input || input.trim() === "") {
+      return;
+    }
     if (searchHistory && !searchHistory.includes(input)) {
-      setSearchHistory([...searchHistory, input]);
+      setSearchHistory([...searchHistory, { text: input, date: new Date() }]);
     }
     searchToggle(false);
   };
 
-  const history: string[] = useMemo(() => {
-    if (searchHistory && searchHistory.length > 0) {
-      return searchHistory.filter((text: string) => text.includes(input));
-    }
-    return [];
-  }, [input, searchHistory]);
+  // const history: string[] = useMemo(() => {
+  //   if (searchHistory && searchHistory.length > 0) {
+  //     return searchHistory.filter((text: string) => text.includes(input));
+  //   }
+  //   return [];
+  // }, [input, searchHistory]);
+
+  const history = searchHistory;
 
   return (
     <Navbar

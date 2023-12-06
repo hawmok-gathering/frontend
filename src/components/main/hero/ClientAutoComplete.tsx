@@ -1,7 +1,18 @@
 "use client";
-import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteSection,
+} from "@nextui-org/autocomplete";
+import { Checkbox } from "@nextui-org/checkbox";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ComponentPropsWithoutRef } from "react";
+import { cn } from "@nextui-org/react";
+
+type AutocompleteItem = {
+  sectionTitle: string;
+  items: { label: string; value: string }[];
+};
 
 type ClientAutoCompleteProps<T> = {
   items: T[];
@@ -12,9 +23,12 @@ type ClientAutoCompleteProps<T> = {
   "items" | "defaultItems" | "children"
 >;
 
-export default function ClientAutoComplete<
-  T extends { value: string; label: string }
->({ items, defaultItems, role, ...rest }: ClientAutoCompleteProps<T>) {
+export default function ClientAutoComplete<T extends AutocompleteItem>({
+  items,
+  defaultItems,
+  role,
+  ...rest
+}: ClientAutoCompleteProps<T>) {
   let param = "where";
 
   if (role && param !== role) {
@@ -24,13 +38,52 @@ export default function ClientAutoComplete<
   return (
     <Autocomplete
       {...rest}
+      isClearable={false}
       defaultItems={defaultItems}
-      items={items}
       onInputChange={(e) => console.log(e)}
     >
-      {(item: T) => (
-        <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>
-      )}
+      {items?.map((item) => (
+        <AutocompleteSection
+          title={item.sectionTitle}
+          key={item.sectionTitle}
+          classNames={{
+            // heading: "font-bold px-2 py-4",
+            heading:
+              "flex w-full sticky top-1 z-20 py-1.5 px-2 rounded-small font-bold",
+          }}
+        >
+          {item.items.map((item, index) => (
+            // <AutocompleteItem
+            //   key={item.value + index}
+            //   textValue={item.label}
+            //   className="py-1"
+            //   classNames={{
+            //     selectedIcon: "text-primary",
+            //   }}
+            // >
+            //   <Checkbox
+            //     radius="none"
+            //     classNames={{
+            //       label: "text-xs text-[#5E5E5E]",
+            //     }}
+            //   >
+            //     {item.label}
+            //   </Checkbox>
+            // </AutocompleteItem>
+            <AutocompleteItem
+              key={item.value + index}
+              value={item.value}
+              className="py-1"
+              classNames={{
+                selectedIcon: "text-primary",
+                title: "text-xs text-[#5E5E5E]",
+              }}
+            >
+              {item.label}
+            </AutocompleteItem>
+          ))}
+        </AutocompleteSection>
+      ))}
     </Autocomplete>
   );
 }

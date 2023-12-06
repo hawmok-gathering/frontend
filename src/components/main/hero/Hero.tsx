@@ -5,21 +5,36 @@ import { ComponentPropsWithoutRef } from "react";
 import { MdOutlinePersonOutline } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
 import ClientAutoComplete from "./ClientAutoComplete";
-
 const autoOne = [
-  { label: "서울", value: "서울" },
-  { label: "경기", value: "경기" },
-  { label: "인천", value: "인천" },
-  { label: "대전", value: "대전" },
-  { label: "세종", value: "세종" },
-  { label: "충북", value: "충북" },
-  { label: "충남", value: "충남" },
-  { label: "강원", value: "강원" },
-  { label: "경북", value: "경북" },
-  { label: "경남", value: "경남" },
-  { label: "전북", value: "전북" },
-  { label: "전남", value: "전남" },
-  { label: "제주", value: "제주" },
+  {
+    sectionTitle: "서울",
+    items: [
+      { label: "서울전체", value: "seoul" },
+      { label: "강남구", value: "gangnam" },
+      { label: "마포구", value: "mapo" },
+    ],
+  },
+  {
+    sectionTitle: "부산",
+    items: [
+      { label: "부산전체", value: "busan" },
+      { label: "부산진구", value: "busanjin" },
+      { label: "해운대구", value: "haeundae" },
+    ],
+  },
+];
+
+const autTwo = [
+  {
+    sectionTitle: "인원",
+    items: [
+      { label: "5~10명", value: "5~10" },
+      { label: "10~15명", value: "10~15" },
+      { label: "15~20명", value: "15~20" },
+      { label: "20~25명", value: "20~25" },
+      { label: "25~30명", value: "25~30" },
+    ],
+  },
 ];
 
 type BackgroundPosition = "top" | "bottom" | "center" | "left" | "right";
@@ -85,7 +100,7 @@ export default function Hero({
             className="w-[138px] h-[44px]"
             labelPlacement="outside"
             placeholder="지역"
-            startContent={<SlLocationPin className="text-6xl font-bold" />}
+            startContent={<SlLocationPin className="text-4xl font-bold" />}
             radius="none"
             popoverProps={{
               radius: "none",
@@ -95,15 +110,26 @@ export default function Hero({
               color: "primary",
             }}
             aria-labelledby="party-area 지역"
+            inputProps={{
+              classNames: {
+                inputWrapper: "w-[134px] h-[44px]",
+                input: "text-xs",
+              },
+            }}
+            listboxProps={{
+              classNames: {
+                base: "p-2",
+              },
+            }}
           />
 
           <ClientAutoComplete
-            items={autoOne}
-            className="w-[138px] h-[44px]"
+            items={autTwo}
+            className="w-[134px] h-full"
             labelPlacement="outside"
             placeholder="인원"
             startContent={
-              <MdOutlinePersonOutline className="text-6xl font-bold" />
+              <MdOutlinePersonOutline className="text-5xl font-bold" />
             }
             radius="none"
             popoverProps={{
@@ -115,6 +141,17 @@ export default function Hero({
             }}
             aria-labelledby="party-portion 인원"
             role="party"
+            inputProps={{
+              classNames: {
+                inputWrapper: "w-[134px] h-[44px]",
+                input: "text-xs",
+              },
+            }}
+            listboxProps={{
+              classNames: {
+                base: "p-2",
+              },
+            }}
           />
 
           <Spacer x={5} />
@@ -122,28 +159,26 @@ export default function Hero({
           {/* buttons */}
           <Button
             radius="none"
-            className="w-[138px] bg-white font-bold text-black"
-            variant="bordered"
+            className="w-[134px] h-[44px] bg-white font-bold text-black text-sm"
             color="primary"
           >
             <p>
-              <span className="text-primary font-normal"># 1차</span>로 든든하게
+              # 1차<span className="font-normal">로</span> 든든하게
             </p>
           </Button>
           <Button
             radius="none"
-            className="w-[138px] bg-white font-bold text-black"
-            variant="bordered"
+            className="w-[134px] h-[44px] bg-white font-bold text-black text-sm"
             color="primary"
           >
             <p>
-              <span className="text-primary font-normal"># 2차</span>로 가볍게
+              # 2차<span className="font-normal">로</span> 가볍게
             </p>
           </Button>
           <Spacer x={5} />
           <Button
             radius="none"
-            className="text-white font bold"
+            className="text-white font-bold w-[127px] h-[44px] text-sm"
             variant="solid"
             color="primary"
           >
