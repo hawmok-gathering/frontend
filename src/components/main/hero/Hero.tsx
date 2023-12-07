@@ -1,4 +1,3 @@
-import { ContentBoxPosition, GeneralClassName } from '@/constants/constant';
 import { Button } from '@nextui-org/button';
 import { Spacer } from '@nextui-org/spacer';
 import { ComponentPropsWithoutRef } from 'react';
@@ -60,9 +59,9 @@ export default function Hero({
   return (
     // background Div
     <div
-      className={`bg-cover bg-center bg-origin-border ${
-        width ? width : GeneralClassName.fullWidth
-      } ${height ? height : GeneralClassName.fullHeight}`}
+      className={`bg-cover bg-center bg-origin-border ${width ? width : 'w-full'} ${
+        height ? height : 'h-full'
+      }`}
       {...rest}
       style={{
         backgroundImage: `${imgUrl}`,
@@ -71,11 +70,9 @@ export default function Hero({
     >
       {/* inner div for fixed with. */}
       <div
-        className={`m-auto flex flex-col items-start justify-center ${
-          ContentBoxPosition.desktopPaddingXClassName
-        } ${innerWidth ? innerWidth : ContentBoxPosition.desktopMaxWidthClassName} ${
-          GeneralClassName.fullHeight
-        }`}
+        className={`m-auto flex flex-col items-start justify-center p-6 ${
+          innerWidth ? innerWidth : 'max-w-[1280px]'
+        } h-full`}
       >
         {/* Hero TextField */}
         <div>
