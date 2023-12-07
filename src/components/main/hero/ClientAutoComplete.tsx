@@ -1,11 +1,7 @@
-"use client";
-import {
-  Autocomplete,
-  AutocompleteItem,
-  AutocompleteSection,
-} from "@nextui-org/autocomplete";
-("next/navigation");
-import { ComponentPropsWithoutRef } from "react";
+'use client';
+import { Autocomplete, AutocompleteItem, AutocompleteSection } from '@nextui-org/autocomplete';
+('next/navigation');
+import { ComponentPropsWithoutRef } from 'react';
 
 type AutocompleteItem = {
   sectionTitle: string;
@@ -16,10 +12,7 @@ type ClientAutoCompleteProps<T> = {
   items: T[];
   defaultItems?: any[];
   role?: string;
-} & Omit<
-  ComponentPropsWithoutRef<typeof Autocomplete>,
-  "items" | "defaultItems" | "children"
->;
+} & Omit<ComponentPropsWithoutRef<typeof Autocomplete>, 'items' | 'defaultItems' | 'children'>;
 
 export default function ClientAutoComplete<T extends AutocompleteItem>({
   items,
@@ -27,7 +20,7 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
   role,
   ...rest
 }: ClientAutoCompleteProps<T>) {
-  let param = "where";
+  let param = 'where';
 
   if (role && param !== role) {
     param = role;
@@ -38,15 +31,14 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
       {...rest}
       isClearable={false}
       defaultItems={defaultItems}
-      onInputChange={(e) => console.log(e)}
+      onInputChange={e => console.log(e)}
     >
-      {items?.map((item) => (
+      {items?.map(item => (
         <AutocompleteSection
           title={item.sectionTitle}
           key={item.sectionTitle}
           classNames={{
-            heading:
-              "flex w-full sticky top-1 z-20 py-1.5 px-2 rounded-small font-bold",
+            heading: 'flex w-full sticky top-1 z-20 py-1.5 px-2 rounded-small font-bold',
           }}
         >
           {item.items.map((item, index) => (
@@ -72,8 +64,8 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
               value={item.value}
               className="py-1"
               classNames={{
-                selectedIcon: "text-primary",
-                title: "text-xs text-[#5E5E5E]",
+                selectedIcon: 'text-primary',
+                title: 'text-xs text-[#5E5E5E]',
               }}
             >
               {item.label}

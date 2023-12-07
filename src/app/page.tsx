@@ -1,11 +1,11 @@
-import BackgroundCard from "@/components/BackgroundCard";
-import LoginRequest from "@/components/main/LoginRequest";
-import Carousel from "@/components/main/Carousel";
-import Hero from "@/components/main/hero/Hero";
-import { CardSize, ContentBoxPosition } from "@/constants/constant";
-import { Spacer } from "@nextui-org/spacer";
-import { Button } from "@nextui-org/button";
-import { CardBody } from "@nextui-org/card";
+import BackgroundCard from '@/components/BackgroundCard';
+import LoginRequest from '@/components/main/LoginRequest';
+import Carousel from '@/components/main/Carousel';
+import Hero from '@/components/main/hero/Hero';
+import { CardSize, ContentBoxPosition } from '@/constants/constant';
+import { Spacer } from '@nextui-org/spacer';
+import { Button } from '@nextui-org/button';
+import { CardBody } from '@nextui-org/card';
 
 export type Carousel = {
   title: string;
@@ -15,24 +15,24 @@ export type Carousel = {
 
 const sliderItems: Carousel[] = [
   {
-    title: "1차로 가기좋은",
-    tag: "# 맛  # 든든한 한끼",
-    imgUrl: "url(/steak.jpg)",
+    title: '1차로 가기좋은',
+    tag: '# 맛  # 든든한 한끼',
+    imgUrl: 'url(/steak.jpg)',
   },
   {
-    title: "2차에 딱맞는",
-    tag: "# 1차로 끝내긴 아쉬울 때",
-    imgUrl: "url(/beer.webp)",
+    title: '2차에 딱맞는',
+    tag: '# 1차로 끝내긴 아쉬울 때',
+    imgUrl: 'url(/beer.webp)',
   },
   {
-    title: "프라이빗 하게",
-    tag: "# 조용한  # 분위기 좋은",
-    imgUrl: "url(/wine.jpg)",
+    title: '프라이빗 하게',
+    tag: '# 조용한  # 분위기 좋은',
+    imgUrl: 'url(/wine.jpg)',
   },
   {
-    title: "테스트용 카드4",
-    tag: "# 3번인덱스  # 태그 구분은 빈칸 두개",
-    imgUrl: "url(/soju.jpg)",
+    title: '테스트용 카드4',
+    tag: '# 3번인덱스  # 태그 구분은 빈칸 두개',
+    imgUrl: 'url(/soju.jpg)',
   },
 ];
 
@@ -44,23 +44,21 @@ export default function Home() {
         <Hero imgUrl="url(/spagetti-1008867_640.jpg)" />
       </section>
       {!isLogin && (
-        <section className="bg-[#FFFAEA] py-4  items-center">
+        <section className="items-center bg-[#FFFAEA]  py-4">
           <LoginRequest />
         </section>
       )}
       <section className="py-12">
         <div
-          className={`max-w-[${ContentBoxPosition.desktopWidth}] mx-auto ${ContentBoxPosition.desktopPaddingXClassName} pb-6`}
+          className={`${ContentBoxPosition.desktopMaxWidthClassName} mx-auto ${ContentBoxPosition.desktopPaddingXClassName} `}
         >
-          <h2
-            className={`text-3xl font-bold inline-flex h-[43px] items-center`}
-          >
+          <h2 className={`inline-flex h-[43px] items-center text-3xl font-bold`}>
             이런 장소를 찾고 있나요
           </h2>
           <Spacer y={6} />
           <BackgroundCard
             imgUrl="url(/table.jpg)"
-            className="w-full h-[498px] bg-cover bg-center"
+            className="h-[498px] w-full bg-cover bg-center"
             radius="none"
           >
             <Carousel items={sliderItems}>
@@ -68,14 +66,14 @@ export default function Home() {
                 <BackgroundCard
                   key={index}
                   imgUrl={item.imgUrl}
-                  className={`bg-cover bg-origin-border bg-center w-[${CardSize.CarouselWidth}] h-[338px] text-white font-bold overflow-hidden shrink-0`}
+                  className={`bg-cover bg-center bg-origin-border ${CardSize.CarouselWidthClassName} ${CardSize.CarouselHeightClassName} shrink-0 overflow-hidden font-bold text-white`}
                 >
                   {/**gradient image*/}
-                  <div className="absolute bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90% h-full w-3/4 -translate-x-10"></div>
-                  <CardBody className="flex flex-col h-full py-12">
+                  <div className="absolute h-full w-3/4 -translate-x-10 bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90%"></div>
+                  <CardBody className="flex h-full flex-col py-12">
                     <Button
                       radius="full"
-                      className="w-16 h-[26px] text-xs font-bold bg-white text-primary mt-auto"
+                      className="mt-auto h-[26px] w-16 bg-white text-xs font-bold text-primary"
                     >
                       둘러보기
                     </Button>

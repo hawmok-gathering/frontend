@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import {
   Modal,
   ModalContent,
@@ -6,32 +6,22 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-} from "@nextui-org/modal";
-import { Button } from "@nextui-org/button";
-import { ComponentPropsWithoutRef } from "react";
+} from '@nextui-org/modal';
+import { Button } from '@nextui-org/button';
+import { ComponentPropsWithoutRef } from 'react';
 
 type DefaultModalProps = {
   children?: React.ReactNode;
   title: string;
-} & Omit<ComponentPropsWithoutRef<typeof Modal>, "children" | "title">;
+} & Omit<ComponentPropsWithoutRef<typeof Modal>, 'children' | 'title'>;
 
-export default function PublicModal({
-  children,
-  title,
-  ...rest
-}: DefaultModalProps) {
+export default function PublicModal({ children, title, ...rest }: DefaultModalProps) {
   const { onOpenChange } = useDisclosure();
   return (
     <>
-      <Modal
-        size={"lg"}
-        defaultOpen
-        onOpenChange={onOpenChange}
-        {...rest}
-        isDismissable={false}
-      >
+      <Modal size={'lg'} defaultOpen onOpenChange={onOpenChange} {...rest} isDismissable={false}>
         <ModalContent>
-          {(onClose) => (
+          {onClose => (
             <>
               <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
               <ModalBody>{children}</ModalBody>

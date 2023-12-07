@@ -1,5 +1,5 @@
-import { Card } from "@nextui-org/react";
-import { ComponentPropsWithoutRef } from "react";
+import { Card } from '@nextui-org/react';
+import { ComponentPropsWithoutRef } from 'react';
 
 type BackgroundCardProps = {
   imgUrl: string;
@@ -12,11 +12,7 @@ export default function BackgroundCard({
 }: BackgroundCardProps) {
   const { style, children, className } = rest;
   return (
-    <Card
-      {...rest}
-      className={className}
-      style={{ ...style, backgroundImage: `${imgUrl}` }}
-    >
+    <Card {...rest} className={className} style={{ ...style, backgroundImage: `${imgUrl}` }}>
       {children}
     </Card>
   );
