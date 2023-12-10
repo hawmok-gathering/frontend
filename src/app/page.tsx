@@ -24,13 +24,13 @@ export default function Home() {
         </section>
       )}
       <section className="py-12">
-        <div className={`mx-auto max-w-[1280px] p-6`}>
+        <div className={`mx-auto max-w-[1180px] px-10 py-6`}>
           <h2 className={`inline-flex h-[43px] items-center text-3xl font-bold`}>
             이런 장소를 찾고 있나요
           </h2>
           <Spacer y={6} />
           <BackgroundCard
-            imgUrl="url(/table.jpg)"
+            imgUrl="url(/table.jfif)"
             className="h-[498px] w-full bg-cover bg-center"
             radius="none"
           >
