@@ -2,7 +2,7 @@ import BackgroundCard from '@/components/BackgroundCard';
 import LoginRequest from '@/components/main/LoginRequest';
 import Hero from '@/components/main/hero/Hero';
 import { Spacer } from '@nextui-org/spacer';
-import MainCarousel from '@/components/main/carousel/MainCarousel';
+import MainCarousel from '@/components/main/MainCarousel';
 import FamousPlace from '@/components/main/famous/FamousPlace';
 
 const mokStores = [
