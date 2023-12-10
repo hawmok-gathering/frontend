@@ -1,6 +1,5 @@
 'use client';
 
-import { twMerge } from 'tailwind-merge';
 import { Input } from '@nextui-org/input';
 import {
   Navbar,
@@ -9,13 +8,13 @@ import {
   NavbarItem,
   Link,
   NavbarMenu,
-  Divider,
 } from '@nextui-org/react';
 import { GrSearch } from 'react-icons/gr';
 import { useState, useEffect, useRef, useCallback, useMemo, FormEvent } from 'react';
-import { MainNavBarComponent } from '@/constants/constant';
+import { MainNavBarComponent, SearchParams } from '@/constants/constant';
 import PreviousSearch from './PreviousSearch';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { useRouter } from 'next/navigation';
 
 type NavBarProps = {
   className: string;
@@ -24,6 +23,7 @@ type NavBarProps = {
 export default function MainNavBar({ className }: NavBarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const router = useRouter();
   const [cursor, setCursor] = useState(-1);
   const [input, setInput] = useState('');
   const { value: searchHistory, setValue: setSearchHistory } = useLocalStorage<any[]>(
@@ -82,8 +82,6 @@ export default function MainNavBar({ className }: NavBarProps) {
           });
         }
         break;
-      case 'Enter':
-        break;
       case 'Escape':
         searchToggle(false);
         break;
@@ -100,14 +98,10 @@ export default function MainNavBar({ className }: NavBarProps) {
       setSearchHistory([{ text: input, date: new Date() }, ...searchHistory]);
     }
     searchToggle(false);
+    const params = new URLSearchParams(window.location.search);
+    params.delete(SearchParams.query);
+    router.push(`/search?${SearchParams.query}=${input}&${params}`);
   };
-
-  // const history: string[] = useMemo(() => {
-  //   if (searchHistory && searchHistory.length > 0) {
-  //     return searchHistory.filter((text: string) => text.includes(input));
-  //   }
-  //   return [];
-  // }, [input, searchHistory]);
 
   return (
     <Navbar
@@ -162,6 +156,7 @@ export default function MainNavBar({ className }: NavBarProps) {
               cursorLocation={cursor}
               history={searchHistory}
               setSearchHistory={setSearchHistory}
+              setSearchOpen={setSearchOpen}
             />
           </form>
         </NavbarItem>

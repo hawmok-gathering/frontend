@@ -23,3 +23,7 @@ export const GeneralClassName = Object.freeze({
   fullWidth: 'w-full',
   fullHeight: 'h-full',
 });
+
+export const SearchParams = Object.freeze({
+  query: 'searchQuery',
+});

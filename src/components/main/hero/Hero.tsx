@@ -4,6 +4,9 @@ import { ComponentPropsWithoutRef } from 'react';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 import { SlLocationPin } from 'react-icons/sl';
 import ClientAutoComplete from './ClientAutoComplete';
+import { RadioGroup, Radio } from '@nextui-org/radio';
+import { cn } from '@nextui-org/react';
+import { redirect } from 'next/navigation';
 const autoOne = [
   {
     sectionTitle: '서울',
@@ -35,6 +38,8 @@ const autTwo = [
     ],
   },
 ];
+type CustomRadioProps = {} & ComponentPropsWithoutRef<typeof Radio>;
+type CustomAutoComplete = {} & ComponentPropsWithoutRef<typeof ClientAutoComplete>;
 
 type BackgroundPosition = 'top' | 'bottom' | 'center' | 'left' | 'right';
 
@@ -56,6 +61,18 @@ export default function Hero({
   ...rest
 }: HeroBackgroundProps) {
   const { style } = rest;
+
+  const handleButtonSearch = async (form: FormData) => {
+    'use server';
+
+    const area = form.get('area') as string;
+    const party = form.get('party') as string;
+    const radio = form.get('radio') as string;
+
+    const searchParams = new URLSearchParams({ area: area, party: party, radio: radio });
+    redirect(`/search?${searchParams.toString()}`);
+  };
+
   return (
     // background Div
     <div
@@ -85,98 +102,104 @@ export default function Hero({
         <Spacer y={32} />
 
         {/* auto complete for selecting area and portion of party */}
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <ClientAutoComplete
+        <form style={{ display: 'flex', gap: '10px' }} action={handleButtonSearch}>
+          <CustomAutoComplete
             items={autoOne}
-            className="h-[44px] w-[138px]"
-            labelPlacement="outside"
+            name="area"
             placeholder="지역"
             startContent={<SlLocationPin className="text-4xl font-bold" />}
-            radius="none"
-            popoverProps={{
-              radius: 'none',
-              offset: 0,
-            }}
-            selectorButtonProps={{
-              color: 'primary',
-            }}
-            aria-labelledby="party-area 지역"
-            inputProps={{
-              classNames: {
-                inputWrapper: 'w-[134px] h-[44px]',
-                input: 'text-xs',
-              },
-            }}
-            listboxProps={{
-              classNames: {
-                base: 'p-2 py-3',
-              },
-            }}
           />
 
-          <ClientAutoComplete
+          <CustomAutoComplete
             items={autTwo}
-            className="h-full w-[134px]"
-            labelPlacement="outside"
+            name="party"
             placeholder="인원"
             startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
-            radius="none"
-            popoverProps={{
-              radius: 'none',
-              offset: 0,
-            }}
-            selectorButtonProps={{
-              color: 'primary',
-            }}
-            aria-labelledby="party-portion 인원"
-            role="party"
-            inputProps={{
-              classNames: {
-                inputWrapper: 'w-[134px] h-[44px]',
-                input: 'text-xs',
-              },
-            }}
-            listboxProps={{
-              classNames: {
-                base: 'p-2 py-3',
-              },
-            }}
           />
 
           <Spacer x={5} />
 
           {/* buttons */}
-          <Button
-            radius="none"
-            className="h-[44px] w-[134px] bg-white text-sm font-bold text-black"
-            color="primary"
+          <RadioGroup
+            name="radio"
+            orientation="horizontal"
+            classNames={{
+              base: cn('flex justify-center items-center min-w-[278px]'),
+            }}
           >
-            <p>
-              # 1차<span className="font-normal">로</span> 든든하게
-            </p>
-          </Button>
-          <Button
-            radius="none"
-            className="h-[44px] w-[134px] bg-white text-sm font-bold text-black "
-            color="primary"
-            variant="bordered"
-          >
-            <p>
-              <span className="text-primary"># 2차</span>
-              <span className="font-normal">로</span> 가볍게
-            </p>
-          </Button>
+            <CustomRadio value={'first'}>
+              # 1차 <span className="font-normal text-black">로</span>
+              <span className="text-black"> 든든하게 </span>
+            </CustomRadio>
+            <CustomRadio value={'second'}>
+              # 2차 <span className="font-normal text-black">로</span>
+              <span className="text-black"> 가볍게 </span>
+            </CustomRadio>
+          </RadioGroup>
           <Spacer x={5} />
           <Button
             radius="none"
             className="h-[44px] w-[127px] text-sm font-bold text-white"
             variant="solid"
             color="primary"
+            type="submit"
           >
             회식 장소 선택
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );
 }
+
+const CustomRadio = (props: CustomRadioProps) => {
+  const { children, value, ...otherProps } = props;
+  return (
+    <Radio
+      {...otherProps}
+      value={value}
+      classNames={{
+        base: 'inline-flex bg-white max-w-[133px] w-[133px] h-[44px] data-[selected=true]:border-primary border-2 border-default data-[selected=true]:text-primary mx-[1px]',
+        wrapper: 'hidden',
+        label: 'text-sm font-bold text-inherit',
+      }}
+    >
+      {children}
+    </Radio>
+  );
+};
+
+const CustomAutoComplete = (props: CustomAutoComplete) => {
+  const { items, name, placeholder, startContent, ...otherProps } = props;
+  return (
+    <ClientAutoComplete
+      items={items}
+      name={name}
+      placeholder={placeholder}
+      startContent={startContent}
+      className="h-full w-[134px]"
+      labelPlacement="outside"
+      radius="none"
+      popoverProps={{
+        radius: 'none',
+        offset: 0,
+      }}
+      selectorButtonProps={{
+        color: 'primary',
+      }}
+      aria-labelledby="party-portion 인원"
+      inputProps={{
+        classNames: {
+          inputWrapper: 'w-[134px] h-[44px]',
+          input: 'text-xs',
+        },
+      }}
+      listboxProps={{
+        classNames: {
+          base: 'p-2 py-3',
+        },
+      }}
+      {...otherProps}
+    />
+  );
+};
