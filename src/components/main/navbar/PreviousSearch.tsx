@@ -21,8 +21,6 @@ export default function PreviousSearch({
   setSearchHistory,
   setSearchOpen,
 }: PreviousSearchProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
   const onAllHistoryDelete = () => {
     setSearchHistory(() => []);
   };
@@ -35,7 +33,7 @@ export default function PreviousSearch({
     return null;
   }
   return (
-    <Card className="absolute w-full" radius="sm" ref={ref}>
+    <Card className="absolute w-full" radius="sm">
       <CardHeader className="mt-2 h-12 p-0 px-4">
         <span className="flex h-8 items-center text-sm font-medium">최근 검색어</span>
         <span
@@ -76,11 +74,14 @@ type SearchHistory = {
 };
 
 PreviousSearch.searchHistory = ({ name, cursor, date, onDelete, setSearchOpen }: SearchHistory) => {
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.delete(SearchParams.query);
+  searchParams.append(SearchParams.query, name);
   return (
     <div className={`flex h-9 ${cursor ? 'bg-[#ddd]' : ''} rounded-md px-4 `}>
       <Link
         className={` flex items-center justify-start`}
-        href={`/search?${SearchParams.query}=${name}`}
+        href={`/search?${searchParams}`}
         onClick={() => setSearchOpen(false)}
       >
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-default">

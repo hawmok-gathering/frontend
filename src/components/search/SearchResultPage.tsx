@@ -18,7 +18,7 @@ export default function SearchResult({ items }: SearchResultProps) {
   }
   return (
     <>
-      <div className="flex w-full justify-end">
+      <div className="flex max-w-full justify-end">
         <div className={`flex h-8 w-[132px] rounded-md bg-[#F1F1F1] p-0.5 text-xs`}>
           <button
             className={`${
@@ -38,7 +38,6 @@ export default function SearchResult({ items }: SearchResultProps) {
           </button>
         </div>
       </div>
-      ;
     </>
   );
 }

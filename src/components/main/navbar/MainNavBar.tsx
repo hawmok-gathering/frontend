@@ -100,7 +100,8 @@ export default function MainNavBar({ className }: NavBarProps) {
     searchToggle(false);
     const params = new URLSearchParams(window.location.search);
     params.delete(SearchParams.query);
-    router.push(`/search?${SearchParams.query}=${input}&${params}`);
+    params.append(SearchParams.query, input);
+    router.push(`/search?${params}`);
   };
 
   return (
