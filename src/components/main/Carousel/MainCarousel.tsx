@@ -40,23 +40,29 @@ export default function MainCarousel() {
       items={sliderItems}
       renderItem={({ handleIndex, index, isSelected, item }) => (
         <BackgroundCard
+          radius="sm"
           key={item.title + index}
           imgUrl={item.imgUrl}
-          className={`h-[338px] w-[250px] shrink-0 cursor-pointer overflow-hidden bg-cover bg-center bg-origin-border font-bold text-white ${
+          className={`h-[328px] w-[248px] shrink-0 cursor-pointer overflow-hidden bg-cover bg-center bg-origin-border font-bold text-white ${
             isSelected ? '-translate-y-10 ' : ''
           }`}
         >
           {/**gradient image*/}
           <div className="absolute h-full w-3/4 -translate-x-10 bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90%"></div>
-          <CardBody className="flex h-full flex-col py-12" onClick={() => handleIndex(index)}>
+          <CardBody
+            className="flex h-full flex-col justify-start overflow-hidden pb-9 pt-[197px]"
+            onClick={() => handleIndex(index)}
+          >
             <Button
+              isIconOnly
               radius="full"
-              className="mt-auto h-[26px] w-16 bg-white text-xs font-bold text-primary"
+              size="sm"
+              className="h-[24] w-[60px] bg-white px-3 py-3 text-[10px] font-bold leading-4 text-primary"
             >
               둘러보기
             </Button>
             <Spacer y={3} />
-            <h3 className="text-2xl">{item.title}</h3>
+            <h3 className="text-base">{item.title}</h3>
             <Spacer y={6} />
             <span className="text-xs">{item.tag}</span>
           </CardBody>

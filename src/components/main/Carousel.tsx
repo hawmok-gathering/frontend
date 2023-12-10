@@ -25,7 +25,7 @@ export default function Carousel<O extends Record<string | number | symbol, any>
 }: CarouselProps<O>) {
   const [index, setIndex] = useState(1);
   const ref = useRef<HTMLDivElement>(null);
-  const stepOffset = -270;
+  const stepOffset = -268;
 
   const handleIndex = (idx: number) => {
     if (idx === index) {
@@ -42,7 +42,7 @@ export default function Carousel<O extends Record<string | number | symbol, any>
 
   return (
     <>
-      <div className={`relative mx-auto h-full w-[790px] overflow-x-hidden`}>
+      <div className={`relative mx-auto h-full w-[786px] overflow-x-hidden`}>
         <div className={`left-20 flex h-full items-center gap-5 transition-all`} ref={ref}>
           {items.map((item, idx) =>
             renderItem({
@@ -67,12 +67,14 @@ export default function Carousel<O extends Record<string | number | symbol, any>
           ))}
         </div>
       </div>
-      <div className="absolute top-1/2 mx-auto my-auto w-[830px] -translate-y-1/2 self-center">
+      {/* 캐로셀 버튼 */}
+      <div className="absolute top-1/2 mx-auto my-auto w-[890px] -translate-y-1/2 self-center">
         {index !== 0 && (
           <Button
             isIconOnly
+            size="sm"
             radius="full"
-            className=" absolute left-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white"
+            className=" absolute left-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white"
             onPress={() => handleIndex(index - 1)}
           >
             <IoIosArrowBack className="scale-150" />
@@ -81,8 +83,9 @@ export default function Carousel<O extends Record<string | number | symbol, any>
         {index !== items.length - 1 && (
           <Button
             isIconOnly
+            size="sm"
             radius="full"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black bg-opacity-70 text-white"
             onPress={() => handleIndex(index + 1)}
           >
             <IoIosArrowForward className="scale-150" />

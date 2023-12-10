@@ -7,7 +7,7 @@ export default function LoginRequest() {
   return (
     <p className="text-center text-sm font-bold">
       로그인하면 나에게 딱 맞는 회식 장소를 추천받을 수 있어요
-      <span className="mx-4">|</span>
+      <span className="mx-4 text-primary">|</span>
       <span className="text-primary hover:cursor-pointer" onClick={handleClick}>
         로그인 하기 {'>'}
       </span>

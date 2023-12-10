@@ -9,6 +9,7 @@ import {
   NavbarItem,
   Link,
   NavbarMenu,
+  Divider,
 } from '@nextui-org/react';
 import { GrSearch } from 'react-icons/gr';
 import { useState, useEffect, useRef, useCallback, useMemo, FormEvent } from 'react';
@@ -111,10 +112,12 @@ export default function MainNavBar({ className }: NavBarProps) {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      maxWidth="xl"
       isBordered
       height={'80px'}
-      className={twMerge('px-3 ')}
+      className="px-3"
+      classNames={{
+        wrapper: 'max-w-[1180px] px-10',
+      }}
     >
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
       {/* <NavbarItem>
@@ -137,17 +140,16 @@ export default function MainNavBar({ className }: NavBarProps) {
             <Input
               className="peer w-[576px] hover:shadow-md"
               classNames={{
-                inputWrapper: 'border-primary',
-                input: 'pl-4 placeholder:text-[#9E9E9E] py-3',
+                inputWrapper: 'border-secondary border-3 ',
+                input: 'pl-9 placeholder:text-[#9E9E9E] py-3',
               }}
               size="sm"
               type="search"
               variant="bordered"
-              color="primary"
               placeholder={MainNavBarComponent.searchPlaceholder}
               endContent={
                 <button>
-                  <GrSearch className="text-primary" />
+                  <GrSearch className="text-xl font-extrabold text-secondary" />
                 </button>
               }
               value={input}
@@ -166,9 +168,13 @@ export default function MainNavBar({ className }: NavBarProps) {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem>
+        <NavbarItem className="flex items-center text-base">
           {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-          <Link href="/auth/signin">회원가입</Link>
+          <Link href="/auth/signin" color="foreground">
+            로그인
+          </Link>
+          <div className="mx-4 h-4 w-0.5 shrink-0 border"></div>
+          <Link href="/auth/signup">회원가입</Link>
         </NavbarItem>
       </NavbarContent>
 
