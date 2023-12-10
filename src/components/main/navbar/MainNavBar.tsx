@@ -140,7 +140,7 @@ export default function MainNavBar({ className }: NavBarProps) {
             <Input
               className="peer w-[576px] hover:shadow-md"
               classNames={{
-                inputWrapper: 'border-[#5E5E5E] border-3 ',
+                inputWrapper: 'border-secondary border-3 ',
                 input: 'pl-9 placeholder:text-[#9E9E9E] py-3',
               }}
               size="sm"
@@ -149,7 +149,7 @@ export default function MainNavBar({ className }: NavBarProps) {
               placeholder={MainNavBarComponent.searchPlaceholder}
               endContent={
                 <button>
-                  <GrSearch className="text-xl font-extrabold text-[#5E5E5E]" />
+                  <GrSearch className="text-xl font-extrabold text-secondary" />
                 </button>
               }
               value={input}

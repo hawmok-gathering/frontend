@@ -65,7 +65,7 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
               className="py-1"
               classNames={{
                 selectedIcon: 'text-primary',
-                title: 'text-xs text-[#5E5E5E]',
+                title: 'text-xs text-secondary',
               }}
             >
               {item.label}
