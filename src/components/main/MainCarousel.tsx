@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Carousel from '../Carousel';
+import Carousel from './Carousel';
 import { Button, CardBody, Spacer } from '@nextui-org/react';
 import BackgroundCard from '@/components/BackgroundCard';
 
