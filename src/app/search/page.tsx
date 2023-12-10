@@ -9,7 +9,7 @@ type SearchPageProps = {
 };
 
 export default async function page({ searchParams }: SearchPageProps) {
-  const searchParam = searchParams[SearchParams.query];
+  const searchParam = searchParams[SearchParams.query] ?? searchParams.area;
   const sort = searchParams.sort ?? 'latest';
 
   //TODO: get API here.

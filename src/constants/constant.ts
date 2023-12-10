@@ -25,5 +25,5 @@ export const GeneralClassName = Object.freeze({
 });
 
 export const SearchParams = Object.freeze({
-  query: 'area',
+  query: 'searchQuery',
 });

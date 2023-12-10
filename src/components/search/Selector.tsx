@@ -20,13 +20,13 @@ type SelectorProps = {
 };
 
 export default function Selector({ search }: SelectorProps) {
-  const { party, area, radio, feel, hall, searchQuery: query } = search;
+  const { party, radio, feel, hall, area, searchQuery } = search;
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div>
       <div className="flex w-full items-center justify-start gap-2">
-        <Link href={`/search?${SearchParams.query}=${query}`}>
+        <Link href={`/search?${SearchParams.query}=${area ?? searchQuery ?? ''}`}>
           <Button
             isIconOnly
             radius="full"
