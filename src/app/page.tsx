@@ -9,8 +9,14 @@ export default function Home() {
   const isLogin = false;
   return (
     <>
-      <section className="h-[640px] w-full">
-        <Hero imgUrl="url(/spagetti-1008867_640.jpg)" />
+      <section className="h-[630px] w-full">
+        <Hero
+          imgUrl="url(/hero.jfif)"
+          style={{
+            backgroundPosition: 'right 35% center',
+            backgroundSize: 'cover',
+          }}
+        />
       </section>
       {!isLogin && (
         <section className="items-center bg-[#FFFAEA]  py-4">

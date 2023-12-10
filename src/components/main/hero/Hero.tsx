@@ -59,9 +59,7 @@ export default function Hero({
   return (
     // background Div
     <div
-      className={`bg-cover bg-center bg-origin-border ${width ? width : 'w-full'} ${
-        height ? height : 'h-full'
-      }`}
+      className={`bg-origin-border ${width ? width : 'w-full'} ${height ? height : 'h-full'} `}
       {...rest}
       style={{
         backgroundImage: `${imgUrl}`,
@@ -70,8 +68,8 @@ export default function Hero({
     >
       {/* inner div for fixed with. */}
       <div
-        className={`m-auto flex flex-col items-start justify-center p-6 ${
-          innerWidth ? innerWidth : 'max-w-[1280px]'
+        className={`m-auto flex flex-col items-start justify-center px-10 py-6 ${
+          innerWidth ? innerWidth : 'max-w-[1180px]'
         } h-full`}
       >
         {/* Hero TextField */}
@@ -159,11 +157,13 @@ export default function Hero({
           </Button>
           <Button
             radius="none"
-            className="h-[44px] w-[134px] bg-white text-sm font-bold text-black"
+            className="h-[44px] w-[134px] bg-white text-sm font-bold text-black "
             color="primary"
+            variant="bordered"
           >
             <p>
-              # 2차<span className="font-normal">로</span> 가볍게
+              <span className="text-primary"># 2차</span>
+              <span className="font-normal">로</span> 가볍게
             </p>
           </Button>
           <Spacer x={5} />
