@@ -18,7 +18,7 @@ import {
 import AreaTab, { Locations } from './AreaTab';
 import PeopleTab from './PeopleTab';
 import FeelingTab from './FeelingTab';
-import TableTypeTab from './TableTypeTab';
+import TableTypesTab from './TableTypesTab';
 
 const locationsItem: Locations = [
   {
@@ -107,14 +107,14 @@ export default function Selector({ search }: SelectorProps) {
             <Tab title="인원" key="인원" className="py-0">
               <PeopleTab selectState={selectState} setSelectState={setSelectState} />
             </Tab>
-            <Tab title="회식 유형" key="회식 유형">
+            <Tab title="회식 유형" key="회식 유형" className="py-0">
               <ModalBody>Modal Body</ModalBody>
             </Tab>
             <Tab title="분위기" key="분위기" className="py-0">
               <FeelingTab selectState={selectState} setSelectState={setSelectState} />
             </Tab>
             <Tab title="좌석 타입" key="좌석 타입" className="py-0">
-              <TableTypeTab selectState={selectState} setSelectState={setSelectState} />
+              <TableTypesTab selectState={selectState} setSelectState={setSelectState} />
             </Tab>
           </Tabs>
           <ModalFooter className="mt-auto h-[118px] flex-wrap justify-normal gap-0 p-0">

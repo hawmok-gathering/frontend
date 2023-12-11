@@ -27,12 +27,7 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
   }
 
   return (
-    <Autocomplete
-      {...rest}
-      isClearable={false}
-      defaultItems={defaultItems}
-      onInputChange={e => console.log(e)}
-    >
+    <Autocomplete {...rest} isClearable={false} defaultItems={defaultItems}>
       {items?.map(item => (
         <AutocompleteSection
           title={item.sectionTitle}

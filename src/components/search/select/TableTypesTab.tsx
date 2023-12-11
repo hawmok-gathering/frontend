@@ -2,7 +2,7 @@ import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox';
 import { ModalBody } from '@nextui-org/modal';
 import React from 'react';
 
-type FeelingSelectionProps = {
+type TableSelectionProps = {
   setSelectState: React.Dispatch<
     React.SetStateAction<{
       [x: string]: string | undefined;
@@ -11,45 +11,46 @@ type FeelingSelectionProps = {
   selectState: any;
 };
 
-const sampleAtmosphere = {
-  sectionTitle: '분위기',
+const tableSample = {
+  sectionTitle: '테이블 종류',
   items: [
-    { label: '분위기 전체', value: '분위기 전체' },
-    { label: '분위기1', value: '분위기1' },
-    { label: '분위기2', value: '분위기2' },
+    { label: '룸', value: '룸' },
+    { label: '홀', value: '홀' },
+    { label: '좌식', value: '좌식' },
+    { label: '입식', value: '입식' },
   ],
 };
 
-export default function FeelingTab({ setSelectState, selectState }: FeelingSelectionProps) {
+export default function TableTypesTab({ setSelectState, selectState }: TableSelectionProps) {
   return (
     <ModalBody>
       <Listbox
-        selectionMode="single"
-        aria-label="select atmosphere list box"
-        selectedKeys={new Set([selectState.feel ?? ''])}
+        selectionMode="multiple"
+        aria-label="select type of Table list box"
+        selectedKeys={new Set([selectState.table ?? ''])}
         onSelectionChange={e => {
           if (e instanceof Set) {
-            e.forEach(item => setSelectState({ ...selectState, feel: item as string }));
+            e.forEach(item => setSelectState({ ...selectState, table: item as string }));
           }
         }}
       >
         <ListboxSection
-          title={sampleAtmosphere.sectionTitle}
+          title={tableSample.sectionTitle}
           classNames={{
             heading: 'font-bold text-[14px] text-black p-2 block',
             group: 'p-0',
           }}
         >
-          {sampleAtmosphere.items.map(feeing => (
+          {tableSample.items.map(table => (
             <ListboxItem
-              key={feeing.value}
+              key={table.value}
               classNames={{
                 selectedIcon:
                   'border-2 border-[#E9E9E9] group-data-[selected=true]:border-black w-4 h-4 p-0.5 font-bold',
               }}
               className="flex-row-reverse"
             >
-              {feeing.label}
+              {table.label}
             </ListboxItem>
           ))}
         </ListboxSection>

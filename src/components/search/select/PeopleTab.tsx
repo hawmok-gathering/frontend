@@ -3,11 +3,11 @@ import { ModalBody } from '@nextui-org/modal';
 import React from 'react';
 
 const ppl = [
-  { label: '5~10명', value: '5~10명' },
-  { label: '10~15명', value: '10~15명' },
-  { label: '15~20명', value: '15~20명' },
-  { label: '20~25명', value: '20~25명' },
-  { label: '25~30명', value: '25~30명' },
+  { label: '5~8인', value: '5~8인' },
+  { label: '9~12인', value: '9~12인' },
+  { label: '13~16인', value: '13~16인' },
+  { label: '17~20인', value: '17~20인' },
+  { label: '20인 이상', value: '20인 이상' },
 ];
 
 type PeopleSelectionProps = {
@@ -24,7 +24,7 @@ export default function PeopleTab({ setSelectState, selectState }: PeopleSelecti
     <ModalBody>
       <Listbox
         selectionMode="single"
-        aria-label="select location list box"
+        aria-label="select how many people list box"
         selectedKeys={new Set([selectState.party ?? ''])}
         onSelectionChange={e => {
           if (e instanceof Set) {
