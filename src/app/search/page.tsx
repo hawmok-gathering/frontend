@@ -1,8 +1,9 @@
 import SearchResultPage from '@/components/search/SearchResultPage';
-import Selector from '@/components/search/Selector';
+import Selector from '@/components/search/select/Selector';
 import { SearchParams } from '@/constants/constant';
 import Link from 'next/link';
 import React from 'react';
+import { mokStores } from '../page';
 
 type SearchPageProps = {
   searchParams: { [key: string]: string | undefined };
@@ -11,6 +12,7 @@ type SearchPageProps = {
 export default async function page({ searchParams }: SearchPageProps) {
   const searchParam = searchParams[SearchParams.query] ?? searchParams.area;
   const sort = searchParams.sort ?? 'latest';
+  const stores = mokStores;
 
   //TODO: get API here.
   return (
@@ -22,27 +24,9 @@ export default async function page({ searchParams }: SearchPageProps) {
       </section>
       <section className="mb-10 mt-[160px]">
         <Selector search={searchParams} />
-        {/* <div className="flex w-full justify-end">
-          <div className={`flex h-8 w-[132px] rounded-md bg-[#F1F1F1] p-0.5 text-xs`}>
-            <Link
-              href={`?${new URLSearchParams({ ...searchParams, sort: 'latest' })}`}
-              className={`${
-                sort === 'latest' ? 'bg-primary text-white' : 'bg-transparent text-secondary'
-              } box-border flex w-1/2 items-center justify-center rounded-md font-bold`}
-            >
-              최신순
-            </Link>
-            <Link
-              href={`?${new URLSearchParams({ ...searchParams, sort: 'pop' })}`}
-              className={`${
-                sort === 'latest' ? 'bg-transparent text-secondary' : 'bg-primary text-white'
-              } box-border flex w-1/2 items-center justify-center rounded-md font-bold`}
-            >
-              인기순
-            </Link>
-          </div>
-        </div> */}
-        <SearchResultPage items={[]} />
+      </section>
+      <section>
+        <SearchResultPage items={stores} />
       </section>
     </div>
   );

@@ -5,7 +5,7 @@ import { Spacer } from '@nextui-org/spacer';
 import MainCarousel from '@/components/main/MainCarousel';
 import FamousPlace from '@/components/main/famous/FamousPlace';
 
-const mokStores = [
+export const mokStores = [
   {
     storeId: 1,
     location_id: '서울시 마포구 서교동 123-1',
