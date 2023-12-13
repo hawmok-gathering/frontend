@@ -41,7 +41,7 @@ export default function FamousPlace({ stores }: FamousPlaceProps) {
       </div>
 
       <Spacer y={8} />
-      <div className="grid grid-cols-4 grid-rows-2 gap-x-4 gap-y-5">
+      <div className="grid grid-cols-4 grid-rows-2 justify-items-center gap-5">
         {famousStores.map(store => (
           <StoreCard key={store.storeId} store={store} page="main" />
         ))}

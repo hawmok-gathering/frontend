@@ -41,7 +41,7 @@ export default function SearchResult({ items }: SearchResultProps) {
       <div className="flex h-7 items-center justify-start text-xs font-bold text-primary">
         <p>총 {length} 건</p>
       </div>
-      <div className="grid grid-cols-4 gap-4 gap-y-6 py-4">
+      <div className="grid grid-cols-4 justify-items-center gap-5 py-4">
         {items.map(item => (
           <StoreCard page="search" store={item} key={item.storeId} />
         ))}
