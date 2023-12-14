@@ -174,13 +174,7 @@ export default async function Home({ searchParams }: HomePageProps) {
   return (
     <>
       <section className="h-[630px] w-full">
-        <Hero
-          imgUrl="url(/hero.jfif)"
-          style={{
-            backgroundPosition: 'right 35% center',
-            backgroundSize: 'cover',
-          }}
-        />
+        <Hero imgUrl="url(/hero.jfif)" />
       </section>
       {!isLogin && (
         <section className="items-center bg-[#FFFAEA]  py-4">
@@ -194,6 +188,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           </h2>
           <Spacer y={6} />
           <BackgroundCard
+            overlay={true}
             imgUrl="url(/table.jfif)"
             className="h-[498px] w-full bg-cover bg-center"
             radius="none"

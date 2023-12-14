@@ -7,6 +7,8 @@ import ClientAutoComplete from './ClientAutoComplete';
 import { RadioGroup, Radio } from '@nextui-org/radio';
 import { cn } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
+import BackgroundCard from '@/components/BackgroundCard';
+
 const autoOne = [
   {
     sectionTitle: '서울',
@@ -41,26 +43,13 @@ const autTwo = [
 type CustomRadioProps = {} & ComponentPropsWithoutRef<typeof Radio>;
 type CustomAutoComplete = {} & ComponentPropsWithoutRef<typeof ClientAutoComplete>;
 
-type BackgroundPosition = 'top' | 'bottom' | 'center' | 'left' | 'right';
-
 type HeroBackgroundProps = {
   imgUrl: string;
   children?: React.ReactNode;
-  width?: string;
-  height?: string;
-  backgroundPosition?: BackgroundPosition;
-  innerWidth?: string;
 } & ComponentPropsWithoutRef<'div'>;
 
-export default function Hero({
-  children,
-  imgUrl,
-  width,
-  height,
-  innerWidth,
-  ...rest
-}: HeroBackgroundProps) {
-  const { style } = rest;
+export default function Hero(props: HeroBackgroundProps) {
+  const { children, style, className, imgUrl, ...rest } = props;
 
   const handleButtonSearch = async (form: FormData) => {
     'use server';
@@ -75,22 +64,28 @@ export default function Hero({
 
   return (
     // background Div
-    <div
-      className={`bg-origin-border ${width ? width : 'w-full'} ${height ? height : 'h-full'} `}
-      {...rest}
+    <BackgroundCard
+      radius={'none'}
+      imgUrl={imgUrl}
+      className={cn(
+        `relative h-full w-full bg-cover bg-center
+      bg-origin-border`,
+        className,
+      )}
       style={{
-        backgroundImage: `${imgUrl}`,
         ...style,
       }}
+      {...rest}
     >
+      {/* overlay */}
+      <div className="absolute h-full w-full bg-black bg-opacity-40"></div>
+      {/* children */}
       {/* inner div for fixed with. */}
       <div
-        className={`m-auto flex flex-col items-start justify-center px-10 py-6 ${
-          innerWidth ? innerWidth : 'max-w-[1180px]'
-        } h-full`}
+        className={`m-auto flex h-full w-full max-w-[1180px] flex-col items-start justify-center px-10 py-6`}
       >
         {/* Hero TextField */}
-        <div>
+        <div className="z-[1]">
           <p className="text-5xl font-bold text-white">다수가 모이는</p>
           <Spacer y={10} />
           <p className="text-5xl font-bold text-white">
@@ -148,7 +143,7 @@ export default function Hero({
           </Button>
         </form>
       </div>
-    </div>
+    </BackgroundCard>
   );
 }
 

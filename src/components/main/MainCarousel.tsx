@@ -64,7 +64,7 @@ export default function MainCarousel() {
             <Spacer y={3} />
             <h3 className="text-base">{item.title}</h3>
             <Spacer y={6} />
-            <span className="text-xs">{item.tag}</span>
+            <span className="text-xs font-normal">{item.tag}</span>
           </CardBody>
         </BackgroundCard>
       )}
