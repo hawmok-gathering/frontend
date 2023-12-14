@@ -25,13 +25,16 @@ export default function Carousel<O extends Record<string | number | symbol, any>
 }: CarouselProps<O>) {
   const [index, setIndex] = useState(1);
   const ref = useRef<HTMLDivElement>(null);
-  const stepOffset = -268;
 
   const handleIndex = (idx: number) => {
     if (idx === index) {
       return;
     }
 
+    let stepOffset = -268;
+    if (window.innerWidth <= 768) {
+      stepOffset = -164;
+    }
     const gap = (idx - index) * stepOffset;
     setIndex(() => idx);
 
@@ -42,7 +45,7 @@ export default function Carousel<O extends Record<string | number | symbol, any>
 
   return (
     <>
-      <div className={`relative mx-auto h-full w-[786px] overflow-x-hidden`}>
+      <div className={`relative mx-auto h-full w-[328px] overflow-x-hidden sm:w-[786px]`}>
         <div className={`left-20 flex h-full items-center gap-5 transition-all`} ref={ref}>
           {items.map((item, idx) =>
             renderItem({
@@ -68,7 +71,7 @@ export default function Carousel<O extends Record<string | number | symbol, any>
         </div>
       </div>
       {/* 캐로셀 버튼 */}
-      <div className="absolute top-1/2 mx-auto my-auto w-[890px] -translate-y-1/2 self-center">
+      <div className="absolute top-1/2 mx-auto my-auto w-[390px] -translate-y-1/2 self-center sm:w-[890px]">
         {index !== 0 && (
           <Button
             isIconOnly

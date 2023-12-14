@@ -43,14 +43,14 @@ export default function MainCarousel() {
           radius="sm"
           key={item.title + index}
           imgUrl={item.imgUrl}
-          className={`h-[328px] w-[248px] shrink-0 cursor-pointer overflow-hidden bg-cover bg-center bg-origin-border font-bold text-white ${
-            isSelected ? '-translate-y-10 ' : ''
+          className={`h-[196px] w-[148px] shrink-0 cursor-pointer overflow-hidden bg-cover bg-center bg-origin-border font-bold text-white sm:h-[328px] sm:w-[248px] ${
+            isSelected ? '-translate-y-8 ' : ''
           }`}
         >
           {/**gradient image*/}
           <div className="absolute h-full w-3/4 -translate-x-10 bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90%"></div>
           <CardBody
-            className="flex h-full flex-col justify-start overflow-hidden pb-9 pt-[197px]"
+            className="flex h-full flex-col justify-start overflow-hidden pb-9 pt-[83px] sm:pt-[197px]"
             onClick={() => handleIndex(index)}
           >
             <Button
@@ -61,10 +61,11 @@ export default function MainCarousel() {
             >
               둘러보기
             </Button>
-            <Spacer y={3} />
-            <h3 className="text-base">{item.title}</h3>
-            <Spacer y={6} />
-            <span className="text-xs font-normal">{item.tag}</span>
+
+            <h3 className="mt-2 text-base leading-[25.6px]">{item.title}</h3>
+            <span className="mt-4  text-[10px] font-normal leading-[16px] sm:text-xs ">
+              {item.tag}
+            </span>
           </CardBody>
         </BackgroundCard>
       )}

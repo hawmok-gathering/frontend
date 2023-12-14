@@ -36,7 +36,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         <Image
           key={url + idx}
           src={url}
-          alt="restaurant image"
+          alt={`restaurant image ${idx}`}
           width={838}
           height={628}
           className="h-full w-full shrink-0 grow-0 object-cover "
@@ -46,6 +46,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
       <button
         className="absolute bottom-0 left-0 top-0 bg-none p-3 transition-all hover:bg-black hover:bg-opacity-50"
         onClick={showPrevImage}
+        aria-label="view previous image"
       >
         <span className="inline-flex rounded-full bg-black bg-opacity-50 p-2">
           <IoIosArrowBack className="text-white" />
@@ -54,6 +55,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
       <button
         className="absolute bottom-0 right-0 top-0 bg-none p-3 transition-all hover:bg-black hover:bg-opacity-50"
         onClick={showNextImage}
+        aria-label="view next image"
       >
         <span className="inline-flex rounded-full bg-black bg-opacity-50 p-2">
           <IoIosArrowForward className="text-white" />
@@ -62,10 +64,11 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
       <div className="absolute bottom-10 flex w-full justify-center gap-4 ">
         {imgUrls.map((v, i) => (
           <button
+            aria-label={`view image ${i + 1} of ${imgUrls.length}`}
             key={i + v}
             className={`${
               imgIndex === i ? ' bg-opacity-100' : 'bg-opacity-50'
-            } h-[14px] w-[14px] rounded-full  bg-black  transition-all`}
+            } h-[14px] w-[14px] rounded-full  bg-black  ring-1 ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-offset-4`}
             onClick={() => setImageIndex(i)}
           ></button>
         ))}

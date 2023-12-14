@@ -173,7 +173,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <>
-      <section className="h-[630px] w-full">
+      <section className="h-[346px] w-full sm:h-[630px]">
         <Hero imgUrl="url(/hero.jfif)" />
       </section>
       {!isLogin && (
@@ -182,25 +182,26 @@ export default async function Home({ searchParams }: HomePageProps) {
         </section>
       )}
       <section className="py-12">
-        <div className={`mx-auto max-w-[1180px] px-10 py-6`}>
-          <h2 className={`inline-flex h-[43px] items-center text-3xl font-bold`}>
+        <div className={`mx-auto px-4 py-6 sm:max-w-[1180px] sm:px-10`}>
+          <h2 className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
             이런 장소를 찾고 있나요
           </h2>
           <Spacer y={6} />
           <BackgroundCard
             overlay={true}
             imgUrl="url(/table.jfif)"
-            className="h-[498px] w-full bg-cover bg-center"
+            className="h-[304px] w-full bg-cover bg-center sm:h-[498px]"
             radius="none"
           >
             <MainCarousel />
           </BackgroundCard>
         </div>
       </section>
-      <section className="h-[1090px] bg-[#FFFAEA] py-20">
-        <div className={`mx-auto h-full w-[1180px] px-10`}>
-          <h2 className="text-3xl font-bold">많이 찾는 회식 장소</h2>
-          <Spacer y={6} />
+      <section className="h-[1090px] bg-[#FFFAEA] py-10 sm:py-20">
+        <div className={`mx-auto h-full w-[1180px] px-4 sm:px-10`}>
+          <h2 className="mb-6 text-xl font-bold leading-[32px] text-black sm:mb-8 sm:text-3xl">
+            많이 찾는 회식 장소
+          </h2>
           <FamousPlace stores={mokStores} />
         </div>
       </section>

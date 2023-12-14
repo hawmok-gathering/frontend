@@ -67,14 +67,8 @@ export default function Hero(props: HeroBackgroundProps) {
     <BackgroundCard
       radius={'none'}
       imgUrl={imgUrl}
-      className={cn(
-        `relative h-full w-full bg-cover bg-center
-      bg-origin-border`,
-        className,
-      )}
-      style={{
-        ...style,
-      }}
+      className={cn(`relative h-full w-full bg-cover bg-center bg-origin-border`, className)}
+      style={{ ...style }}
       {...rest}
     >
       {/* overlay */}
@@ -82,22 +76,25 @@ export default function Hero(props: HeroBackgroundProps) {
       {/* children */}
       {/* inner div for fixed with. */}
       <div
-        className={`m-auto flex h-full w-full max-w-[1180px] flex-col items-start justify-center px-10 py-6`}
+        className={`pt m-auto flex h-full w-full max-w-[1180px] flex-col items-start px-4 py-10 sm:px-10 sm:py-24`}
       >
         {/* Hero TextField */}
-        <div className="z-[1]">
-          <p className="text-5xl font-bold text-white">다수가 모이는</p>
-          <Spacer y={10} />
-          <p className="text-5xl font-bold text-white">
+        <div className="z-[1] text-2xl font-bold leading-[38.4px] sm:text-5xl sm:leading-[76.8px]">
+          <p className=" text-white">다수가 모이는</p>
+          <p className=" text-white">
             회식 장소를 <span className="text-primary">한 번에</span>
           </p>
-          <Spacer y={10} />
-          <p className="text-[#FFFAEA]">맞춤형 회식 장소를 3초만에 찾아보세요!</p>
+          <p className="sm:leading-[25.6px ] mt-4 text-xs font-medium leading-[19.2px] text-[#FFFAEA] sm:text-base">
+            맞춤형 회식 장소를 3초만에 찾아보세요!
+          </p>
         </div>
-        <Spacer y={32} />
 
         {/* auto complete for selecting area and portion of party */}
-        <form style={{ display: 'flex', gap: '10px' }} action={handleButtonSearch}>
+        <form
+          style={{ display: 'flex', gap: '10px' }}
+          action={handleButtonSearch}
+          className="mt-24 sm:mt-40"
+        >
           <CustomAutoComplete
             items={autoOne}
             name="area"
@@ -118,8 +115,11 @@ export default function Hero(props: HeroBackgroundProps) {
           <RadioGroup
             name="radio"
             orientation="horizontal"
+            className="flex flex-col justify-between"
             classNames={{
-              base: cn('flex justify-center items-center min-w-[278px]'),
+              base: cn(
+                'flex flex-col w-[86px] sm:flex-row h-[56px] sm:h-[44px] justify-between sm:justify-center items-center sm:min-w-[278px]',
+              ),
             }}
           >
             <CustomRadio value={'first'}>
@@ -153,10 +153,12 @@ const CustomRadio = (props: CustomRadioProps) => {
     <Radio
       {...otherProps}
       value={value}
+      className="relative flex items-center justify-center p-0"
       classNames={{
-        base: 'inline-flex bg-white max-w-[133px] w-[133px] h-[44px] data-[selected=true]:border-primary border-2 border-default data-[selected=true]:text-primary mx-[1px]',
+        base: 'relative flex items-center justify-center inline-flex bg-white max-w-[133px] w-[86px] sm:w-[133px] h-6 sm:h-[44px] data-[selected=true]:border-primary border-2 border-default data-[selected=true]:text-primary mx-[1px]',
         wrapper: 'hidden',
-        label: 'text-sm font-bold text-inherit',
+        label:
+          'flex items-center justify-center text-[10px] leading-[16px] sm:text-sm font-bold text-inherit p-0 ',
       }}
     >
       {children}
@@ -172,7 +174,7 @@ const CustomAutoComplete = (props: CustomAutoComplete) => {
       name={name}
       placeholder={placeholder}
       startContent={startContent}
-      className="h-full w-[134px]"
+      className="h-full w-[60px] sm:w-[134px]"
       labelPlacement="outside"
       radius="none"
       popoverProps={{
@@ -185,7 +187,7 @@ const CustomAutoComplete = (props: CustomAutoComplete) => {
       aria-labelledby="party-portion 인원"
       inputProps={{
         classNames: {
-          inputWrapper: 'w-[134px] h-[44px]',
+          inputWrapper: 'sm:w-[134px] w-[60px] h-14 sm:h-[44px]',
           input: 'text-xs',
         },
       }}
