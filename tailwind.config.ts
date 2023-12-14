@@ -10,7 +10,19 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        fade: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '20%': { opacity: '1', transform: 'translateY(0)' },
+          '85%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(-20)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fade 3s ease-out',
+      },
+    },
   },
   darkMode: 'class',
   plugins: [

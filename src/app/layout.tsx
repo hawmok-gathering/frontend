@@ -5,6 +5,8 @@ import './globals.css';
 import { twMerge } from 'tailwind-merge';
 import { Providers } from './providers';
 import MainNavBar from '@/components/main/navbar/MainNavBar';
+import ToastContextProvider from '@/toast/ToastContextProvider';
+import ToastViewer from '@/toast/ToastViewer';
 
 const inter = Inter({ subsets: ['latin'] });
 const myFont = localFont({
@@ -22,8 +24,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`h-[100dvh] bg-background light`}>
       <body className={twMerge(myFont.className, 'h-[100dvh] w-full light')}>
         <Providers className="min-h-full bg-background text-foreground">
-          <MainNavBar className="" />
-          <main className="flex h-full flex-col">{children}</main>
+          <ToastContextProvider>
+            <MainNavBar className="" />
+            <main className="flex h-full flex-col">{children}</main>
+            <ToastViewer />
+          </ToastContextProvider>
         </Providers>
       </body>
     </html>
