@@ -2,6 +2,7 @@ import { Card } from '@nextui-org/card';
 import React from 'react';
 import { cn } from '@nextui-org/react';
 import { GrHomeRounded } from 'react-icons/gr';
+import ImageSlider from './ImageSlider';
 
 const tempInfoOne = [
   {
@@ -30,16 +31,20 @@ export default function StoreInfo() {
       <div className="mb-20 w-full border-b-3 border-[#F1F1F1]" />
 
       <div className="mb-5 flex">
-        <span className="flex h-[372px] w-[140px] items-center justify-center bg-[#302F2D] text-[32px] font-bold text-white">
+        <span className="flex h-[372px] w-[140px] shrink-0 items-center justify-center bg-[#302F2D] text-[32px] font-bold text-white">
           홀 1
         </span>
-        <div className="flex-grow bg-gray-200">그림</div>
+        <div className="h-[372px]">
+          <ImageSlider key="1st" imgUrls={['/steak.jpg', '/beer.webp', '/wine.jpg', '/soju.jpg']} />
+        </div>
       </div>
       <div className="mb-20 flex">
-        <span className="flex h-[372px] w-[140px] items-center justify-center bg-[#302F2D] text-[32px] font-bold text-white">
+        <span className="flex h-[372px] w-[140px] shrink-0 items-center justify-center bg-[#302F2D] text-[32px] font-bold text-white">
           홀 2
         </span>
-        <div className="flex-grow bg-gray-200">그림</div>
+        <div className="h-[372px]">
+          <ImageSlider key="2st" imgUrls={['/steak.jpg', '/beer.webp', '/wine.jpg', '/soju.jpg']} />
+        </div>
       </div>
       <div className="border-2 border-[#F1F1F1] px-6 py-8">
         <MiniTitle text="단체석 이용 안내" className="mb-10" />

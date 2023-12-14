@@ -9,6 +9,7 @@ import { RxHeartFilled } from 'react-icons/rx';
 import { FiShare2 } from 'react-icons/fi';
 import Clipboard from '@/components/store/Clipboard';
 import StorDetailSection from '@/components/store/StorDetailSection';
+import ImageSlider from '@/components/store/ImageSlider';
 
 type StorePageProps = {
   params: { id: string };
@@ -43,7 +44,9 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
         {/* store image section */}
         <section className="mt-7 flex justify-between">
-          <div className="h-[628px] w-[838px] shrink-0 bg-slate-200"></div>
+          <div className="h-[628px] w-full max-w-[838px] shrink-0 ">
+            <ImageSlider imgUrls={['/wine.jpg', '/beer.webp', '/soju.jpg']} />
+          </div>
           {/* store simple info section */}
           <div className=" w-[242px] ">
             <div className="flex h-[332px] w-full shrink-0 items-center justify-center border-2 border-[#D9D9D9]">
