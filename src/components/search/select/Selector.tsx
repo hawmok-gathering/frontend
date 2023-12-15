@@ -159,10 +159,10 @@ const CustomButton = (props: CustomButton) => {
       size="sm"
       radius="full"
       variant={selected ? 'light' : 'bordered'}
+      endContent={<FaAngleDown className="scale-150 text-[#C6C6C6]" />}
       className={`${
         selected ? 'bg-[#302F2D] text-white' : 'text-black'
-      } data-[hover=true]:bg-" px-3 text-[10px] font-bold leading-4`}
-      endContent={<FaAngleDown className="text-[#C6C6C6]" />}
+      } data-[hover=true]:bg-" px-2 text-[10px] font-bold leading-4 sm:px-3`}
       {...rest}
     >
       {children}

@@ -7,6 +7,7 @@ import { Providers } from './providers';
 import MainNavBar from '@/components/main/navbar/MainNavBar';
 import ToastContextProvider from '@/toast/ToastContextProvider';
 import ToastViewer from '@/toast/ToastViewer';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 const myFont = localFont({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ToastViewer />
           </ToastContextProvider>
         </Providers>
+        <Footer />
       </body>
     </html>
   );

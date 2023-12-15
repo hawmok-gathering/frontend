@@ -90,36 +90,31 @@ export default function Hero(props: HeroBackgroundProps) {
         </div>
 
         {/* auto complete for selecting area and portion of party */}
-        <form
-          style={{ display: 'flex', gap: '10px' }}
-          action={handleButtonSearch}
-          className="mt-24 sm:mt-40"
-        >
-          <CustomAutoComplete
-            items={autoOne}
-            name="area"
-            placeholder="지역"
-            startContent={<SlLocationPin className="text-4xl font-bold" />}
-          />
+        <form action={handleButtonSearch} className="mt-24 flex gap-3 sm:mt-40 sm:gap-6">
+          <div className="flex gap-2">
+            <CustomAutoComplete
+              items={autoOne}
+              name="area"
+              placeholder="지역"
+              startContent={<SlLocationPin className="text-4xl font-bold" />}
+            />
 
-          <CustomAutoComplete
-            items={autTwo}
-            name="party"
-            placeholder="인원"
-            startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
-          />
-
-          <Spacer x={5} />
+            <CustomAutoComplete
+              items={autTwo}
+              name="party"
+              placeholder="인원"
+              startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
+            />
+          </div>
 
           {/* buttons */}
           <RadioGroup
             name="radio"
-            orientation="horizontal"
-            className="flex flex-col justify-between"
+            className=""
             classNames={{
-              base: cn(
-                'flex flex-col w-[86px] sm:flex-row h-[56px] sm:h-[44px] justify-between sm:justify-center items-center sm:min-w-[278px]',
-              ),
+              base: cn(''),
+              wrapper:
+                'flex flex-col gap-3 sm:gap-2 justify-evenly sm:flex-row sm:items-center h-[56px] sm:h-[44px]',
             }}
           >
             <CustomRadio value={'first'}>
@@ -131,16 +126,16 @@ export default function Hero(props: HeroBackgroundProps) {
               <span className="text-black"> 가볍게 </span>
             </CustomRadio>
           </RadioGroup>
-          <Spacer x={5} />
+
           <Button
             radius="none"
-            className="h-[44px] w-[127px] text-sm font-bold text-white"
+            className="h-14 w-[73px] text-[10px] font-bold text-white sm:h-[44px] sm:w-[127px] sm:text-sm"
             variant="solid"
             color="primary"
             type="submit"
           >
             회식 장소 선택
-          </Button>
+          </Button> 
         </form>
       </div>
     </BackgroundCard>
@@ -153,10 +148,11 @@ const CustomRadio = (props: CustomRadioProps) => {
     <Radio
       {...otherProps}
       value={value}
-      className="relative flex items-center justify-center p-0"
+      className="flex items-center justify-center"
       classNames={{
-        base: 'relative flex items-center justify-center inline-flex bg-white max-w-[133px] w-[86px] sm:w-[133px] h-6 sm:h-[44px] data-[selected=true]:border-primary border-2 border-default data-[selected=true]:text-primary mx-[1px]',
+        base: 'sm:px-4 px-1 flex items-center justify-center inline-flex bg-white min-w-[86px] h-6 sm:h-[44px] data-[selected=true]:border-primary border-2 border-white sm:border-2 sm:border-default data-[selected=true]:text-primary mx-[1px]',
         wrapper: 'hidden',
+        labelWrapper: 'm-0 ',
         label:
           'flex items-center justify-center text-[10px] leading-[16px] sm:text-sm font-bold text-inherit p-0 ',
       }}

@@ -10,7 +10,7 @@ export const mokStores = [
     storeId: 1,
     location_id: '서울시 마포구 서교동 123-1',
     //
-    name: '청기와 부산 갈매기',
+    name: '청기와 부산 갈매ddddsfdsfdsfsdfdsfdsfdsssssssssddd기',
     store_image_url: '/beer.webp',
     phone: '02-1234-5678',
     content: '맛있는 음식과 함께 즐거운 시간을 보내세요',
@@ -197,15 +197,14 @@ export default async function Home({ searchParams }: HomePageProps) {
           </BackgroundCard>
         </div>
       </section>
-      <section className="h-[1090px] bg-[#FFFAEA] py-10 sm:py-20">
-        <div className={`mx-auto h-full w-[1180px] px-4 sm:px-10`}>
+      <section className="h-fit bg-[#FFFAEA] py-10 sm:py-20">
+        <div className={`mx-auto h-full px-4 sm:w-[1180px] sm:px-10`}>
           <h2 className="mb-6 text-xl font-bold leading-[32px] text-black sm:mb-8 sm:text-3xl">
             많이 찾는 회식 장소
           </h2>
           <FamousPlace stores={mokStores} />
         </div>
       </section>
-      <footer className="h-[250px] w-full bg-[#302F2D]"></footer>
     </>
   );
 }

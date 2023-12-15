@@ -111,7 +111,7 @@ export default function MainNavBar({ className }: NavBarProps) {
       height={'80px'}
       className="px-3"
       classNames={{
-        wrapper: 'max-w-[1180px] px-10',
+        wrapper: 'max-w-[1180px] sm:px-10 px-4 ',
       }}
     >
       {/* TODO: 각 드롭다운의 링크 작성하기 */}
