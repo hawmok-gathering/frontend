@@ -106,7 +106,6 @@ export default async function page({ params, searchParams }: StorePageProps) {
           <StorDetailSection />
         </section>
       </div>
-      <footer className="h-[250px] w-full bg-[#302F2D]"></footer>
     </>
   );
 }

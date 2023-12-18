@@ -48,7 +48,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         onClick={showPrevImage}
         aria-label="view previous image"
       >
-        <span className="inline-flex rounded-full bg-black bg-opacity-50 p-2">
+        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 p-2">
           <IoIosArrowBack className="text-white" />
         </span>
       </button>
@@ -57,7 +57,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         onClick={showNextImage}
         aria-label="view next image"
       >
-        <span className="inline-flex rounded-full bg-black bg-opacity-50 p-2">
+        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 p-2">
           <IoIosArrowForward className="text-white" />
         </span>
       </button>
@@ -67,8 +67,8 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
             aria-label={`view image ${i + 1} of ${imgUrls.length}`}
             key={i + v}
             className={`${
-              imgIndex === i ? ' bg-opacity-100' : 'bg-opacity-50'
-            } h-[14px] w-[14px] rounded-full  bg-black  ring-1 ring-offset-primary transition-all focus-visible:outline-none focus-visible:ring-offset-4`}
+              imgIndex === i ? ' bg-[#827C0A]' : 'bg-[#877560]'
+            } h-[14px] w-[14px] rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary`}
             onClick={() => setImageIndex(i)}
           ></button>
         ))}
