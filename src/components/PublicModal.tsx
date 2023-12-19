@@ -2,7 +2,6 @@
 import {
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter,
   useDisclosure,
@@ -12,10 +11,10 @@ import { ComponentPropsWithoutRef } from 'react';
 
 type DefaultModalProps = {
   children?: React.ReactNode;
-  title: string;
+
 } & Omit<ComponentPropsWithoutRef<typeof Modal>, 'children' | 'title'>;
 
-export default function PublicModal({ children, title, ...rest }: DefaultModalProps) {
+export default function PublicModal({ children, ...rest }: DefaultModalProps) {
   const { onOpenChange } = useDisclosure();
   return (
     <>
@@ -23,7 +22,6 @@ export default function PublicModal({ children, title, ...rest }: DefaultModalPr
         <ModalContent>
           {onClose => (
             <>
-              <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
               <ModalBody>{children}</ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>

@@ -4,6 +4,7 @@ import React from 'react';
 import Carousel from './Carousel';
 import { Button, CardBody, Spacer } from '@nextui-org/react';
 import BackgroundCard from '@/components/BackgroundCard';
+import { useRouter } from 'next/navigation';
 
 export type Carousel = {
   title: string;
@@ -35,6 +36,7 @@ const sliderItems: Carousel[] = [
 ];
 
 export default function MainCarousel() {
+  const router = useRouter();
   return (
     <Carousel
       items={sliderItems}
@@ -54,6 +56,7 @@ export default function MainCarousel() {
             onClick={() => handleIndex(index)}
           >
             <Button
+              onClick={() => router.push('/search?searchQuery=스테이크')}
               isIconOnly
               radius="full"
               size="sm"

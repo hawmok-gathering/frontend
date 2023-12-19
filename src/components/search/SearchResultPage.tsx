@@ -16,6 +16,7 @@ export default function SearchResult({ items }: SearchResultProps) {
   if (sorted === 'latest') {
     changeSort = 'pop';
   }
+  
   return (
     <>
       <div className="flex max-w-full justify-end">

@@ -15,12 +15,9 @@ import { MainNavBarComponent, SearchParams } from '@/constants/constant';
 import PreviousSearch from './PreviousSearch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
-type NavBarProps = {
-  className: string;
-};
-
-export default function MainNavBar({ className }: NavBarProps) {
+export default function MainNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const router = useRouter();
@@ -106,10 +103,11 @@ export default function MainNavBar({ className }: NavBarProps) {
 
   return (
     <Navbar
+      isBlurred={false}
       onMenuOpenChange={setIsMenuOpen}
       isBordered
       height={'80px'}
-      className="px-3"
+      className="hidden px-3 sm:flex"
       classNames={{
         wrapper: 'max-w-[1180px] sm:px-10 px-4 ',
       }}
@@ -122,7 +120,9 @@ export default function MainNavBar({ className }: NavBarProps) {
         />
         <NavbarBrand>add icon</NavbarBrand>
       </NavbarItem> */}
-      <NavbarBrand>add icon</NavbarBrand>
+      <NavbarBrand onClick={() => router.push('/')} className="cursor-pointer">
+        <Image src="/brand.png" width={104} height={70} alt="hwamoke brand logo" />
+      </NavbarBrand>
 
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <NavbarItem>

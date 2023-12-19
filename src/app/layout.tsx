@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={twMerge(myFont.className, 'h-[100dvh] w-full light')}>
         <Providers className="min-h-full bg-background text-foreground">
           <ToastContextProvider>
-            <MainNavBar className="" />
+            <MainNavBar />
             <main className="flex h-full flex-col">{children}</main>
             <ToastViewer />
           </ToastContextProvider>

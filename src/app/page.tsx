@@ -4,6 +4,10 @@ import Hero from '@/components/main/hero/Hero';
 import { Spacer } from '@nextui-org/spacer';
 import MainCarousel from '@/components/main/MainCarousel';
 import FamousPlace from '@/components/main/famous/FamousPlace';
+import Link from 'next/link';
+import Image from 'next/image';
+import { GrSearch } from 'react-icons/gr';
+import { MdOutlinePersonOutline } from 'react-icons/md';
 
 export const mokStores = [
   {
@@ -146,7 +150,7 @@ export const mokStores = [
     category: '밥집',
   },
   {
-    storeId: 8,
+    storeId: 9,
     name: '돈까스좋아 부산',
     store_image_url: '/beer.webp',
     phone: '02-1234-5678',
@@ -173,6 +177,13 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <>
+      <nav className="flex h-14 items-center px-4 text-xl font-bold leading-normal text-black sm:hidden">
+        <Link href="/" className="">
+          <Image src="/brand.png" alt="brand logo" width={44} height={30} />
+        </Link>
+        <GrSearch className="ml-auto cursor-pointer text-xl font-extrabold text-secondary" />
+        <MdOutlinePersonOutline className="ml-4 cursor-pointer text-2xl font-extrabold text-secondary" />
+      </nav>
       <section className="h-[346px] w-full sm:h-[630px]">
         <Hero imgUrl="url(/hero.jfif)" />
       </section>

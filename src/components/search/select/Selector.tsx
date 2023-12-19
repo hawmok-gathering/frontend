@@ -19,6 +19,8 @@ import AreaTab, { Locations } from './AreaTab';
 import PeopleTab from './PeopleTab';
 import FeelingTab from './FeelingTab';
 import TableTypesTab from './TableTypesTab';
+import { RxCross2 } from 'react-icons/rx';
+import { useRouter } from 'next/navigation';
 
 const locationsItem: Locations = [
   {
@@ -47,6 +49,7 @@ export default function Selector({ search }: SelectorProps) {
   //TODO: searchParams 를 state로 바꿀지 생각해보기.
   const { searchQuery } = search;
   const [selectState, setSelectState] = useState({ ...search });
+  const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -118,15 +121,32 @@ export default function Selector({ search }: SelectorProps) {
             </Tab>
           </Tabs>
           <ModalFooter className="mt-auto h-[118px] flex-wrap justify-normal gap-0 p-0">
-            <div className="h-12 w-full bg-[#F5F5F5] px-7 py-4">
-              <Button
-                isIconOnly
-                className="m-0 h-fit w-fit max-w-fit p-0"
-                radius="full"
-                startContent={<MdRotateLeft className="text-lg" />}
-                onPress={() => setSelectState({ ...search })}
-              />
-              d
+            <div className="flex h-12 w-full items-center gap-2 bg-[#F5F5F5] px-7 py-4">
+              <button
+                className="h-fit w-fit rounded-full border-[#E9E9E9] bg-white p-1"
+                onClick={() => setSelectState({ ...search })}
+              >
+                <MdRotateLeft className="text-lg" />
+              </button>
+              {Object.entries(selectState).map(([key, value]) => {
+                if (key === 'searchQuery') return;
+                return (
+                  <button
+                    key={key}
+                    className="flex items-center gap-[10px] rounded-full bg-[#302F2D] px-2 py-1 text-white"
+                    onClick={() =>
+                      setSelectState(prev => {
+                        const newState = { ...prev };
+                        delete newState[key];
+                        return newState;
+                      })
+                    }
+                  >
+                    <small>{value}</small>
+                    <RxCross2 />
+                  </button>
+                );
+              })}
             </div>
             <Button
               radius="none"
@@ -136,6 +156,11 @@ export default function Selector({ search }: SelectorProps) {
               취소
             </Button>
             <Button
+              onPress={() => {
+                const params = new URLSearchParams(selectState as Record<string, string>);
+                router.push(`/search?${params}`);
+                onOpenChange();
+              }}
               radius="none"
               className="h-[70px] w-2/3  text-base font-bold text-white"
               color="primary"

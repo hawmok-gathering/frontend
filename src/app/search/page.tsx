@@ -12,10 +12,15 @@ type SearchPageProps = {
 
 export default async function page({ searchParams }: SearchPageProps) {
   const searchParam = searchParams[SearchParams.query] ?? searchParams.area;
+
   const sort = searchParams.sort ?? 'latest';
   const stores = mokStores;
 
-  //TODO: get API here.
+  const { searchQuery, area, party, feel, table } = searchParams;
+  //TODO: get rest Data form sever using searchQuery, area, party, feel, table and etc.
+  //TODO: pass the data to SearchResultPage component.
+  // select component will handle the state of searchParams.
+
   return (
     <div className="mx-auto w-full px-4 pt-2 sm:w-[1180px] sm:px-10 sm:pt-[100px]">
       <section className="relative">
@@ -32,7 +37,7 @@ export default async function page({ searchParams }: SearchPageProps) {
       <section className="mb-14 mt-10 sm:mb-10 sm:mt-[160px]">
         <Selector search={searchParams} />
       </section>
-      <section>
+      <section className="mb-10 sm:mb-20">
         <SearchResultPage items={stores} />
       </section>
     </div>
