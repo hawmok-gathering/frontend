@@ -44,31 +44,31 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         ></Image>
       ))}
       <button
-        className="absolute bottom-0 left-0 top-0 bg-none p-3 transition-all hover:bg-black hover:bg-opacity-50"
+        className="absolute bottom-0 left-0 top-0 bg-none pl-4 transition-all hover:bg-black hover:bg-opacity-50 sm:p-3"
         onClick={showPrevImage}
         aria-label="view previous image"
       >
-        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 p-2">
+        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 sm:p-2">
           <IoIosArrowBack className="text-white" />
         </span>
       </button>
       <button
-        className="absolute bottom-0 right-0 top-0 bg-none p-3 transition-all hover:bg-black hover:bg-opacity-50"
+        className="absolute bottom-0 right-0 top-0 bg-none pr-4 transition-all hover:bg-black hover:bg-opacity-50 sm:p-3"
         onClick={showNextImage}
         aria-label="view next image"
       >
-        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 p-2">
+        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 sm:p-2">
           <IoIosArrowForward className="text-white" />
         </span>
       </button>
-      <div className="absolute bottom-10 flex w-full justify-center gap-4 ">
+      <div className="absolute bottom-4 flex w-full justify-center gap-4 sm:bottom-10 ">
         {imgUrls.map((v, i) => (
           <button
             aria-label={`view image ${i + 1} of ${imgUrls.length}`}
             key={i + v}
             className={`${
               imgIndex === i ? ' bg-[#827C0A]' : 'bg-[#877560]'
-            } h-[14px] w-[14px] rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary`}
+            } h-2  w-2 rounded-full  transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:h-[14px] sm:w-[14px]`}
             onClick={() => setImageIndex(i)}
           ></button>
         ))}

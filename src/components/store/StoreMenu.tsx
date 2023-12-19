@@ -27,19 +27,21 @@ export default function StoreMenu() {
 
   return (
     <>
-      <h2 className="mb-10 text-[32px] font-bold">대표 메뉴</h2>
-      <div className="flex flex-col">
+      <h2 className="mb-6 text-xl font-bold sm:mb-10 sm:text-[32px]">대표 메뉴</h2>
+      <div className="flex flex-col gap-4 ">
         {/* <Menu imgUrl="/steak.jpg" MenuName="스테이크" price={1300} /> */}
         {mokMenu.map((menu, index) => (
           <Menu key={index} imgUrl={menu.imgUrl} MenuName={menu.name} price={menu.price} />
         ))}
       </div>
-      <div className="my-20 w-full border-b-3 border-[#F1F1F1]" />
-      <h2 className=" mb-10 text-[32px] font-bold">메뉴판</h2>
+      {/* divider */}
+      <div className="my-10 w-full border-b-3 border-[#F1F1F1] sm:my-20" />
+
+      <h2 className=" mb-6 text-xl font-bold sm:mb-10 sm:text-[32px]">메뉴판</h2>
       <div className="mb-4 overflow-hidden">
         <div
           style={{ transform: `translateX(${containerX}px)` }}
-          className="flex"
+          className="flex h-[120px] gap-2  sm:h-60"
           {...useDrag(deltaX => {
             setContainerX(containerX + deltaX);
           })}
@@ -52,7 +54,7 @@ export default function StoreMenu() {
               <BackgroundCard
                 radius="none"
                 imgUrl={`url(${imgUrl})`}
-                className="h-60 w-80 shrink-0 bg-cover bg-center"
+                className=" h-full w-40 shrink-0 bg-cover  bg-center sm:w-80"
               />
             </div>
           ))}

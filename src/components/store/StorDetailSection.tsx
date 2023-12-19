@@ -8,7 +8,7 @@ export default function StorDetailSection() {
   const [tab, setTab] = useState('info');
   return (
     <>
-      <div className="mb-20 mt-40 flex">
+      <div className="mb-10 mt-20 flex sm:mb-20 sm:mt-40">
         <button
           onClick={() => setTab('info')}
           className={`flex h-9 w-1/2 items-start justify-center border-b-2 text-sm font-bold ${
