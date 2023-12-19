@@ -8,8 +8,8 @@ import { FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="flex h-80 w-full items-center bg-[#302F2D]">
-      <section className="relative h-[280px] w-full px-4 py-9 text-xs font-normal text-white sm:px-[410px]">
+    <footer className="flex h-fit w-full justify-center bg-[#302F2D] ">
+      <section className="relative h-[340px] w-full text-ellipsis whitespace-nowrap px-4 py-9 text-[10px] font-normal text-white sm:h-[280px] sm:w-[1100px] sm:text-xs">
         {/* 화목 서비스 이용 약관 */}
         <nav className="mb-8 ">
           <Link href={'/'} key="이용 약관">
@@ -25,7 +25,7 @@ export default function Footer() {
         </nav>
 
         {/* 문의 및 연락처 */}
-        <table className="mb-16 w-fit">
+        <table className="mb-20 w-fit sm:mb-16">
           <tbody className="w-full">
             <tr>
               <td className="">고객센터 (이용 및 결제문의)</td>
@@ -35,7 +35,12 @@ export default function Footer() {
             <tr>
               <td className="">화목 기업용 서비스 문의</td>
               <td className="px-2">|</td>
-              <td className="">b2b-sales@hwamoke.com / 기업용 서비스 제안서 다운로드</td>
+              <td className="hidden sm:flex">
+                b2b-sales@hwamoke.com / 기업용 서비스 제안서 다운로드
+              </td>
+              <td className="sm:hidden">
+                b2b-sales@hwamoke.com /<br /> 기업용 서비스 제안서 다운로드
+              </td>
             </tr>
             <tr>
               <td className="">제휴 및 대의 협력</td>
@@ -55,12 +60,12 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-1">
+        <div className="mb-4 mt-1 sm:mb-0">
           <span className="flex items-center gap-2 text-white text-opacity-50">
             로고자리 Copyright <FaRegCopyright /> 2023 by 화목, Inc. All rights reserved.
           </span>
         </div>
-        <div className="absolute bottom-24 right-4 flex gap-6 sm:bottom-12 sm:right-[410px]">
+        <div className="flex justify-end gap-6 sm:absolute sm:bottom-12 sm:w-full">
           <button className="rounded-full border bg-none p-1">
             <FaTwitter className="scale-110 text-xl " />
           </button>

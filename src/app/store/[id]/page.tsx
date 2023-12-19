@@ -29,7 +29,7 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[1180px] px-10 pt-24">
+      <div className="mx-auto w-full px-4 pt-24 sm:max-w-[1180px] sm:px-10">
         {/* store name / location section */}
         <section>
           <p className="text-xs font-normal text-secondary">{storeInfo.address}</p>
