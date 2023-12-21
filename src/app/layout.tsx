@@ -22,15 +22,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`h-full bg-background light`}>
       <ToastContextProvider>
-        <body className={twMerge(myFont.className, 'h-[100dvh] w-full light')}>
-          <Providers className="h-full bg-background text-foreground">
+        <body className={twMerge(myFont.className, 'h-full w-full light')}>
+          <Providers className="flex h-full flex-col bg-background text-foreground">
             <MainNavBar />
-            <main className="h-full flex-col">{children}</main>
+            <main className="grow">{children}</main>
             <ToastViewer />
+            <Footer />
           </Providers>
         </body>
       </ToastContextProvider>
-      {/* <Footer /> */}
     </html>
   );
 }

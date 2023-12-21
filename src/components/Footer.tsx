@@ -10,7 +10,7 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="flex h-fit w-full justify-center bg-[#302F2D] ">
-      <section className="relative h-[340px] w-full text-ellipsis whitespace-nowrap px-4 py-9 text-[10px] font-normal text-white sm:h-[280px] sm:w-[1100px] sm:text-xs">
+      <section className="relative h-[340px] w-full text-ellipsis whitespace-nowrap px-4 py-9 text-[10px] font-normal text-white sm:h-[280px] sm:w-[1100px] sm:px-10 sm:text-xs">
         {/* 화목 서비스 이용 약관 */}
         <nav className="mb-8 ">
           <Link href={'/'} key="이용 약관">
