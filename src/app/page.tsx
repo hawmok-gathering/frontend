@@ -177,21 +177,32 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <>
+      {/*Mobile only navbar*/}
       <nav className="flex h-14 items-center px-4 text-xl font-bold leading-normal text-black sm:hidden">
         <Link href="/" className="">
           <Image src="/brand.png" alt="brand logo" width={44} height={30} />
         </Link>
-        <GrSearch className="ml-auto cursor-pointer text-xl font-extrabold text-secondary" />
-        <MdOutlinePersonOutline className="ml-4 cursor-pointer text-2xl font-extrabold text-secondary" />
+        <Link href="/mobile" className="ml-auto">
+          <GrSearch className="text-xl font-extrabold text-secondary" />
+        </Link>
+        <button className="ml-4">
+          <MdOutlinePersonOutline className="text-2xl font-extrabold text-secondary" />
+        </button>
       </nav>
+
+      {/*Main page hero section*/}
       <section className="h-[346px] w-full sm:h-[630px]">
         <Hero imgUrl="url(/hero.jfif)" />
       </section>
+
+      {/*Login request section -- shows when user is not logged in*/}
       {!isLogin && (
         <section className="items-center bg-[#FFFAEA]  py-4">
           <LoginRequest />
         </section>
       )}
+
+      {/*Main page carousel section*/}
       <section className="py-12">
         <div className={`mx-auto px-4 py-6 sm:max-w-[1180px] sm:px-10`}>
           <h2 className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
@@ -208,6 +219,8 @@ export default async function Home({ searchParams }: HomePageProps) {
           </BackgroundCard>
         </div>
       </section>
+
+      {/*Famous place section*/}
       <section className="h-fit bg-[#FFFAEA] py-10 sm:py-20">
         <div className={`mx-auto h-full px-4 sm:w-[1180px] sm:px-10`}>
           <h2 className="mb-6 text-xl font-bold leading-[32px] text-black sm:mb-8 sm:text-3xl">

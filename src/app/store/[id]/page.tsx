@@ -108,8 +108,31 @@ export default async function page({ params, searchParams }: StorePageProps) {
         </section>
 
         {/* store menu / info selection section */}
-        <section className="pb-20  sm:pb-40">
+        <section className="pb-[45px] sm:pb-40">
           <StorDetailSection />
+        </section>
+
+        {/*Mobile only making call button*/}
+        <section className="flex gap-[10px] py-[10px] pb-20 sm:hidden">
+          <InteractionButton
+            radius="md"
+            isIconOnly
+            startContent={
+              isLiked ? <RxHeartFilled className="text-2xl text-red-500" /> : <RxHeart />
+            }
+            className="h-[60px] w-[58px] shrink-0 text-base font-bold"
+            variant="bordered"
+            onPress={handleLikeButton}
+          />
+          <InteractionButton
+            radius="md"
+            className="h-[60px] w-full text-[18.35px] font-bold text-white"
+            variant="solid"
+            color="primary"
+            onPress={handleLikeButton}
+          >
+            전화 하기
+          </InteractionButton>
         </section>
       </div>
     </>

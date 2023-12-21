@@ -8,9 +8,11 @@ type InteractionButtonProps = {
 
 export default function InteractionButton(props: InteractionButtonProps) {
   const { children, onPress, ...rest } = props;
+  //TODO: Optimistic UI Update needed.
+  // add favorite store to user's favorite list.
 
   return (
-    <Button radius="none" fullWidth {...rest} onPress={async () => await onPress()}>
+    <Button radius="none" fullWidth {...rest} onPress={async () => onPress()}>
       {children}
     </Button>
   );

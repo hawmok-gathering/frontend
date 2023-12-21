@@ -24,6 +24,21 @@ const mokMenu2 = [
 
 export default function StoreMenu() {
   const [containerX, setContainerX] = useState(0);
+  const menuContainerRef = useRef<HTMLDivElement>(null);
+  const menuSectionRef = useRef<HTMLDivElement>(null);
+
+  const handleImageDrag = (deltaX: number) => {
+    const containerWidth = menuContainerRef.current?.scrollWidth;
+    const sectionWidth = menuSectionRef.current?.offsetWidth;
+
+    if (containerX + deltaX > 0) {
+      setContainerX(0);
+    } else if (containerX + deltaX < -containerWidth! + sectionWidth!) {
+      setContainerX(-containerWidth! + sectionWidth!);
+    } else {
+      setContainerX(containerX + deltaX);
+    }
+  };
 
   return (
     <>
@@ -38,25 +53,25 @@ export default function StoreMenu() {
       <div className="my-10 w-full border-b-3 border-[#F1F1F1] sm:my-20" />
 
       <h2 className=" mb-6 text-xl font-bold sm:mb-10 sm:text-[32px]">메뉴판</h2>
-      <div className="mb-4 overflow-hidden">
+      <div ref={menuSectionRef} className="mb-4 overflow-hidden">
         <div
+          ref={menuContainerRef}
+          draggable={false}
           style={{ transform: `translateX(${containerX}px)` }}
-          className="flex h-[120px] gap-2  sm:h-60"
-          {...useDrag(deltaX => {
-            setContainerX(containerX + deltaX);
-          })}
+          className="flex h-[120px] cursor-pointer gap-2 sm:h-60"
+          {...useDrag(handleImageDrag)}
           {...useTouch(deltaX => {
             setContainerX(containerX + deltaX);
           })}
         >
           {mokMenu2.map(({ imgUrl }, index) => (
-            <div key={imgUrl + index}>
-              <BackgroundCard
-                radius="none"
-                imgUrl={`url(${imgUrl})`}
-                className=" h-full w-40 shrink-0 bg-cover  bg-center sm:w-80"
-              />
-            </div>
+            <BackgroundCard
+              key={imgUrl + index}
+              draggable={false}
+              radius="none"
+              imgUrl={`url(${imgUrl})`}
+              className=" h-full w-40 shrink-0 bg-cover  bg-center sm:w-80"
+            />
           ))}
         </div>
       </div>

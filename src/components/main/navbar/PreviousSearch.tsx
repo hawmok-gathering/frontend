@@ -1,10 +1,7 @@
 'use client';
 
-import { SearchParams } from '@/constants/constant';
-import { Card, CardHeader, CardBody, CardFooter } from '@nextui-org/card';
-import Link from 'next/link';
-import { useRef } from 'react';
-import { IoSearchSharp } from 'react-icons/io5';
+import { Card, CardHeader, CardBody } from '@nextui-org/card';
+import SearchHistoryItem from './SearchHistoryItem';
 
 type PreviousSearchProps = {
   isOpen: boolean;
@@ -46,7 +43,7 @@ export default function PreviousSearch({
       <CardBody className="p-0 pb-3">
         {history && history.length > 0 ? (
           history.map(({ text, date }, index) => (
-            <PreviousSearch.searchHistory
+            <SearchHistoryItem
               key={text}
               cursor={index === cursorLocation}
               name={text}
@@ -64,42 +61,3 @@ export default function PreviousSearch({
     </Card>
   );
 }
-
-type SearchHistory = {
-  name: string;
-  cursor: boolean;
-  date: Date;
-  onDelete: (text: string) => void;
-  setSearchOpen: (value: boolean) => void;
-};
-
-PreviousSearch.searchHistory = ({ name, cursor, date, onDelete, setSearchOpen }: SearchHistory) => {
-  const searchParams = new URLSearchParams(window.location.search);
-  searchParams.delete(SearchParams.query);
-  searchParams.append(SearchParams.query, name);
-  return (
-    <div className={`flex h-9 ${cursor ? 'bg-[#ddd]' : ''} rounded-md px-4 `}>
-      <Link
-        className={` flex items-center justify-start`}
-        href={`/search?${searchParams}`}
-        onClick={() => setSearchOpen(false)}
-      >
-        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-default">
-          <IoSearchSharp className="inline h-6 w-6 text-white" />
-        </span>
-        <span className="ml-[10px] text-sm font-normal text-[#616060]">{name}</span>
-      </Link>
-      <span className="ml-auto flex items-center gap-[10px] text-sm font-normal text-[#ABABAB]">
-        <p>
-          {new Intl.DateTimeFormat('ko-KR', {
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(date))}
-        </p>
-        <button type="button" onClick={() => onDelete(name)}>
-          삭제
-        </button>
-      </span>
-    </div>
-  );
-};

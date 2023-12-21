@@ -1,21 +1,21 @@
 export default function useDrag<E extends HTMLElement>(onDragCallback: (deltaX: number) => void) {
   return {
-    onDragStart: (clickEvent: React.MouseEvent<E>) => {
+    onMouseDown: (clickEvent: React.MouseEvent<E>) => {
       // clickEvent.stopPropagation();
 
-      const ondrag = (moveEvent: MouseEvent) => {
+      const onMouseMove = (moveEvent: MouseEvent) => {
         const deltaX = moveEvent.screenX - clickEvent.screenX;
         onDragCallback(deltaX);
       };
 
-      const dragEnd = (moveEvent: MouseEvent) => {
+      const onMouseUp = (moveEvent: MouseEvent) => {
         const deltaX = moveEvent.screenX - clickEvent.screenX;
         onDragCallback(deltaX);
-        document.removeEventListener('mousemove', ondrag);
+        document.removeEventListener('mousemove', onMouseMove);
       };
 
-      document.addEventListener('drag', ondrag);
-      document.addEventListener('dragend', dragEnd, { once: true });
+      document.addEventListener('drag', onMouseMove);
+      document.addEventListener('dragend', onMouseUp, { once: true });
     },
   };
 }

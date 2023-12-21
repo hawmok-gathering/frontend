@@ -5,6 +5,7 @@ import { FaTwitter } from 'react-icons/fa';
 import { FaFacebook } from 'react-icons/fa6';
 import { BsInstagram } from 'react-icons/bs';
 import { FaYoutube } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -62,7 +63,11 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mb-4 mt-1 sm:mb-0">
           <span className="flex items-center gap-2 text-white text-opacity-50">
-            로고자리 Copyright <FaRegCopyright /> 2023 by 화목, Inc. All rights reserved.
+            <div className="relative h-[20px] w-[26px] sm:h-8 sm:w-11">
+              <Image src="/brand_blank.png" fill alt="Hwamoke brand logo with white contrast" />
+            </div>
+            Copyright
+            <FaRegCopyright /> 2023 by 화목, Inc. All rights reserved.
           </span>
         </div>
         <div className="flex justify-end gap-6 sm:absolute sm:bottom-12 sm:w-full">

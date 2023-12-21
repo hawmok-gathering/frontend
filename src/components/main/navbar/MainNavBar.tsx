@@ -10,7 +10,7 @@ import {
   NavbarMenu,
 } from '@nextui-org/react';
 import { GrSearch } from 'react-icons/gr';
-import { useState, useEffect, useRef, useCallback, useMemo, FormEvent } from 'react';
+import { useState, useEffect, useRef, useCallback, FormEvent } from 'react';
 import { MainNavBarComponent, SearchParams } from '@/constants/constant';
 import PreviousSearch from './PreviousSearch';
 import useLocalStorage from '@/hooks/useLocalStorage';
