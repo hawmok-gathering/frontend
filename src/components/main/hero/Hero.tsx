@@ -1,5 +1,4 @@
 import { Button } from '@nextui-org/button';
-import { Spacer } from '@nextui-org/spacer';
 import { ComponentPropsWithoutRef } from 'react';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 import { SlLocationPin } from 'react-icons/sl';
@@ -135,7 +134,7 @@ export default function Hero(props: HeroBackgroundProps) {
             type="submit"
           >
             회식 장소 선택
-          </Button> 
+          </Button>
         </form>
       </div>
     </BackgroundCard>

@@ -3,18 +3,21 @@ import LoginRequest from '@/components/main/LoginRequest';
 import Hero from '@/components/main/hero/Hero';
 import { Spacer } from '@nextui-org/spacer';
 import MainCarousel from '@/components/main/MainCarousel';
-import FamousPlace from '@/components/main/famous/FamousPlace';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GrSearch } from 'react-icons/gr';
 import { MdOutlinePersonOutline } from 'react-icons/md';
+import StoreCard from '@/components/StoreCard';
+import { Button } from '@nextui-org/react';
+import { SlLocationPin } from 'react-icons/sl';
+import { IoIosArrowForward } from 'react-icons/io';
 
 export const mokStores = [
   {
     storeId: 1,
     location_id: '서울시 마포구 서교동 123-1',
     //
-    name: '청기와 부산 갈매ddddsfdsfdsfsdfdsfdsfdsssssssssddd기',
+    name: '청기와 부산 갈매기 ddddsfdsfdsfsdfdsfdsfdssssㅁㄴㅇㄹㄴㅁㄹㄴㄹsssssddd',
     store_image_url: '/beer.webp',
     phone: '02-1234-5678',
     content: '맛있는 음식과 함께 즐거운 시간을 보내세요',
@@ -174,6 +177,11 @@ type HomePageProps = {
 
 export default async function Home({ searchParams }: HomePageProps) {
   const isLogin = false;
+  const { sorted } = searchParams;
+  const filteredLocation = sorted ?? '서울';
+  const shiftLocation = sorted === '서울' ? '부산' : '서울';
+
+  const filteredStores = mokStores.filter(store => store.address === filteredLocation);
 
   return (
     <>
@@ -226,7 +234,30 @@ export default async function Home({ searchParams }: HomePageProps) {
           <h2 className="mb-6 text-xl font-bold leading-[32px] text-black sm:mb-8 sm:text-3xl">
             많이 찾는 회식 장소
           </h2>
-          <FamousPlace stores={mokStores} />
+          <div className="flex justify-between">
+            <Button
+              startContent={<SlLocationPin className="stroke-[5px] text-lg" />}
+              variant="light"
+              className="mx-0 px-0 text-base font-bold text-secondary data-[hover=true]:bg-transparent"
+            >
+              <Link href={`/?sorted=${shiftLocation}`} scroll={false}>
+                {filteredLocation} 전체
+              </Link>
+            </Button>
+            <Button
+              endContent={<IoIosArrowForward />}
+              variant="light"
+              className="text-base font-bold text-secondary data-[hover=true]:bg-transparent"
+            >
+              회식 장소 더보기
+            </Button>
+          </div>
+          <Spacer y={8} />
+          <div className="grid grid-cols-2 justify-items-center gap-y-3 sm:grid-cols-4 sm:grid-rows-1 sm:gap-5">
+            {filteredStores.map(store => (
+              <StoreCard key={store.storeId} store={store} page="main" />
+            ))}
+          </div>
         </div>
       </section>
     </>

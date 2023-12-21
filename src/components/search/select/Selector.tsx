@@ -66,19 +66,19 @@ export default function Selector({ search }: SelectorProps) {
           ></Button>
         </Link>
         <CustomButton onPress={onOpen} selected={!!selectState.area}>
-          {selectState.area ?? '지역'}
+          {selectState.area ? selectState.area : '지역'}
         </CustomButton>
         <CustomButton onPress={onOpen} selected={!!selectState.party}>
-          {selectState.party ?? '인원'}
+          {selectState.party ? selectState.party : '인원'}
         </CustomButton>
         <CustomButton onPress={onOpen} selected={!!selectState.radio}>
-          {selectState.radio ?? '회식 유형'}
+          {selectState.radio ? selectState.radio : '회식 유형'}
         </CustomButton>
         <CustomButton onPress={onOpen} selected={!!selectState.feel}>
-          {selectState.feel ?? '분위기'}
+          {selectState.feel ? selectState.feel : '분위기'}
         </CustomButton>
         <CustomButton onPress={onOpen} selected={!!selectState.table}>
-          {selectState.table ?? '좌석 타입'}
+          {selectState.table ? selectState.table : '좌석 타입'}
         </CustomButton>
       </div>
       <Modal

@@ -1,11 +1,9 @@
-'use client';
-
 import { Image } from '@nextui-org/image';
 import { Card } from '@nextui-org/card';
 import Link from 'next/link';
 import { LuDot } from 'react-icons/lu';
-import { RxHeart } from 'react-icons/rx';
 import { RxHeartFilled } from 'react-icons/rx';
+import LikeHeartButton from './LikeHeartButton';
 export type Store = {
   storeId: number;
   name: string;
@@ -35,11 +33,8 @@ export default function StoreCard({ store, page }: StoreCardProps) {
   return (
     <Card
       radius="none"
-      className="h-fit max-w-[156px] bg-transparent sm:max-w-[260px]"
+      className="h-fit max-w-[156px] text-ellipsis  bg-transparent sm:max-w-[260px]"
       shadow="none"
-      // style={{
-      //   height: isMain ? '394px' : '418px',
-      // }}
     >
       <Link href={`/store/${store.storeId}`}>
         <Image
@@ -64,19 +59,20 @@ export default function StoreCard({ store, page }: StoreCardProps) {
               수용인원 {store.hall_capacity}
             </p>
           ) : (
-            <RxHeart className="cursor-pointer text-xl" />
+            <LikeHeartButton isLike={true} iconClassName="text-secondary" />
             //TODO: like 에 따른 색 구분 .하트크기 조절
           )}
         </div>
         <Link href={`/store/${store.storeId}`}>
-          <h3 className="text-sm font-bold leading-[22.4px] text-black sm:text-base sm:leading-[25px]">
+          <h3 className="line-clamp-2 h-10 text-sm font-bold leading-[22.4px] text-black sm:h-[50px] sm:text-base sm:leading-[25px] ">
             <span className={`${isMain ? '' : 'text-primary'}`}>[{store.address}]</span>
             {store.name}
           </h3>
         </Link>
-        <div className=" mt-1 flex justify-between text-xs font-normal text-secondary sm:mt-4">
+        <div className=" mt-1 flex justify-between text-xs font-normal text-secondary">
           <p className="leading-4">{store.address}</p>
-          {isMain && <RxHeart className="cursor-pointer text-lg text-primary" />}
+          {/* {isMain && <RxHeart className="cursor-pointer text-2xl text-primary" />} */}
+          {isMain && <LikeHeartButton isLike={true} />}
         </div>
         {!isMain && (
           <div className="flex items-center justify-between text-xs font-normal text-secondary">

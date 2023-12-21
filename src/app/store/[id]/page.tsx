@@ -4,12 +4,11 @@ import { MdAccessTime } from 'react-icons/md';
 import { MdOutlinePhone } from 'react-icons/md';
 import React from 'react';
 import InteractionButton from '@/components/InteractionButton';
-import { RxHeart } from 'react-icons/rx';
-import { RxHeartFilled } from 'react-icons/rx';
 import { FiShare2 } from 'react-icons/fi';
 import Clipboard from '@/components/store/Clipboard';
 import StorDetailSection from '@/components/store/StorDetailSection';
 import ImageSlider from '@/components/store/ImageSlider';
+import LikeHeartButton from '@/components/LikeHeartButton';
 
 type StorePageProps = {
   params: { id: string };
@@ -29,13 +28,13 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
   return (
     <>
-      <div className="mx-auto w-full px-4 pt-10 sm:max-w-[1180px] sm:px-10 sm:pt-24">
+      <div className="mx-auto  w-full text-ellipsis px-4 pt-10 sm:max-w-[1180px] sm:px-10 sm:pt-24">
         {/* store name / location section */}
         <section>
           <p className="mb-1 text-[10px] font-normal leading-4 text-secondary sm:mb-2 sm:text-xs">
             {storeInfo.address}
           </p>
-          <h1 className="mb-2 text-2xl font-bold leading-[38.4px] text-primary sm:text-[40px] sm:leading-[64px] ">
+          <h1 className="mb-2 line-clamp-3 text-2xl font-bold leading-[38.4px] text-primary sm:text-[40px] sm:leading-[64px] ">
             {`[${storeInfo.address}] `}
             <span className="text-black"> {storeInfo.name}</span>
           </h1>
@@ -86,20 +85,27 @@ export default async function page({ params, searchParams }: StorePageProps) {
                 <p className="pl-7 text-sm leading-[22px]">{storeInfo.phone}</p>
               </div>
             </div>
-            <InteractionButton
+            <LikeHeartButton
+              isLike={true}
+              iconClassName="text-secondary"
+              buttonClassName="mt-4 sm:flex hidden flex items-center justify-center w-full gap-1 border border-[#CCCCCC] text-base font-bold text-secondary h-12"
+            >
+              관심장소
+            </LikeHeartButton>
+            {/* <InteractionButton
               startContent={isLiked ? <RxHeartFilled className="text-red-500" /> : <RxHeart />}
               className="mt-4 hidden text-base font-bold sm:flex"
               variant="bordered"
               onPress={handleLikeButton}
             >
               관심장소
-            </InteractionButton>
+            </InteractionButton> */}
             <Clipboard
               copyText={fullUrl!}
               fullWidth
               radius="none"
               startContent={<FiShare2 className="text-white" />}
-              className="mt-2 hidden text-base font-bold text-white sm:flex"
+              className="mt-2 hidden h-12 text-base font-bold text-white sm:flex"
               color="primary"
             >
               공유하기
@@ -114,15 +120,9 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
         {/*Mobile only making call button*/}
         <section className="flex gap-[10px] py-[10px] pb-20 sm:hidden">
-          <InteractionButton
-            radius="md"
-            isIconOnly
-            startContent={
-              isLiked ? <RxHeartFilled className="text-2xl text-red-500" /> : <RxHeart />
-            }
-            className="h-[60px] w-[58px] shrink-0 text-base font-bold"
-            variant="bordered"
-            onPress={handleLikeButton}
+          <LikeHeartButton
+            isLike={true}
+            buttonClassName="h-[60px] w-[58px] shrink-0 border border-[#CCCCCC] rounded-xl flex items-center justify-center text-base font-bold"
           />
           <InteractionButton
             radius="md"

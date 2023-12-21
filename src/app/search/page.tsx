@@ -7,7 +7,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 
 type SearchPageProps = {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: { [key: string]: string };
 };
 
 export default async function page({ searchParams }: SearchPageProps) {
@@ -38,7 +38,7 @@ export default async function page({ searchParams }: SearchPageProps) {
         <Selector search={searchParams} />
       </section>
       <section className="mb-10 sm:mb-20">
-        <SearchResultPage items={stores} />
+        <SearchResultPage items={stores} searchParams={searchParams} />
       </section>
     </div>
   );
