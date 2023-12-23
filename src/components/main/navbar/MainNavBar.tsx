@@ -133,6 +133,7 @@ export default function MainNavBar() {
             onSubmit={onSubmit}
           >
             <Input
+              data-testid="navbar-search-input"
               className="peer w-[576px] hover:shadow-md"
               classNames={{
                 inputWrapper: 'border-secondary border-3 ',
