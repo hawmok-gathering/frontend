@@ -11,6 +11,7 @@ import StoreCard from '@/components/StoreCard';
 import { Button } from '@nextui-org/react';
 import { SlLocationPin } from 'react-icons/sl';
 import { IoIosArrowForward } from 'react-icons/io';
+import BottomSheet from '@/components/BottomSheet';
 
 export const mokStores = [
   {
@@ -260,6 +261,9 @@ export default async function Home({ searchParams }: HomePageProps) {
           </div>
         </div>
       </section>
+      <BottomSheet displayContent={<IoIosArrowForward />}>
+        <h1>testing bottom sheet</h1>
+      </BottomSheet>
     </>
   );
 }
