@@ -7,6 +7,8 @@ import { RadioGroup, Radio } from '@nextui-org/radio';
 import { cn } from '@nextui-org/react';
 import { redirect } from 'next/navigation';
 import BackgroundCard from '@/components/BackgroundCard';
+import Link from 'next/link';
+import MobileFilter from './MobileFilter';
 
 const autoOne = [
   {
@@ -39,16 +41,38 @@ const autTwo = [
     ],
   },
 ];
+
+const interestedLocation = {
+  seoul: [
+    { display: '서울 전체', value: 'holeSeoul' },
+    { display: '강남구', value: 'gangnam' },
+    { display: '마포구', value: 'mapo' },
+  ],
+  busan: [
+    { display: '부산 전체', value: 'holeBusan' },
+    { display: '해운대구', value: 'haeundae' },
+    { display: '부산진구', value: 'busanjin' },
+  ],
+};
+
+const interestedGroup = [
+  { display: '5~8인', value: '5-8' },
+  { display: '9~12인', value: '9-12' },
+  { display: '13~16인', value: '13-16' },
+  { display: '17~20인', value: '17-20' },
+  { display: '20인 이상', value: '21' },
+];
 type CustomRadioProps = {} & ComponentPropsWithoutRef<typeof Radio>;
 type CustomAutoComplete = {} & ComponentPropsWithoutRef<typeof ClientAutoComplete>;
 
 type HeroBackgroundProps = {
   imgUrl: string;
   children?: React.ReactNode;
+  searchParams: { [key: string]: string };
 } & ComponentPropsWithoutRef<'div'>;
 
 export default function Hero(props: HeroBackgroundProps) {
-  const { children, style, className, imgUrl, ...rest } = props;
+  const { children, style, className, imgUrl, searchParams, ...rest } = props;
 
   const handleButtonSearch = async (form: FormData) => {
     'use server';
@@ -89,8 +113,8 @@ export default function Hero(props: HeroBackgroundProps) {
         </div>
 
         {/* auto complete for selecting area and portion of party */}
-        <form action={handleButtonSearch} className="mt-24 flex gap-3 sm:mt-40 sm:gap-6">
-          <div className="flex gap-2">
+        <form action={handleButtonSearch} className="z-[1] mt-24 flex gap-3 sm:mt-40 sm:gap-6">
+          <div className="hidden gap-2 sm:flex">
             <CustomAutoComplete
               items={autoOne}
               name="area"
@@ -105,6 +129,13 @@ export default function Hero(props: HeroBackgroundProps) {
               startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
             />
           </div>
+
+          {/* mobile version */}
+          <MobileFilter
+            interestedGroup={interestedGroup}
+            interestedLocation={interestedLocation}
+            searchParams={searchParams}
+          />
 
           {/* buttons */}
           <RadioGroup

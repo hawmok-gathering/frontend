@@ -11,7 +11,6 @@ import StoreCard from '@/components/StoreCard';
 import { Button } from '@nextui-org/react';
 import { SlLocationPin } from 'react-icons/sl';
 import { IoIosArrowForward } from 'react-icons/io';
-import BottomSheet from '@/components/BottomSheet';
 
 export const mokStores = [
   {
@@ -172,8 +171,29 @@ export const mokStores = [
   },
 ];
 
+const interestedLocation = {
+  seoul: [
+    { display: '서울 전체', value: 'holeSeoul' },
+    { display: '강남구', value: 'gangnam' },
+    { display: '마포구', value: 'mapo' },
+  ],
+  busan: [
+    { display: '부산 전체', value: 'holeBusan' },
+    { display: '해운대구', value: 'haeundae' },
+    { display: '부산진구', value: 'busanjin' },
+  ],
+};
+
+const interestedGroup = [
+  { display: '5~8인', value: '5-8' },
+  { display: '9~12인', value: '9-12' },
+  { display: '13~16인', value: '13-16' },
+  { display: '17~20인', value: '17-20' },
+  { display: '20인 이상', value: '21' },
+];
+
 type HomePageProps = {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: { [key: string]: string };
 };
 
 export default async function Home({ searchParams }: HomePageProps) {
@@ -201,7 +221,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
       {/*Main page hero section*/}
       <section className="h-[346px] w-full sm:h-[630px]">
-        <Hero imgUrl="url(/hero.jfif)" />
+        <Hero imgUrl="url(/hero.jfif)" searchParams={searchParams} />
       </section>
 
       {/*Login request section -- shows when user is not logged in*/}
@@ -261,9 +281,6 @@ export default async function Home({ searchParams }: HomePageProps) {
           </div>
         </div>
       </section>
-      <BottomSheet displayContent={<IoIosArrowForward />}>
-        <h1>testing bottom sheet</h1>
-      </BottomSheet>
     </>
   );
 }

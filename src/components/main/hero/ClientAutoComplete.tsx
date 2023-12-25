@@ -1,6 +1,5 @@
 'use client';
 import { Autocomplete, AutocompleteItem, AutocompleteSection } from '@nextui-org/autocomplete';
-('next/navigation');
 import { ComponentPropsWithoutRef } from 'react';
 
 type AutocompleteItem = {
@@ -37,23 +36,6 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
           }}
         >
           {item.items.map((item, index) => (
-            // <AutocompleteItem
-            //   key={item.value + index}
-            //   textValue={item.label}
-            //   className="py-1"
-            //   classNames={{
-            //     selectedIcon: "text-primary",
-            //   }}
-            // >
-            //   <Checkbox
-            //     radius="none"
-            //     classNames={{
-            //       label: "text-xs text-[#5E5E5E]",
-            //     }}
-            //   >
-            //     {item.label}
-            //   </Checkbox>
-            // </AutocompleteItem>
             <AutocompleteItem
               key={item.value + index}
               value={item.value}
