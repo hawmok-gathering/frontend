@@ -31,7 +31,7 @@ export default function PhaseCategory({ setSelectState, selectState }: PeopleSel
       >
         <ListboxSection
           title="회식 유형"
-          classNames={{ 
+          classNames={{
             heading: 'font-bold text-[14px] text-black p-2 block',
             group: 'p-0',
           }}

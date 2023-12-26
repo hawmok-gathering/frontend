@@ -15,7 +15,7 @@ export default function BottomSheet(props: SheetProps) {
 
   return (
     <>
-      <div className="w-fit cursor-pointer ">{triggerContent}</div>
+      {triggerContent}
       <Modal
         isDismissable={true}
         className={cn(

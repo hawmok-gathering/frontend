@@ -1,9 +1,7 @@
 'use client';
-import { Button } from '@nextui-org/button';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { cn } from '@nextui-org/react';
 
 type ImageSliderPros = {
   imgUrls: string[];

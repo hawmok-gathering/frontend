@@ -5,12 +5,12 @@ import { Spacer } from '@nextui-org/spacer';
 import MainCarousel from '@/components/main/MainCarousel';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GrSearch } from 'react-icons/gr';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 import StoreCard from '@/components/StoreCard';
 import { Button } from '@nextui-org/react';
 import { SlLocationPin } from 'react-icons/sl';
 import { IoIosArrowForward } from 'react-icons/io';
+import MobileSearchIcon from '@/components/main/MobileSearchIcon';
 
 export const mokStores = [
   {
@@ -211,9 +211,10 @@ export default async function Home({ searchParams }: HomePageProps) {
         <Link href="/" className="">
           <Image src="/brand.png" alt="brand logo" width={44} height={30} />
         </Link>
-        <Link href="/mobile" className="ml-auto">
+        {/* <Link href="/mobile" className="ml-auto">
           <GrSearch className="text-xl font-extrabold text-secondary" />
-        </Link>
+        </Link> */}
+        <MobileSearchIcon />
         <button className="ml-4">
           <MdOutlinePersonOutline className="text-2xl font-extrabold text-secondary" />
         </button>

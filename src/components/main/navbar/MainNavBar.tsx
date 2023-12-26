@@ -104,7 +104,7 @@ export default function MainNavBar() {
   return (
     <Navbar
       isBlurred={false}
-      onMenuOpenChange={setIsMenuOpen}
+      // onMenuOpenChange={setIsMenuOpen}
       isBordered
       height={'80px'}
       className="hidden px-3 sm:flex"
