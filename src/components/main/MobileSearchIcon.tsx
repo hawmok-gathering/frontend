@@ -58,16 +58,16 @@ export default function MobileSearchIcon() {
         <div className="flex h-full w-full flex-col">
           {/* searchInput and back navigation button*/}
           <nav className="flex h-14 items-center gap-6 bg-white text-xl font-bold leading-normal text-black sm:hidden">
-            <Link href="/">
+            <button onClick={onClose}>
               <IoIosArrowBack className="text-xl font-extrabold text-secondary" />
-            </Link>
+            </button>
             <form className="w-full" onSubmit={onSubmit}>
               <Input
                 fullWidth
                 height={32}
                 radius="full"
                 classNames={{
-                  inputWrapper: 'border-secondary border-2 h-[32px]',
+                  inputWrapper: 'border-[#ccc] border h-[32px]',
                   input: 'pl-9 placeholder:text-[#9E9E9E] ',
                 }}
                 size="sm"
@@ -94,7 +94,7 @@ export default function MobileSearchIcon() {
           </div>
 
           {/* search history list*/}
-          <div className="w-full flex-grow flex-col rounded-lg border-2 border-[#F1F1F1] px-4 py-5">
+          <div className="w-full flex-grow flex-col rounded-lg px-4 py-5">
             {searchHistory && searchHistory.length > 0 ? (
               searchHistory.map(({ text, date }, index) => (
                 <MobileSearchHistory

@@ -136,7 +136,7 @@ export default function MainNavBar() {
               data-testid="navbar-search-input"
               className="peer w-[576px] hover:shadow-md"
               classNames={{
-                inputWrapper: 'border-secondary border-3 ',
+                inputWrapper: 'border-[#ccc] border',
                 input: 'pl-9 placeholder:text-[#9E9E9E] py-3',
               }}
               size="sm"
