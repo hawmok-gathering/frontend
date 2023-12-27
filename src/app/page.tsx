@@ -1,7 +1,6 @@
 import BackgroundCard from '@/components/BackgroundCard';
 import LoginRequest from '@/components/main/LoginRequest';
 import Hero from '@/components/main/hero/Hero';
-import { Spacer } from '@nextui-org/spacer';
 import MainCarousel from '@/components/main/MainCarousel';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,7 +8,6 @@ import { MdOutlinePersonOutline } from 'react-icons/md';
 import StoreCard from '@/components/StoreCard';
 import { Button } from '@nextui-org/react';
 import { SlLocationPin } from 'react-icons/sl';
-import { IoIosArrowForward } from 'react-icons/io';
 import MobileSearchIcon from '@/components/main/MobileSearchIcon';
 
 export const mokStores = [

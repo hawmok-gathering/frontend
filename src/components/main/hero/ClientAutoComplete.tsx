@@ -39,10 +39,11 @@ export default function ClientAutoComplete<T extends AutocompleteItem>({
             <AutocompleteItem
               key={item.value + index}
               value={item.value}
-              className="py-1"
+              className="flex-row-reverse py-1"
               classNames={{
-                selectedIcon: 'text-primary',
-                title: 'text-xs text-secondary',
+                selectedIcon:
+                  'text-primary border-2 border-[#E9E9E9] group-data-[selected=true]:border-primary w-4 h-4 p-0.5 font-bold',
+                title: 'text-xs text-secondary group-data-[selected=true]:text-primary',
               }}
             >
               {item.label}

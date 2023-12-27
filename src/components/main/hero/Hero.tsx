@@ -8,6 +8,7 @@ import { cn } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import BackgroundCard from '@/components/BackgroundCard';
 import MobileFilter from './MobileFilter';
+import { Badge } from '@nextui-org/badge';
 
 const autoOne = [
   {
@@ -103,8 +104,20 @@ export default function Hero(props: HeroBackgroundProps) {
               onInputChange={value => setFilterState({ ...filterState, area: value })}
               value={filterState.area}
               items={autoOne}
-              placeholder="지역"
+              placeholder="지역 정보"
+              labelPlacement="outside-left"
               startContent={<SlLocationPin className="text-4xl font-bold" />}
+              label={
+                <p className="absolute -top-[55px] left-2 text-base text-white">
+                  <Badge
+                    color="primary"
+                    showOutline={false}
+                    className="-right-2 h-2 w-2 rounded-full"
+                  >
+                    지역
+                  </Badge>
+                </p>
+              }
             />
 
             <CustomAutoComplete
@@ -112,7 +125,19 @@ export default function Hero(props: HeroBackgroundProps) {
               items={autTwo}
               value={filterState.party}
               placeholder="인원"
+              labelPlacement="outside-left"
               startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
+              label={
+                <div className="absolute -top-[55px] left-2 text-base text-white">
+                  <Badge
+                    color="primary"
+                    showOutline={false}
+                    className="-right-2 h-2 w-2 rounded-full"
+                  >
+                    인원
+                  </Badge>
+                </div>
+              }
             />
           </div>
 
@@ -203,7 +228,7 @@ const CustomAutoComplete = (props: CustomAutoComplete) => {
       aria-labelledby="party-portion 인원"
       inputProps={{
         classNames: {
-          inputWrapper: 'sm:w-[134px] w-[60px] h-14 sm:h-[44px]',
+          inputWrapper: 'sm:w-[134px] w-[60px] h-14 sm:h-[44px] rounded-sm',
           input: 'text-xs',
         },
       }}
