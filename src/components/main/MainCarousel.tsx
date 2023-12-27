@@ -42,17 +42,18 @@ export default function MainCarousel() {
       items={sliderItems}
       renderItem={({ handleIndex, index, isSelected, item }) => (
         <BackgroundCard
+          shadow="none"
           radius="sm"
           key={item.title + index}
           imgUrl={item.imgUrl}
-          className={`h-[196px] w-[148px] shrink-0 cursor-pointer overflow-hidden bg-cover bg-center bg-origin-border font-bold text-white sm:h-[328px] sm:w-[248px] ${
+          className={`h-[196px] w-[148px] shrink-0 cursor-pointer bg-cover bg-center bg-origin-border font-bold text-white sm:h-[328px] sm:w-[248px] ${
             isSelected ? '-translate-y-8 ' : ''
           }`}
         >
           {/**gradient image*/}
           <div className="absolute h-full w-3/4 -translate-x-10 bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90%"></div>
           <CardBody
-            className="flex h-full flex-col justify-start overflow-hidden pb-9 pt-[83px] sm:pt-[197px]"
+            className="flex h-full flex-col justify-start pb-9 pt-[83px] sm:pt-[197px]"
             onClick={() => handleIndex(index)}
           >
             <Button

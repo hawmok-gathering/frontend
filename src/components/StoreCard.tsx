@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { LuDot } from 'react-icons/lu';
 import { RxHeartFilled } from 'react-icons/rx';
 import LikeHeartButton from './LikeHeartButton';
+import { cn } from '@nextui-org/react';
 export type Store = {
   storeId: number;
   name: string;
@@ -47,29 +48,45 @@ export default function StoreCard({ store, page }: StoreCardProps) {
       </Link>
       <div className="flex h-full flex-col pt-1 sm:pt-5">
         <div className="flex items-center justify-between sm:pb-1">
-          <p className=" text-[10px] font-normal leading-[16px] text-secondary sm:text-xs">
+          <small
+            className={cn(
+              'text-[10px] font-normal leading-[16px] sm:text-xs',
+              isMain ? 'text-[#F1F1F1]' : 'text-secondary',
+            )}
+          >
             {store.category}
             <span>
               <LuDot className="inline" />
             </span>
             {store.address}
-          </p>
+          </small>
           {isMain ? (
-            <p className="text-[10px] font-bold leading-[16px] text-secondary sm:text-xs">
-              수용인원 {store.hall_capacity}
-            </p>
+            <small className="text-[10px] leading-[16px] text-[#F1F1F1] sm:text-xs">
+              <b>수용인원 </b>
+              {store.hall_capacity}
+            </small>
           ) : (
             <LikeHeartButton isLike={true} iconClassName="text-secondary" />
             //TODO: like 에 따른 색 구분 .하트크기 조절
           )}
         </div>
         <Link href={`/store/${store.storeId}`}>
-          <h3 className="line-clamp-2 h-10 text-sm font-bold leading-[22.4px] text-black sm:h-[50px] sm:text-base sm:leading-[25px] ">
-            <span className={`${isMain ? '' : 'text-primary'}`}>[{store.address}]</span>
+          <h3
+            className={cn(
+              'line-clamp-2 h-10 text-sm font-bold leading-[22.4px] sm:h-[50px] sm:text-base sm:leading-[25px] ',
+              isMain ? 'text-white' : 'text-black',
+            )}
+          >
+            <span className={`${isMain ? 'text-white' : 'text-primary'}`}>[{store.address}] </span>
             {store.name}
           </h3>
         </Link>
-        <div className=" mt-1 flex justify-between text-xs font-normal text-secondary">
+        <div
+          className={cn(
+            'mt-1 flex justify-between text-xs font-normal',
+            isMain ? 'text-[#D9D9D9]' : ' text-secondary',
+          )}
+        >
           <p className="leading-4">{store.address}</p>
           {/* {isMain && <RxHeart className="cursor-pointer text-2xl text-primary" />} */}
           {isMain && <LikeHeartButton isLike={true} />}

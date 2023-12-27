@@ -231,56 +231,50 @@ export default async function Home({ searchParams }: HomePageProps) {
           <LoginRequest />
         </section>
       )}
-
+      <section className="mx-auto w-[1180px] px-4 pb-5 pt-20 sm:px-10 sm:pb-10 sm:pt-40">
+        <p className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
+          이런 장소를 찾고 있나요
+        </p>
+      </section>
       {/*Main page carousel section*/}
-      <section className="py-12">
-        <div className={`mx-auto px-4 py-6 sm:max-w-[1180px] sm:px-10`}>
-          <h2 className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
-            이런 장소를 찾고 있나요
-          </h2>
-          <Spacer y={6} />
-          <BackgroundCard
-            overlay={true}
-            imgUrl="url(/table.jfif)"
-            className="h-[304px] w-full bg-cover bg-center sm:h-[498px]"
-            radius="none"
-          >
-            <MainCarousel />
-          </BackgroundCard>
+      <section className="bg-[#FFFAEA] py-[50px]">
+        <div className={`relative mx-auto h-[328px] px-4 sm:h-[498px] sm:max-w-[1180px] sm:px-10`}>
+          <MainCarousel />
         </div>
       </section>
 
       {/*Famous place section*/}
-      <section className="h-fit bg-[#FFFAEA] py-10 sm:py-20">
-        <div className={`mx-auto h-full px-4 sm:w-[1180px] sm:px-10`}>
-          <h2 className="mb-6 text-xl font-bold leading-[32px] text-black sm:mb-8 sm:text-3xl">
-            많이 찾는 회식 장소
-          </h2>
-          <div className="flex justify-between">
+      <section className="sm: h-fit py-10 sm:py-20">
+        <BackgroundCard
+          overlay
+          imgUrl="url(/table.jfif)"
+          radius={'none'}
+          className="bg-cover bg-center"
+        >
+          <div
+            className={`z-[1] mx-auto flex h-full w-full flex-col px-4 py-10 text-[#FFFAEA] sm:w-[1180px] sm:px-10 sm:py-20`}
+          >
+            <b className="mb-6 text-xl leading-[32px] sm:mb-8 sm:text-[32px]">
+              많이 찾는 회식 장소
+            </b>
             <Button
-              startContent={<SlLocationPin className="stroke-[5px] text-lg" />}
+              startContent={<SlLocationPin className="text-lg text-primary" />}
               variant="light"
-              className="mx-0 px-0 text-base font-bold text-secondary data-[hover=true]:bg-transparent"
+              className="mx-0 ml-auto w-fit px-0 text-base font-bold text-[#FFFAEA] data-[hover=true]:bg-transparent"
             >
+              {/*TODO: 오토 컴플릿으로 지역 필터링 하기 */}
               <Link href={`/?sorted=${shiftLocation}`} scroll={false}>
                 {filteredLocation} 전체
               </Link>
             </Button>
-            <Button
-              endContent={<IoIosArrowForward />}
-              variant="light"
-              className="text-base font-bold text-secondary data-[hover=true]:bg-transparent"
-            >
-              회식 장소 더보기
-            </Button>
+
+            <div className="mt-5 grid grid-cols-2 justify-items-center gap-y-3 sm:mt-10 sm:grid-cols-4 sm:grid-rows-1 sm:gap-5">
+              {filteredStores.map(store => (
+                <StoreCard key={store.storeId} store={store} page="main" />
+              ))}
+            </div>
           </div>
-          <Spacer y={8} />
-          <div className="grid grid-cols-2 justify-items-center gap-y-3 sm:grid-cols-4 sm:grid-rows-1 sm:gap-5">
-            {filteredStores.map(store => (
-              <StoreCard key={store.storeId} store={store} page="main" />
-            ))}
-          </div>
-        </div>
+        </BackgroundCard>
       </section>
     </>
   );
