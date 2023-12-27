@@ -55,7 +55,7 @@ export default function MobileSearchIcon() {
       }
       // main content as children
       bodyContent={
-        <div className="flex h-full w-full flex-col">
+        <div className="flex h-full w-full flex-col px-4">
           {/* searchInput and back navigation button*/}
           <nav className="flex h-14 items-center gap-6 bg-white text-xl font-bold leading-normal text-black sm:hidden">
             <button onClick={onClose}>
