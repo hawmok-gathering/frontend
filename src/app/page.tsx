@@ -6,9 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 import StoreCard from '@/components/StoreCard';
-import { Button } from '@nextui-org/react';
-import { SlLocationPin } from 'react-icons/sl';
 import MobileSearchIcon from '@/components/main/MobileSearchIcon';
+import LocationFilter from '@/components/main/LocationFilter';
 
 export const mokStores = [
   {
@@ -171,24 +170,16 @@ export const mokStores = [
 
 const interestedLocation = {
   seoul: [
-    { display: '서울 전체', value: 'holeSeoul' },
-    { display: '강남구', value: 'gangnam' },
-    { display: '마포구', value: 'mapo' },
+    { display: '서울 전체', value: '서울' },
+    { display: '강남구', value: '강남' },
+    { display: '마포구', value: '마포' },
   ],
   busan: [
-    { display: '부산 전체', value: 'holeBusan' },
-    { display: '해운대구', value: 'haeundae' },
-    { display: '부산진구', value: 'busanjin' },
+    { display: '부산 전체', value: '부산' },
+    { display: '해운대구', value: '해운대' },
+    { display: '부산진구', value: '부산진' },
   ],
 };
-
-const interestedGroup = [
-  { display: '5~8인', value: '5-8' },
-  { display: '9~12인', value: '9-12' },
-  { display: '13~16인', value: '13-16' },
-  { display: '17~20인', value: '17-20' },
-  { display: '20인 이상', value: '21' },
-];
 
 type HomePageProps = {
   searchParams: { [key: string]: string };
@@ -198,7 +189,6 @@ export default async function Home({ searchParams }: HomePageProps) {
   const isLogin = false;
   const { sorted } = searchParams;
   const filteredLocation = sorted ?? '서울';
-  const shiftLocation = sorted === '서울' ? '부산' : '서울';
 
   const filteredStores = mokStores.filter(store => store.address === filteredLocation);
 
@@ -235,7 +225,7 @@ export default async function Home({ searchParams }: HomePageProps) {
         </p>
       </section>
       {/*Main page carousel section*/}
-      <section className="bg-[#FFFAEA] py-[50px]">
+      <section className="bg-[#FFFAEA] ">
         <div className={`relative mx-auto h-[328px] px-4 sm:h-[498px] sm:max-w-[1180px] sm:px-10`}>
           <MainCarousel />
         </div>
@@ -255,16 +245,10 @@ export default async function Home({ searchParams }: HomePageProps) {
             <b className="mb-6 text-xl leading-[32px] sm:mb-8 sm:text-[32px]">
               많이 찾는 회식 장소
             </b>
-            <Button
-              startContent={<SlLocationPin className="text-lg text-primary" />}
-              variant="light"
-              className="mx-0 ml-auto w-fit px-0 text-base font-bold text-[#FFFAEA] data-[hover=true]:bg-transparent"
-            >
-              {/*TODO: 오토 컴플릿으로 지역 필터링 하기 */}
-              <Link href={`/?sorted=${shiftLocation}`} scroll={false}>
-                {filteredLocation} 전체
-              </Link>
-            </Button>
+
+            <div className="ml-auto cursor-pointer">
+              <LocationFilter locations={interestedLocation} />
+            </div>
 
             <div className="mt-5 grid grid-cols-2 justify-items-center gap-y-3 sm:mt-10 sm:grid-cols-4 sm:grid-rows-1 sm:gap-5">
               {filteredStores.map(store => (

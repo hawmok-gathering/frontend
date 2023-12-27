@@ -36,7 +36,7 @@ export default function FeelingTab({ setSelectState, selectState }: FeelingSelec
         <ListboxSection
           title={sampleAtmosphere.sectionTitle}
           classNames={{
-            heading: 'font-bold text-[14px] text-black p-2 block',
+            heading: 'font-bold text-sm text-black p-2 block',
             group: 'p-0',
           }}
         >

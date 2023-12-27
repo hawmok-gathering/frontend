@@ -108,7 +108,7 @@ export default function Hero(props: HeroBackgroundProps) {
               labelPlacement="outside-left"
               startContent={<SlLocationPin className="text-4xl font-bold" />}
               label={
-                <p className="absolute -top-[55px] left-2 text-base text-white">
+                <div className="absolute -top-[55px] left-2 text-base text-white">
                   <Badge
                     color="primary"
                     showOutline={false}
@@ -116,7 +116,7 @@ export default function Hero(props: HeroBackgroundProps) {
                   >
                     지역
                   </Badge>
-                </p>
+                </div>
               }
             />
 
@@ -171,11 +171,6 @@ export default function Hero(props: HeroBackgroundProps) {
           </div>
 
           <button
-            // href={{
-            //   pathname: '/search',
-            //   query: { ...filterState },
-            // }}
-            // radius="sm"
             onClick={handleSearch}
             className="flex h-14 w-[73px] items-center justify-center rounded-sm bg-primary text-[10px] font-bold text-white sm:h-[44px] sm:w-[127px] sm:text-sm"
           >
