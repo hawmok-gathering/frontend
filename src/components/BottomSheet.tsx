@@ -27,7 +27,7 @@ export default function BottomSheet(props: SheetProps) {
         {...rest}
       >
         <ModalContent>
-          <ModalBody className="gap-0 px-4">{bodyContent}</ModalBody>
+          <ModalBody className="gap-0 px-0">{bodyContent}</ModalBody>
           {footerContent && (
             <ModalFooter className="justify-start gap-2 px-4 py-10 sm:gap-0 sm:p-0">
               {footerContent}

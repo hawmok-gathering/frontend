@@ -60,12 +60,12 @@ export default function MobileFilter(props: MobileFilterProps) {
           </div>
         }
         bodyContent={
-          <>
+          <div className="w-full px-4">
             {/* simple indicator? */}
             <div className="mx-auto my-5 h-[3px] w-[30px] bg-[#E6E6E6]"></div>
 
             {/* Sheet name */}
-            <b className="text-center text-base">맞춤 필터</b>
+            <p className="text-center text-base font-bold">맞춤 필터</p>
 
             <h3 className="mb-[26px] mt-10 text-sm font-bold">관심 지역</h3>
             <div className="mb-1 flex gap-1">
@@ -93,7 +93,7 @@ export default function MobileFilter(props: MobileFilterProps) {
               ))}
             </div>
 
-            <h3 className="mt-[30px] text-sm font-bold">인원</h3>
+            <h3 className="mb-[26px] mt-[30px] text-sm font-bold">인원</h3>
             <div className="flex gap-1">
               {interestedGroup[0].items.map(item => (
                 <LinkFilter
@@ -110,7 +110,7 @@ export default function MobileFilter(props: MobileFilterProps) {
                 </LinkFilter>
               ))}
             </div>
-          </>
+          </div>
         }
         footerContent={
           <>

@@ -26,6 +26,7 @@ export default function LocationFilter({ locations }: LocationFilterProps) {
       </PopoverTrigger>
       <PopoverContent className="rounded-sm px-6 py-4">
         <Listbox
+          label="Select a city"
           selectionMode="single"
           className="w-32 p-0"
           onSelectionChange={key => {

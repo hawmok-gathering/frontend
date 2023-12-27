@@ -8,6 +8,7 @@ import { MdOutlinePersonOutline } from 'react-icons/md';
 import StoreCard from '@/components/StoreCard';
 import MobileSearchIcon from '@/components/main/MobileSearchIcon';
 import LocationFilter from '@/components/main/LocationFilter';
+import MobileLocationFilter from '@/components/main/MobileLocationFilter';
 
 export const mokStores = [
   {
@@ -246,8 +247,14 @@ export default async function Home({ searchParams }: HomePageProps) {
               많이 찾는 회식 장소
             </b>
 
-            <div className="ml-auto cursor-pointer">
+            {/* Desktop only filter */}
+            <div className="ml-auto hidden cursor-pointer sm:inline-block">
               <LocationFilter locations={interestedLocation} />
+            </div>
+
+            {/* Mobile only filter */}
+            <div className="ml-auto cursor-pointer sm:hidden">
+              <MobileLocationFilter locations={interestedLocation} />
             </div>
 
             <div className="mt-5 grid grid-cols-2 justify-items-center gap-y-3 sm:mt-10 sm:grid-cols-4 sm:grid-rows-1 sm:gap-5">

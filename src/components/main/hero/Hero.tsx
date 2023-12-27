@@ -107,6 +107,7 @@ export default function Hero(props: HeroBackgroundProps) {
               placeholder="지역 정보"
               labelPlacement="outside-left"
               startContent={<SlLocationPin className="text-4xl font-bold" />}
+              aria-label="지역 설정 선택"
               label={
                 <div className="absolute -top-[55px] left-2 text-base text-white">
                   <Badge
@@ -127,6 +128,7 @@ export default function Hero(props: HeroBackgroundProps) {
               placeholder="인원"
               labelPlacement="outside-left"
               startContent={<MdOutlinePersonOutline className="text-5xl font-bold" />}
+              aria-label="인원 설정 선택"
               label={
                 <div className="absolute -top-[55px] left-2 text-base text-white">
                   <Badge
