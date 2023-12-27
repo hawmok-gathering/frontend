@@ -219,7 +219,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           <LoginRequest />
         </section>
       )}
-      <section className="mx-auto w-[1180px] px-4 pb-5 pt-20 sm:px-10 sm:pb-10 sm:pt-40">
+      <section className="mx-auto sm:max-w-[1180px] px-4 pb-5 pt-20 sm:px-10 sm:pb-10 sm:pt-40">
         <p className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
           이런 장소를 찾고 있나요
         </p>
