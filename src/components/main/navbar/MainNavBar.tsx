@@ -134,10 +134,11 @@ export default function MainNavBar() {
           >
             <Input
               data-testid="navbar-search-input"
-              className="peer w-[576px] hover:shadow-md"
+              className="focus::outline-none peer w-[576px] hover:shadow-md "
               classNames={{
-                inputWrapper: 'border-[#ccc] border',
-                input: 'pl-9 placeholder:text-[#9E9E9E] py-3',
+                inputWrapper:
+                  'sm:z-[1] bg-white border-[#ccc] border focus:border-[#ccc] data-[hover=true]:border-[#ccc] group-data-[focus=true]:border-[#ccc]',
+                input: 'pl-9 placeholder:text-[#9E9E9E] py-3 ',
               }}
               size="sm"
               type="search"

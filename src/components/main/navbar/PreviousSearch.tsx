@@ -30,7 +30,11 @@ export default function PreviousSearch({
     return null;
   }
   return (
-    <Card className="absolute w-full" radius="sm">
+    <Card
+      className="absolute top-9 w-full border-[#ccc] bg-white sm:border"
+      radius="sm"
+      shadow="none"
+    >
       <CardHeader className="mt-2 h-12 p-0 px-4">
         <span className="flex h-8 items-center text-sm font-medium">최근 검색어</span>
         <span
