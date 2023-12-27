@@ -115,8 +115,9 @@ export default function Selector({ search }: SelectorProps) {
               </Tab>
             </Tabs>
           }
+          footerClassName="px-0"
           footerContent={
-            <div className="mt-auto h-fit grow flex-col gap-0 p-0">
+            <div className="mt-auto flex h-fit grow flex-col gap-6 p-0 sm:gap-0">
               {/* selected status */}
               <div className="flex h-12 w-full items-center gap-2 whitespace-nowrap bg-[#F5F5F5] px-7 py-4">
                 <button
@@ -146,7 +147,7 @@ export default function Selector({ search }: SelectorProps) {
                 })}
               </div>
 
-              <div className="flex w-full grow">
+              <div className="flex w-full grow gap-2 px-4 sm:px-0">
                 <button
                   className={cn(
                     'reading-[22.4px] flex h-[46px] grow items-center justify-center rounded-xl border-[1.5px] border-[#747474] px-[30px] text-base font-normal sm:h-[74px]',

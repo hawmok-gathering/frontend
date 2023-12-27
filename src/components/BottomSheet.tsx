@@ -8,10 +8,19 @@ type SheetProps = {
   triggerContent: React.ReactNode;
   footerContent?: React.ReactNode;
   height?: string;
+  footerClassName?: string;
 } & Omit<ComponentPropsWithoutRef<typeof Modal>, 'height' | 'children'>;
 
 export default function BottomSheet(props: SheetProps) {
-  const { bodyContent, footerContent, triggerContent, height, className, ...rest } = props;
+  const {
+    bodyContent,
+    footerContent,
+    triggerContent,
+    height,
+    className,
+    footerClassName,
+    ...rest
+  } = props;
 
   return (
     <>
@@ -29,7 +38,9 @@ export default function BottomSheet(props: SheetProps) {
         <ModalContent>
           <ModalBody className="gap-0 px-0">{bodyContent}</ModalBody>
           {footerContent && (
-            <ModalFooter className="justify-start gap-2 px-4 py-10 sm:gap-0 sm:p-0">
+            <ModalFooter
+              className={cn('justify-start gap-2 px-4 py-10 sm:gap-0 sm:p-0', footerClassName)}
+            >
               {footerContent}
             </ModalFooter>
           )}
