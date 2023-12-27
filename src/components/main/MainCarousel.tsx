@@ -68,7 +68,7 @@ export default function MainCarousel() {
           {/**gradient image*/}
           <div className="absolute h-full w-3/4 -translate-x-10 bg-opacity-20 bg-gradient-to-r from-black from-0% to-transparent to-90%"></div>
           <CardBody
-            className="flex h-full flex-col justify-start pb-9 pt-[83px] sm:pt-[197px]"
+            className="flex h-full flex-col justify-start overflow-y-hidden pb-9 pt-[83px] sm:pt-[197px]"
             onClick={() => handleIndex(index)}
           >
             <Button

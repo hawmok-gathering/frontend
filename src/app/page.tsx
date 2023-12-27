@@ -219,7 +219,7 @@ export default async function Home({ searchParams }: HomePageProps) {
           <LoginRequest />
         </section>
       )}
-      <section className="mx-auto sm:max-w-[1180px] px-4 pb-5 pt-20 sm:px-10 sm:pb-10 sm:pt-40">
+      <section className="mx-auto px-4 pb-5 pt-20 sm:max-w-[1180px] sm:px-10 sm:pb-10 sm:pt-40">
         <p className={`inline-flex h-[43px] items-center text-xl font-bold sm:text-3xl`}>
           이런 장소를 찾고 있나요
         </p>
@@ -232,7 +232,7 @@ export default async function Home({ searchParams }: HomePageProps) {
       </section>
 
       {/*Famous place section*/}
-      <section className="sm: h-fit py-10 sm:py-20">
+      <section className="sm: h-fit py-10 sm:pb-40 sm:pt-20">
         <BackgroundCard
           overlay
           imgUrl="url(/table.jfif)"
@@ -257,6 +257,33 @@ export default async function Home({ searchParams }: HomePageProps) {
             </div>
           </div>
         </BackgroundCard>
+      </section>
+      <section className="flex h-12 w-full items-center bg-[#FFFAEA] sm:h-[120px]">
+        {/*Desktop only footer*/}
+
+        <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base sm:flex">
+          <b>회사소개</b>
+          <b>입점상담</b>
+          <b>제휴문의</b>
+          <b>이용약관</b>
+          <b>개인정보처리방침</b>
+          <b>고객센터</b>
+          <b>채용정보</b>
+          <b>GLOBAL</b>
+        </div>
+
+        {/*Mobile only footer*/}
+        <div className="flex w-full items-center justify-center whitespace-nowrap text-center text-xs leading-[19.2px] sm:hidden">
+          <span className="h-fit w-[120px] border-r border-[#635B5080] border-opacity-50">
+            <b>로그아웃</b>
+          </span>
+          <span className="h-fit w-[120px] border-x border-[#635B5080] border-opacity-50">
+            <b>고객센터</b>
+          </span>
+          <span className="h-fit w-[120px] border-l border-[#635B5080] border-opacity-50">
+            <b>NEWS</b>
+          </span>
+        </div>
       </section>
     </>
   );
