@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import Menu from './Menu';
+import MenuCard from './MenuCard';
 import BackgroundCard from '../BackgroundCard';
 import useDrag from '@/hooks/useDrag';
 import useTouch from '@/hooks/useTouch';
@@ -46,7 +46,7 @@ export default function StoreMenu() {
       <div className="flex flex-col gap-4 ">
         {/* <Menu imgUrl="/steak.jpg" MenuName="스테이크" price={1300} /> */}
         {mokMenu.map((menu, index) => (
-          <Menu key={index} imgUrl={menu.imgUrl} MenuName={menu.name} price={menu.price} />
+          <MenuCard key={index} imgUrl={menu.imgUrl} MenuName={menu.name} price={menu.price} />
         ))}
       </div>
       {/* divider */}

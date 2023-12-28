@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import React, { ComponentPropsWithoutRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, useState, useRef } from 'react';
 import { MdRotateLeft } from 'react-icons/md';
 import { FaAngleDown } from 'react-icons/fa';
 import { Tab, Tabs, ModalBody, useDisclosure, cn } from '@nextui-org/react';
@@ -12,6 +12,7 @@ import TableTypesTab from './TableTypesTab';
 import { RxCross2 } from 'react-icons/rx';
 import { useRouter } from 'next/navigation';
 import BottomSheet from '@/components/BottomSheet';
+import useDrag from '@/hooks/useDrag';
 
 const locationsItem: Locations = [
   {
@@ -37,11 +38,26 @@ type SelectorProps = {
 };
 
 export default function Selector({ search }: SelectorProps) {
-  //TODO: searchParams 를 state로 바꿀지 생각해보기.
   const { searchQuery } = search;
   const [selectState, setSelectState] = useState({ ...search });
-  const router = useRouter();
+  const [containerX, setContainerX] = useState(0);
+  const selectorSectionRef = useRef<HTMLDivElement>(null);
+  const selectorContainerRef = useRef<HTMLDivElement>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
+
+  const handleTouchDrag = (deltaX: number) => {
+    const containerWidth = selectorContainerRef.current?.scrollWidth;
+    const sectionWidth = selectorSectionRef.current?.offsetWidth;
+
+    if (containerX + deltaX > 0) {
+      setContainerX(0);
+    } else if (containerX + deltaX < -containerWidth! + sectionWidth!) {
+      setContainerX(-containerWidth! + sectionWidth!);
+    } else {
+      setContainerX(containerX + deltaX);
+    }
+  };
 
   return (
     <div>
@@ -66,23 +82,31 @@ export default function Selector({ search }: SelectorProps) {
           }}
           height="640px"
           triggerContent={
-            <>
-              <CustomButton onPress={onOpen} selected={!!selectState.area}>
-                {selectState.area ? selectState.area : '지역'}
-              </CustomButton>
-              <CustomButton onPress={onOpen} selected={!!selectState.party}>
-                {selectState.party ? selectState.party : '인원'}
-              </CustomButton>
-              <CustomButton onPress={onOpen} selected={!!selectState.radio}>
-                {selectState.radio ? selectState.radio : '회식 유형'}
-              </CustomButton>
-              <CustomButton onPress={onOpen} selected={!!selectState.feel}>
-                {selectState.feel ? selectState.feel : '분위기'}
-              </CustomButton>
-              <CustomButton onPress={onOpen} selected={!!selectState.table}>
-                {selectState.table ? selectState.table : '좌석 타입'}
-              </CustomButton>
-            </>
+            <div ref={selectorSectionRef} className="overflow-hidden">
+              <div
+                ref={selectorContainerRef}
+                draggable={false}
+                style={{ transform: `translateX(${containerX}px)` }}
+                className=" flex w-fit shrink-0 gap-2"
+                {...useDrag(handleTouchDrag)}
+              >
+                <CustomButton onPress={onOpen} selected={!!selectState.area}>
+                  {selectState.area ? selectState.area : '지역'}
+                </CustomButton>
+                <CustomButton onPress={onOpen} selected={!!selectState.party}>
+                  {selectState.party ? selectState.party : '인원'}
+                </CustomButton>
+                <CustomButton onPress={onOpen} selected={!!selectState.radio}>
+                  {selectState.radio ? selectState.radio : '회식 유형'}
+                </CustomButton>
+                <CustomButton onPress={onOpen} selected={!!selectState.feel}>
+                  {selectState.feel ? selectState.feel : '분위기'}
+                </CustomButton>
+                <CustomButton onPress={onOpen} selected={!!selectState.table}>
+                  {selectState.table ? selectState.table : '좌석 타입'}
+                </CustomButton>
+              </div>
+            </div>
           }
           bodyContent={
             <Tabs
@@ -121,7 +145,7 @@ export default function Selector({ search }: SelectorProps) {
               {/* selected status */}
               <div className="flex h-12 w-full items-center gap-2 whitespace-nowrap bg-[#F5F5F5] px-7 py-4">
                 <button
-                  className="h-fit w-fit rounded-full border-[#E9E9E9] bg-white p-1"
+                  className="h-fit w-fit rounded-full border border-[#E9E9E9] bg-white p-1"
                   onClick={() => setSelectState({})}
                 >
                   <MdRotateLeft className="text-lg" />
@@ -131,7 +155,7 @@ export default function Selector({ search }: SelectorProps) {
                   return (
                     <button
                       key={key}
-                      className="flex items-center gap-[10px] rounded-full bg-[#302F2D] px-2 py-1 text-white"
+                      className="flex items-center gap-[10px] rounded-full bg-[#302F2D] px-3 py-1 text-white"
                       onClick={() =>
                         setSelectState(prev => {
                           const newState = { ...prev };

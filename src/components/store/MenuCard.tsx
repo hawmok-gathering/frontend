@@ -7,7 +7,7 @@ type MenuProps = {
   price: number;
 };
 
-export default function Menu({ MenuName, imgUrl, price }: MenuProps) {
+export default function MenuCard({ MenuName, imgUrl, price }: MenuProps) {
   return (
     <div className="flex h-[120px] w-full gap-3 border border-[#D9D9D9] p-4 sm:h-[234px] sm:gap-6 sm:px-6 sm:py-8">
       <BackgroundCard
