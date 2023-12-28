@@ -13,6 +13,8 @@ import { RxCross2 } from 'react-icons/rx';
 import { useRouter } from 'next/navigation';
 import BottomSheet from '@/components/BottomSheet';
 import useDrag from '@/hooks/useDrag';
+import useTouch from '@/hooks/useTouch';
+import SelectorTriggerButtons from './SelectorTriggerButtons';
 
 const locationsItem: Locations = [
   {
@@ -40,24 +42,8 @@ type SelectorProps = {
 export default function Selector({ search }: SelectorProps) {
   const { searchQuery } = search;
   const [selectState, setSelectState] = useState({ ...search });
-  const [containerX, setContainerX] = useState(0);
-  const selectorSectionRef = useRef<HTMLDivElement>(null);
-  const selectorContainerRef = useRef<HTMLDivElement>(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
-
-  const handleTouchDrag = (deltaX: number) => {
-    const containerWidth = selectorContainerRef.current?.scrollWidth;
-    const sectionWidth = selectorSectionRef.current?.offsetWidth;
-
-    if (containerX + deltaX > 0) {
-      setContainerX(0);
-    } else if (containerX + deltaX < -containerWidth! + sectionWidth!) {
-      setContainerX(-containerWidth! + sectionWidth!);
-    } else {
-      setContainerX(containerX + deltaX);
-    }
-  };
 
   return (
     <div>
@@ -81,33 +67,7 @@ export default function Selector({ search }: SelectorProps) {
             onClose();
           }}
           height="640px"
-          triggerContent={
-            <div ref={selectorSectionRef} className="overflow-hidden">
-              <div
-                ref={selectorContainerRef}
-                draggable={false}
-                style={{ transform: `translateX(${containerX}px)` }}
-                className=" flex w-fit shrink-0 gap-2"
-                {...useDrag(handleTouchDrag)}
-              >
-                <CustomButton onPress={onOpen} selected={!!selectState.area}>
-                  {selectState.area ? selectState.area : '지역'}
-                </CustomButton>
-                <CustomButton onPress={onOpen} selected={!!selectState.party}>
-                  {selectState.party ? selectState.party : '인원'}
-                </CustomButton>
-                <CustomButton onPress={onOpen} selected={!!selectState.radio}>
-                  {selectState.radio ? selectState.radio : '회식 유형'}
-                </CustomButton>
-                <CustomButton onPress={onOpen} selected={!!selectState.feel}>
-                  {selectState.feel ? selectState.feel : '분위기'}
-                </CustomButton>
-                <CustomButton onPress={onOpen} selected={!!selectState.table}>
-                  {selectState.table ? selectState.table : '좌석 타입'}
-                </CustomButton>
-              </div>
-            </div>
-          }
+          triggerContent={<SelectorTriggerButtons selectState={selectState} onOpen={onOpen} />}
           bodyContent={
             <Tabs
               variant="underlined"
@@ -209,7 +169,7 @@ export default function Selector({ search }: SelectorProps) {
 type CustomButton = {
   selected: boolean;
 } & ComponentPropsWithoutRef<typeof Button>;
-const CustomButton = (props: CustomButton) => {
+export const CustomButton = (props: CustomButton) => {
   const { selected, children, ...rest } = props;
   return (
     <Button

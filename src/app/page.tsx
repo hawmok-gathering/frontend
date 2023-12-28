@@ -15,7 +15,7 @@ export const mokStores = [
     storeId: 1,
     location_id: '서울시 마포구 서교동 123-1',
     //
-    name: '청기와 부산 갈매기 ddddsfdsfdsfsdfdsfdsfdssssㅁㄴㅇㄹㄴㅁㄹㄴㄹsssssddd',
+    name: '청기와 부산 갈매기 ',
     store_image_url: '/beer.webp',
     phone: '02-1234-5678',
     content: '맛있는 음식과 함께 즐거운 시간을 보내세요',
