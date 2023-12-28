@@ -60,9 +60,9 @@ export default function StoreMenu() {
           style={{ transform: `translateX(${containerX}px)` }}
           className="flex h-[120px] cursor-pointer gap-2 sm:h-60"
           {...useDrag(handleImageDrag)}
-          {...useTouch(deltaX => {
-            setContainerX(containerX + deltaX);
-          })}
+          // {...useTouch(deltaX => {
+          //   setContainerX(containerX + deltaX);
+          // })}
         >
           {mokMenu2.map(({ imgUrl }, index) => (
             <BackgroundCard

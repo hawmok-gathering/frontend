@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`h-full bg-background light`}>
+    <html lang="en" className={`h-[100svh] bg-background light`}>
       <ToastContextProvider>
-        <body className={twMerge(myFont.className, 'h-full w-full light')}>
+        <body className={twMerge(myFont.className, 'h-[100svh] w-full light')}>
           <Providers className="flex h-full flex-col bg-background text-foreground">
             <MainNavBar />
             <main className="grow">{children}</main>

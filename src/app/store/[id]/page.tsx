@@ -92,14 +92,6 @@ export default async function page({ params, searchParams }: StorePageProps) {
             >
               관심장소
             </LikeHeartButton>
-            {/* <InteractionButton
-              startContent={isLiked ? <RxHeartFilled className="text-red-500" /> : <RxHeart />}
-              className="mt-4 hidden text-base font-bold sm:flex"
-              variant="bordered"
-              onPress={handleLikeButton}
-            >
-              관심장소
-            </InteractionButton> */}
             <Clipboard
               copyText={fullUrl!}
               fullWidth

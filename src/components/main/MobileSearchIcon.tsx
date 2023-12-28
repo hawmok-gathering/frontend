@@ -128,24 +128,28 @@ const MobileSearchHistory = ({ name, date, onDelete }: SearchHistory) => {
   searchParams.append(SearchParams.query, name);
 
   return (
-    <div className={`flex h-9 rounded-md `}>
-      <Link className={` flex items-center justify-start`} href={`/search?${searchParams}`}>
+    <div className={`flex h-9 gap-[10px] rounded-md`}>
+      <Link className={` flex w-full items-center justify-start`} href={`/search?${searchParams}`}>
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-default">
           <IoSearchSharp className="inline h-6 w-6 text-white" />
         </span>
         <span className="ml-[10px] text-sm font-normal text-[#616060]">{name}</span>
+        <span className="ml-auto flex items-center gap-[10px] text-sm font-normal text-[#ABABAB]">
+          <p>
+            {new Intl.DateTimeFormat('ko-KR', {
+              month: '2-digit',
+              day: '2-digit',
+            }).format(new Date(date))}
+          </p>
+        </span>
       </Link>
-      <span className="ml-auto flex items-center gap-[10px] text-sm font-normal text-[#ABABAB]">
-        <p>
-          {new Intl.DateTimeFormat('ko-KR', {
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(date))}
-        </p>
-        <button type="button" onClick={() => onDelete(name)}>
-          삭제
-        </button>
-      </span>
+      <button
+        type="button"
+        className="shrink-0 text-sm font-normal text-[#ABABAB]"
+        onClick={() => onDelete(name)}
+      >
+        삭제
+      </button>
     </div>
   );
 };
