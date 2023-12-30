@@ -200,9 +200,6 @@ export default async function Home({ searchParams }: HomePageProps) {
         <Link href="/" className="">
           <Image src="/brand.png" alt="brand logo" width={44} height={30} />
         </Link>
-        {/* <Link href="/mobile" className="ml-auto">
-          <GrSearch className="text-xl font-extrabold text-secondary" />
-        </Link> */}
         <MobileSearchIcon />
         <button className="ml-4">
           <MdOutlinePersonOutline className="text-2xl font-extrabold text-secondary" />

@@ -1,5 +1,6 @@
 import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox';
 import React from 'react';
+import { TabProps } from './Selector';
 
 const ppl = [
   { label: '5~8인', value: '5~8인' },
@@ -9,16 +10,7 @@ const ppl = [
   { label: '20인 이상', value: '20인 이상' },
 ];
 
-type PeopleSelectionProps = {
-  setSelectState: React.Dispatch<
-    React.SetStateAction<{
-      [x: string]: string | undefined;
-    }>
-  >;
-  selectState: any;
-};
-
-export default function PeopleTab({ setSelectState, selectState }: PeopleSelectionProps) {
+export default function PartyTab({ setSelectState, selectState }: TabProps) {
   return (
     <Listbox
       selectionMode="single"

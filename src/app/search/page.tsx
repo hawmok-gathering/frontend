@@ -1,5 +1,5 @@
-import Selector from '@/components/search/select/Selector';
-import { SearchParams } from '@/constants/constant';
+import Selector, { SearchParams } from '@/components/search/select/Selector';
+import { SearchParams as ConstValueOfParams } from '@/constants/constant';
 import React from 'react';
 import { mokStores } from '../page';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -7,16 +7,16 @@ import Link from 'next/link';
 import StoreCard from '@/components/StoreCard';
 
 type SearchPageProps = {
-  searchParams: { [key: string]: string };
+  searchParams: SearchParams & { sort: string };
 };
 
 export default async function page({ searchParams }: SearchPageProps) {
-  const query = searchParams[SearchParams.query] ?? searchParams.area;
+  const query = searchParams[ConstValueOfParams.query] ?? searchParams.location;
   const sorted = searchParams.sort ?? 'latest';
   const length = mokStores.length;
 
-  // const { searchQuery, area, party, feel, table } = searchParams;
-  //TODO: get rest Data form sever using searchQuery, area, party, feel, table and etc.
+  // const { searchQuery, area, party, mood, table } = searchParams;
+  //TODO: get rest Data form sever using searchQuery, area, party, mood, table and etc.
   //TODO: pass the data to SearchResultPage component.
   // select component will handle the state of searchParams.
 

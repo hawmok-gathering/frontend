@@ -1,11 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { CustomButton } from './Selector';
+import React, { ComponentPropsWithoutRef, useRef, useState } from 'react';
 import useDrag from '@/hooks/useDrag';
 import useTouch from '@/hooks/useTouch';
+import { Button } from '@nextui-org/button';
+import { FaAngleDown } from 'react-icons/fa';
+import { SearchPageProps } from '@/constants/constant';
 
 type SelectorTriggerButtonsProps = {
   selectState: { [key: string]: string | undefined };
-  onOpen: () => void;
+  onOpen: (key: string) => void;
 };
 
 export default function SelectorTriggerButtons(props: SelectorTriggerButtonsProps) {
@@ -39,22 +41,33 @@ export default function SelectorTriggerButtons(props: SelectorTriggerButtonsProp
         {...useDrag(temp)}
         {...useTouch(temp)}
       >
-        <CustomButton onPress={onOpen} selected={!!selectState.area}>
-          {selectState.area ? selectState.area : '지역'}
-        </CustomButton>
-        <CustomButton onPress={onOpen} selected={!!selectState.party}>
-          {selectState.party ? selectState.party : '인원'}
-        </CustomButton>
-        <CustomButton onPress={onOpen} selected={!!selectState.radio}>
-          {selectState.radio ? selectState.radio : '회식 유형'}
-        </CustomButton>
-        <CustomButton onPress={onOpen} selected={!!selectState.feel}>
-          {selectState.feel ? selectState.feel : '분위기'}
-        </CustomButton>
-        <CustomButton onPress={onOpen} selected={!!selectState.table}>
-          {selectState.table ? selectState.table : '좌석 타입'}
-        </CustomButton>
+        {Object.entries(SearchPageProps).map(([query, key]) => (
+          <CustomButton key={key} onPress={() => onOpen(key)} selected={!!selectState[query]}>
+            {selectState[query] ? selectState[query] : key}
+          </CustomButton>
+        ))}
       </div>
     </div>
   );
 }
+
+type CustomButton = {
+  selected: boolean;
+} & ComponentPropsWithoutRef<typeof Button>;
+export const CustomButton = (props: CustomButton) => {
+  const { selected, children, ...rest } = props;
+  return (
+    <Button
+      size="sm"
+      radius="full"
+      variant={selected ? 'light' : 'bordered'}
+      endContent={<FaAngleDown className="scale-150 text-[#C6C6C6]" />}
+      className={`${
+        selected ? 'bg-[#302F2D] text-white' : 'text-black'
+      } data-[hover=true]:bg-" px-2 text-[10px] font-bold leading-4 sm:px-3`}
+      {...rest}
+    >
+      {children}
+    </Button>
+  );
+};

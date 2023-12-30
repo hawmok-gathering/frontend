@@ -1,20 +1,18 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import React, { ComponentPropsWithoutRef, useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { MdRotateLeft } from 'react-icons/md';
-import { FaAngleDown } from 'react-icons/fa';
 import { Tab, Tabs, ModalBody, useDisclosure, cn } from '@nextui-org/react';
-import AreaTab, { Locations } from './AreaTab';
-import PeopleTab from './PeopleTab';
-import FeelingTab from './FeelingTab';
-import TableTypesTab from './TableTypesTab';
+import AreaTab, { Locations } from './LocationTab';
+import PeopleTab from './PartyTab';
+import MoodTab from './MoodTab';
+import TableTypesTab from './SeatTab';
 import { RxCross2 } from 'react-icons/rx';
 import { useRouter } from 'next/navigation';
 import BottomSheet from '@/components/BottomSheet';
-import useDrag from '@/hooks/useDrag';
-import useTouch from '@/hooks/useTouch';
 import SelectorTriggerButtons from './SelectorTriggerButtons';
+import { SearchPageProps } from '@/constants/constant';
 
 const locationsItem: Locations = [
   {
@@ -35,15 +33,33 @@ const locationsItem: Locations = [
   },
 ];
 
-type SelectorProps = {
-  search: { [key: string]: string | undefined };
+export type TabProps = {
+  setSelectState: React.Dispatch<
+    React.SetStateAction<{
+      [key in SelectKeys]: string | undefined;
+    }>
+  >;
+  selectState: SelectorProps['search'];
+};
+
+export type SelectKeys = 'location' | 'party' | 'type' | 'mood' | 'seat' | 'searchQuery';
+export type SearchParams = { [key in SelectKeys]: string | undefined };
+export type SelectorProps = {
+  search: SearchParams;
 };
 
 export default function Selector({ search }: SelectorProps) {
   const { searchQuery } = search;
   const [selectState, setSelectState] = useState({ ...search });
+  const [tabKey, setTabKey] = useState('지역'); // ['지역', '인원', '회식 유형', '분위기', '좌석 타입']
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
+
+  const handleOpen = (key: string) => {
+    console.log(key);
+    setTabKey(key);
+    onOpen();
+  };
 
   return (
     <div>
@@ -67,9 +83,11 @@ export default function Selector({ search }: SelectorProps) {
             onClose();
           }}
           height="640px"
-          triggerContent={<SelectorTriggerButtons selectState={selectState} onOpen={onOpen} />}
+          triggerContent={<SelectorTriggerButtons selectState={selectState} onOpen={handleOpen} />}
           bodyContent={
             <Tabs
+              selectedKey={tabKey}
+              onSelectionChange={setTabKey}
               variant="underlined"
               classNames={{
                 base: 'px-5 py-2',
@@ -78,23 +96,23 @@ export default function Selector({ search }: SelectorProps) {
                 cursor: 'w-full',
               }}
             >
-              <Tab title="지역" key="지역" className="py-0">
+              <Tab title={SearchPageProps.location} key={SearchPageProps.location} className="py-0">
                 <AreaTab
                   locations={locationsItem}
                   selectState={selectState}
                   setSelectState={setSelectState}
                 />
               </Tab>
-              <Tab title="인원" key="인원" className="py-0">
+              <Tab title={SearchPageProps.party} key={SearchPageProps.party} className="py-0">
                 <PeopleTab selectState={selectState} setSelectState={setSelectState} />
               </Tab>
-              <Tab title="회식 유형" key="회식 유형" className="py-0">
+              <Tab title={SearchPageProps.type} key={SearchPageProps.type} className="py-0">
                 <ModalBody>Modal Body</ModalBody>
               </Tab>
-              <Tab title="분위기" key="분위기" className="py-0">
-                <FeelingTab selectState={selectState} setSelectState={setSelectState} />
+              <Tab title={SearchPageProps.mood} key={SearchPageProps.mood} className="py-0">
+                <MoodTab selectState={selectState} setSelectState={setSelectState} />
               </Tab>
-              <Tab title="좌석 타입" key="좌석 타입" className="py-0">
+              <Tab title={SearchPageProps.seat} key={SearchPageProps.seat} className="py-0">
                 <TableTypesTab selectState={selectState} setSelectState={setSelectState} />
               </Tab>
             </Tabs>
@@ -119,7 +137,7 @@ export default function Selector({ search }: SelectorProps) {
                       onClick={() =>
                         setSelectState(prev => {
                           const newState = { ...prev };
-                          delete newState[key];
+                          delete newState[key as keyof typeof newState];
                           return newState;
                         })
                       }
@@ -165,24 +183,3 @@ export default function Selector({ search }: SelectorProps) {
     </div>
   );
 }
-
-type CustomButton = {
-  selected: boolean;
-} & ComponentPropsWithoutRef<typeof Button>;
-export const CustomButton = (props: CustomButton) => {
-  const { selected, children, ...rest } = props;
-  return (
-    <Button
-      size="sm"
-      radius="full"
-      variant={selected ? 'light' : 'bordered'}
-      endContent={<FaAngleDown className="scale-150 text-[#C6C6C6]" />}
-      className={`${
-        selected ? 'bg-[#302F2D] text-white' : 'text-black'
-      } data-[hover=true]:bg-" px-2 text-[10px] font-bold leading-4 sm:px-3`}
-      {...rest}
-    >
-      {children}
-    </Button>
-  );
-};

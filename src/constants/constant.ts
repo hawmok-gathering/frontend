@@ -25,5 +25,13 @@ export const GeneralClassName = Object.freeze({
 });
 
 export const SearchParams = Object.freeze({
-  query: 'searchQuery',
+  query: 'searchQuery' as const,
+});
+
+export const SearchPageProps = Object.freeze({
+  location: '지역',
+  party: '인원',
+  type: '회식 유형',
+  mood: '분위기',
+  seat: '좌석 타입',
 });

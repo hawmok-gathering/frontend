@@ -1,7 +1,7 @@
 'use client';
 import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox';
-
 import React from 'react';
+import { TabProps } from './Selector';
 
 export type Locations = {
   sectionName: string;
@@ -11,30 +11,24 @@ export type Locations = {
   }[];
 }[];
 
-type AreaSelectionProps = {
-  setSelectState: React.Dispatch<
-    React.SetStateAction<{
-      [x: string]: string | undefined;
-    }>
-  >;
-  selectState: any;
+type LocationTabProps = TabProps & {
   locations: Locations;
 };
 
-export default function AreaTab({ setSelectState, locations, selectState }: AreaSelectionProps) {
+export default function LocationTab({ setSelectState, locations, selectState }: LocationTabProps) {
   return (
     <Listbox
       selectionMode="single"
       aria-label="select location list box"
-      selectedKeys={new Set([selectState.area ?? ''])}
+      selectedKeys={new Set([selectState.location ?? ''])}
       className="px-4"
       onSelectionChange={e => {
         if (e instanceof Set) {
-          e.forEach(item => setSelectState({ ...selectState, area: item as string }));
+          e.forEach(item => setSelectState({ ...selectState, location: item as string }));
         }
       }}
     >
-      {locations.map(location => (
+      {locations!.map(location => (
         <ListboxSection
           key={location.sectionName}
           title={location.sectionName}

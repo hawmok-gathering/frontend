@@ -51,9 +51,9 @@ type HeroBackgroundProps = {
 } & ComponentPropsWithoutRef<'div'>;
 
 export type FilterState = {
-  area: string;
+  location: string;
   party: string;
-  radio: string;
+  type: string;
 };
 
 export default function Hero(props: HeroBackgroundProps) {
@@ -62,7 +62,7 @@ export default function Hero(props: HeroBackgroundProps) {
   const router = useRouter();
 
   const handleSearch = () => {
-    if (!filterState.area || !filterState.party) {
+    if (!filterState.location || !filterState.party) {
       return alert('지역과 인원을 선택해주세요');
     }
 
@@ -101,8 +101,8 @@ export default function Hero(props: HeroBackgroundProps) {
         <section className="z-[1] mt-24 flex gap-3 sm:mt-40 sm:gap-6">
           <div className="hidden gap-2 sm:flex">
             <CustomAutoComplete
-              onInputChange={value => setFilterState({ ...filterState, area: value })}
-              value={filterState.area}
+              onInputChange={value => setFilterState({ ...filterState, location: value })}
+              value={filterState.location}
               items={autoOne}
               placeholder="지역 정보"
               labelPlacement="outside-left"
@@ -155,16 +155,16 @@ export default function Hero(props: HeroBackgroundProps) {
           {/* 1차/2차 buttons */}
           <div className="flex w-fit flex-col gap-1 whitespace-nowrap sm:flex-row sm:gap-3">
             <HeroRadioButton
-              onClick={() => setFilterState({ ...filterState, radio: '1차' })}
-              isClicked={filterState.radio === '1차'}
+              onClick={() => setFilterState({ ...filterState, type: '1차' })}
+              isClicked={filterState.type === '1차'}
             >
               <b># 1차</b>
               <span className="font-normal text-black">로</span>
               <b className="text-black"> 든든하게 </b>
             </HeroRadioButton>
             <HeroRadioButton
-              onClick={() => setFilterState({ ...filterState, radio: '2차' })}
-              isClicked={filterState.radio === '2차'}
+              onClick={() => setFilterState({ ...filterState, type: '2차' })}
+              isClicked={filterState.type === '2차'}
             >
               <b># 2차</b>
               <span className="font-normal text-black">로</span>

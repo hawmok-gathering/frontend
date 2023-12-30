@@ -1,14 +1,6 @@
 import { Listbox, ListboxItem, ListboxSection } from '@nextui-org/listbox';
 import React from 'react';
-
-type TableSelectionProps = {
-  setSelectState: React.Dispatch<
-    React.SetStateAction<{
-      [x: string]: string | undefined;
-    }>
-  >;
-  selectState: any;
-};
+import { TabProps } from './Selector';
 
 const tableSample = {
   sectionTitle: '테이블 종류',
@@ -20,16 +12,16 @@ const tableSample = {
   ],
 };
 
-export default function TableTypesTab({ setSelectState, selectState }: TableSelectionProps) {
+export default function SeatTab({ setSelectState, selectState }: TabProps) {
   return (
     <Listbox
       selectionMode="multiple"
       className="px-4"
       aria-label="select type of Table list box"
-      selectedKeys={new Set([selectState.table ?? ''])}
+      selectedKeys={new Set([selectState.seat ?? ''])}
       onSelectionChange={e => {
         if (e instanceof Set) {
-          e.forEach(item => setSelectState({ ...selectState, table: item as string }));
+          e.forEach(item => setSelectState({ ...selectState, seat: item as string }));
         }
       }}
     >

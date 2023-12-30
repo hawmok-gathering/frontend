@@ -47,7 +47,7 @@ export default function MobileFilter(props: MobileFilterProps) {
               className="flex w-[60px] shrink-0 flex-col items-center justify-between rounded-l-sm border-r border-r-[#D9D9D9] bg-white py-2"
             >
               <SlLocationPin className="stroke-[3px] text-medium font-extrabold text-secondary" />
-              <small>{filterState.area ? filterState.area : '지역'}</small>
+              <small>{filterState.location ? filterState.location : '지역'}</small>
             </button>
             <button
               onClick={onOpen}
@@ -73,8 +73,8 @@ export default function MobileFilter(props: MobileFilterProps) {
                 <LinkFilter
                   aria-label={`지역 필터 ${location.label} 선택`}
                   key={location.value}
-                  onClick={() => setFilterState({ ...filterState, area: location.value })}
-                  isClicked={filterState.area === location.value}
+                  onClick={() => setFilterState({ ...filterState, location: location.value })}
+                  isClicked={filterState.location === location.value}
                 >
                   {location.label}
                 </LinkFilter>
@@ -85,8 +85,8 @@ export default function MobileFilter(props: MobileFilterProps) {
                 <LinkFilter
                   aria-label={`지역 필터 ${location.label} 선택`}
                   key={location.value}
-                  onClick={() => setFilterState({ ...filterState, area: location.value })}
-                  isClicked={filterState.area === location.value}
+                  onClick={() => setFilterState({ ...filterState, location: location.value })}
+                  isClicked={filterState.location === location.value}
                 >
                   {location.label}
                 </LinkFilter>
