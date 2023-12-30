@@ -37,7 +37,7 @@ export default function SelectorTriggerButtons(props: SelectorTriggerButtonsProp
         ref={selectorContainerRef}
         draggable={false}
         style={{ transform: `translateX(${0}px)` }}
-        className=" flex shrink-0 gap-2"
+        className=" flex shrink-0 flex-wrap gap-2"
         {...useDrag(temp)}
         {...useTouch(temp)}
       >

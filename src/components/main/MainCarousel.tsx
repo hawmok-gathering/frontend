@@ -141,8 +141,8 @@ function Carousel<O extends Record<string | number | symbol, any>>({
               key={i}
               value={i}
               className={`${
-                index === i ? 'w-8 bg-orange-500' : 'w-[14px]'
-              } h-[14px] origin-center rounded-full bg-black opacity-70 transition-all`}
+                index === i ? 'w-8 bg-[#827C0A]' : 'w-[14px] bg-black opacity-70'
+              } h-[14px] origin-center rounded-full transition-all`}
               onClick={() => handleIndex(i)}
             ></button>
           ))}
