@@ -42,7 +42,7 @@ export default async function page({ searchParams }: MyPageProps) {
           {temporalSession.user.name}
           <span className="text-white">님, 안녕하세요!</span>
         </h1>
-        <div className="z-[1] flex h-[88px] w-fit items-center justify-center whitespace-nowrap bg-white px-4 text-xs font-bold text-black  sm:h-[140px] sm:w-[520px] sm:text-sm">
+        <div className="z-[1] flex h-[88px] w-fit items-center justify-center whitespace-nowrap bg-white px-4 text-xs font-bold text-black sm:h-[140px]  sm:px-24 sm:text-sm">
           <Link
             href="/my-page?sorted=watched"
             className="flex h-full flex-col items-center justify-center gap-2 sm:gap-4"

@@ -26,7 +26,7 @@ export default function EditPage() {
 
       <section className="mx-auto w-full max-w-[1180px] px-10 pt-[162px]">
         <div className="mb-10 flex max-h-fit justify-between">
-          <p className="text-[32px] font-bold">기본 정보</p>
+          <p className="text-[32px] font-bold">내 정보</p>
           <span className="relative mt-auto inline-block">
             필수 입력 항목 <BsDot className="absolute -left-4 -top-2 text-xl text-primary" />
           </span>
@@ -34,7 +34,7 @@ export default function EditPage() {
 
         {/* edit my info section */}
         <form className="flex w-full flex-col" action={handleSubmit}>
-          <div className="flex w-full border-b-2 border-t-2 border-t-[#7D7D7D]">
+          {/* <div className="flex w-full border-b-2 border-t-2 border-t-[#7D7D7D]">
             <CustomInput
               name="name"
               radius="none"
@@ -69,15 +69,16 @@ export default function EditPage() {
               labelPlacement="outside-left"
               placeholder="XXXX.XX.XX"
             />
-          </div>
-          <div className="w-full border-b-2">
+          </div> */}
+          <div className="w-full border-b-2 border-t-2 border-t-[#7D7D7D]">
             <CustomInput
               name="email"
               radius="none"
-              label="이메일"
+              label="이메일 (ID)"
               labelPlacement="outside-left"
               placeholder="abc@gmail.com"
               type="email"
+              readOnly
             />
           </div>
           <div className="flex h-[110px] items-center border-b-2 px-6 py-4">
@@ -136,18 +137,18 @@ const CustomInput = (props: CustomInputProps) => {
   const { children, classNames, ...rest } = props;
   return (
     <Input
-      {...rest}
-      radius="sm"
       classNames={{
-        base: 'h-[100px] py-4 px-6 w-fit',
+        base: 'h-[100px] py-6 px-6 w-fit ',
         label: 'w-[296px] text-base font-bold text-secondary',
-        innerWrapper: 'w-[455px]',
-        mainWrapper: 'border border-[#F5F5F5] rounded-lg bg-[#FBFBFB]',
-        input: 'ml-5',
+        innerWrapper: 'w-[455px] ',
+        mainWrapper: 'h-[68px]',
+        input: 'ml-5 ',
+        inputWrapper: 'rounded-lg border border-[#F5F5F5] bg-[#FBFBFB]',
         ...classNames,
       }}
+      {...rest}
     >
-      {children}{' '}
+      {children}
     </Input>
   );
 };
