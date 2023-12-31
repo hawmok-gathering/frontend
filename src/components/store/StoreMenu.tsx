@@ -88,9 +88,12 @@ export default function StoreMenu() {
             </div>
           }
           bodyContent={
-            <div className="my-auto h-1/3 sm:mx-auto sm:h-auto sm:w-2/3">
-              <ImageSlider imgUrls={mokMenu2.map(store => store.imgUrl)}></ImageSlider>
-            </div>
+            <>
+              <div className="absolute h-full w-full" onClick={onClose} />
+              <div className="my-auto h-1/3 sm:mx-auto sm:h-auto sm:w-2/3">
+                <ImageSlider imgUrls={mokMenu2.map(store => store.imgUrl)}></ImageSlider>
+              </div>
+            </>
           }
         ></BottomSheet>
         {/* <div

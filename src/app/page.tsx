@@ -4,11 +4,12 @@ import Hero from '@/components/main/hero/Hero';
 import MainCarousel from '@/components/main/MainCarousel';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MdOutlinePersonOutline } from 'react-icons/md';
 import StoreCard from '@/components/StoreCard';
 import MobileSearchIcon from '@/components/main/MobileSearchIcon';
 import LocationFilter from '@/components/main/LocationFilter';
 import MobileLocationFilter from '@/components/main/MobileLocationFilter';
+import MobileNavbar from '@/components/MobileNavbar';
+import MyMenu from '@/components/MyMenu';
 
 export const mokStores = [
   {
@@ -196,15 +197,13 @@ export default async function Home({ searchParams }: HomePageProps) {
   return (
     <>
       {/*Mobile only navbar*/}
-      <nav className="flex h-14 items-center px-4 text-xl font-bold leading-normal text-black sm:hidden">
+      <MobileNavbar backArrow={false} className="px-4">
         <Link href="/" className="">
           <Image src="/brand.png" alt="brand logo" width={44} height={30} />
         </Link>
         <MobileSearchIcon />
-        <button className="ml-4">
-          <MdOutlinePersonOutline className="text-2xl font-extrabold text-secondary" />
-        </button>
-      </nav>
+        <MyMenu isLoggedIn={isLogin} />
+      </MobileNavbar>
 
       {/*Main page hero section*/}
       <section className="h-[346px] w-full sm:h-[630px]">
