@@ -25,7 +25,7 @@ export default async function page({ searchParams }: MyPageProps) {
   let sorted = searchParams.sorted ?? 'likes';
 
   return (
-    <div className="w-full sm:pt-24">
+    <div className="w-full pb-20 sm:pb-40 sm:pt-24">
       {/** my page hero section */}
       <nav className="mb-16 flex h-14 w-full items-center justify-between px-4 sm:hidden">
         <IoIosArrowBack className="scale-150" />
@@ -42,7 +42,7 @@ export default async function page({ searchParams }: MyPageProps) {
           {temporalSession.user.name}
           <span className="text-white">님, 안녕하세요!</span>
         </h1>
-        <div className="z-[1] flex h-[88px] w-[285px] items-center justify-center bg-white text-xs font-bold text-black sm:h-[140px]  sm:w-[520px] sm:text-sm">
+        <div className="z-[1] flex h-[88px] w-fit items-center justify-center whitespace-nowrap bg-white px-4 text-xs font-bold text-black  sm:h-[140px] sm:w-[520px] sm:text-sm">
           <Link
             href="/my-page?sorted=watched"
             className="flex h-full flex-col items-center justify-center gap-2 sm:gap-4"
