@@ -17,7 +17,7 @@ export const mokStores = [
     location_id: '서울시 마포구 서교동 123-1',
     //
     name: '청기와 부산 갈매기 ',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number1.jpeg',
     phone: '02-1234-5678',
     content: '맛있는 음식과 함께 즐거운 시간을 보내세요',
     address: '부산',
@@ -35,7 +35,7 @@ export const mokStores = [
   {
     storeId: 2,
     name: '할머니 부산 순대국',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number2.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다. 부산에있습니다.',
     address: '부산',
@@ -52,7 +52,7 @@ export const mokStores = [
   {
     storeId: 3,
     name: '할머니 서울 순대국',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number3.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
@@ -69,7 +69,7 @@ export const mokStores = [
   {
     storeId: 4,
     name: '삼촌네 서울 순대국',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number4.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
@@ -86,7 +86,7 @@ export const mokStores = [
   {
     storeId: 5,
     name: '할머니 부산 돼지국밥',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number5.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
@@ -103,7 +103,7 @@ export const mokStores = [
   {
     storeId: 6,
     name: '삼촌네 서울 순대국',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number6.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
@@ -120,7 +120,7 @@ export const mokStores = [
   {
     storeId: 7,
     name: '양재 순대',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number7.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
@@ -137,27 +137,10 @@ export const mokStores = [
   {
     storeId: 8,
     name: '돈까스좋아',
-    store_image_url: '/beer.webp',
+    store_image_url: '/number8.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',
     address: '서울',
-    created_at: '12월',
-    updated_at: '7월',
-    weekday_start_time: '오전 9시',
-    weekday_end_time: '오후 9시',
-    weekend_start_time: '오후 3시',
-    weekend_end_time: '새벽 5시',
-    hall_capacity: '120',
-    room_capacity: '15',
-    category: '밥집',
-  },
-  {
-    storeId: 9,
-    name: '돈까스좋아 부산',
-    store_image_url: '/beer.webp',
-    phone: '02-1234-5678',
-    content: '이곳은 밥집입니다.',
-    address: '부산',
     created_at: '12월',
     updated_at: '7월',
     weekday_start_time: '오전 9시',
@@ -231,11 +214,16 @@ export default async function Home({ searchParams }: HomePageProps) {
       {/*Famous place section*/}
       <section className="sm: h-fit py-10 sm:pb-40 sm:pt-20">
         <BackgroundCard
-          overlay
           imgUrl="url(/table.jfif)"
           radius={'none'}
-          className="bg-cover bg-center"
+          className="relative bg-cover bg-center"
         >
+          {/** overlay 4times */}
+          <div className="absolute h-full w-full bg-[#877560] bg-opacity-70" />
+          <div className="absolute h-full w-full bg-black bg-opacity-20" />
+          <div className="absolute h-full w-full bg-black bg-opacity-20" />
+          <div className="absolute h-full w-full bg-black bg-opacity-20" />
+          <div className="absolute h-full w-full bg-black bg-opacity-20" />
           <div
             className={`z-[1] mx-auto flex h-full w-full flex-col px-4 py-10 text-[#FFFAEA] sm:w-[1180px] sm:px-10 sm:py-20`}
           >

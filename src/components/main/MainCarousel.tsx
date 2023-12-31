@@ -61,7 +61,7 @@ export default function MainCarousel() {
           radius="sm"
           key={item.title + index}
           imgUrl={item.imgUrl}
-          className={`h-[196px] w-[148px] shrink-0 cursor-pointer bg-cover bg-center bg-origin-border font-bold text-white sm:h-[328px] sm:w-[248px] ${
+          className={`h-[196px] w-[148px] shrink-0 -translate-x-[80px] cursor-pointer bg-cover bg-center bg-origin-border font-bold text-white sm:h-[328px] sm:w-[248px] sm:-translate-x-0 ${
             isSelected ? '-translate-y-8 ' : ''
           }`}
         >
@@ -111,7 +111,7 @@ function Carousel<O extends Record<string | number | symbol, any>>({
 
     let stepOffset = -268;
     if (window.innerWidth <= 768) {
-      stepOffset = -164;
+      stepOffset = -168;
     }
     const gap = (idx - index) * stepOffset;
     setIndex(() => idx);
@@ -123,7 +123,7 @@ function Carousel<O extends Record<string | number | symbol, any>>({
 
   return (
     <>
-      <div className={`relative mx-auto h-full w-[328px]  overflow-x-hidden sm:w-[786px]`}>
+      <div className={`relative mx-auto h-full w-[328px] overflow-x-hidden sm:w-[786px]`}>
         <div className={`left-20 flex h-full items-center gap-5 transition-all`} ref={ref}>
           {items.map((item, idx) =>
             renderItem({

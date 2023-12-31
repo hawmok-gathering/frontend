@@ -1,10 +1,10 @@
-import { Image } from '@nextui-org/image';
 import { Card } from '@nextui-org/card';
 import Link from 'next/link';
 import { LuDot } from 'react-icons/lu';
 import { RxHeartFilled } from 'react-icons/rx';
 import LikeButton from './LikeButton';
 import { cn } from '@nextui-org/react';
+import Image from 'next/image';
 export type Store = {
   storeId: number;
   name: string;
@@ -40,17 +40,14 @@ export default function StoreCard({ store, page }: StoreCardProps) {
   return (
     <Card
       radius="none"
-      className="h-fit max-w-[156px] text-ellipsis  bg-transparent sm:max-w-[260px]"
+      className="h-fit w-full max-w-[156px] text-ellipsis bg-transparent sm:max-w-[260px]"
       shadow="none"
     >
-      <Link href={`/store/${store.storeId}`}>
-        <Image
-          src={store.store_image_url}
-          radius="none"
-          alt={store.content}
-          isZoomed
-          className="h-[168px] max-w-[156px] object-cover sm:h-[296px] sm:max-w-[260px]"
-        ></Image>
+      <Link
+        className="relative h-[168px] w-full max-w-[156px] sm:h-[296px] sm:max-w-[260px]"
+        href={`/store/${store.storeId}`}
+      >
+        <Image src={store.store_image_url} alt={store.content} fill></Image>
       </Link>
       <div className="flex h-full flex-col pt-1 sm:pt-5">
         <div className="flex items-center justify-between sm:pb-1">
