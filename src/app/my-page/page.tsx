@@ -6,8 +6,8 @@ import { RxHeart } from 'react-icons/rx';
 import Link from 'next/link';
 import { mokStores } from '../page';
 import StoreCard from '@/components/StoreCard';
-import { IoIosArrowBack } from 'react-icons/io';
 import { MdOutlinePersonOutline } from 'react-icons/md';
+import MobileNavbar from '@/components/MobileNavbar';
 
 const temporalSession = {
   isLoggedIn: true,
@@ -27,10 +27,9 @@ export default async function page({ searchParams }: MyPageProps) {
   return (
     <div className="w-full pb-20 sm:pb-40 sm:pt-24">
       {/** my page hero section */}
-      <nav className="mb-16 flex h-14 w-full items-center justify-between px-4 sm:hidden">
-        <IoIosArrowBack className="scale-150" />
-        <MdOutlinePersonOutline className="scale-150 text-lg" />
-      </nav>
+      <MobileNavbar className="px-4">
+        <MdOutlinePersonOutline className="ml-auto scale-150 text-lg" />
+      </MobileNavbar>
       <BackgroundCard
         shadow="none"
         imgUrl="url('/my-page.jpg')"

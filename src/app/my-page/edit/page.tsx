@@ -3,11 +3,14 @@ import { Input } from '@nextui-org/input';
 import { Button } from '@nextui-org/button';
 import React from 'react';
 import LikeLocationButton from '@/components/LikeLocationButton';
+import MobileNavbar from '@/components/MobileNavbar';
+import { MdOutlinePersonOutline } from 'react-icons/md';
 
 const mokeLocations = ['서울 전체', '강남구', '마포구', '부산 전체', '해운대구', '부산진구'];
 
 export default function EditPage() {
   const handleSubmit = async (form: FormData) => {
+    // for now the form have nothing to submit.
     'use server';
     const { email } = Object.fromEntries(form.entries());
   };
@@ -21,8 +24,11 @@ export default function EditPage() {
 
   return (
     <>
+      <MobileNavbar className="px-4">
+        <MdOutlinePersonOutline className="ml-auto scale-150 text-lg" />
+      </MobileNavbar>
       {/* my page hero section */}
-      <section className="w-full pt-24">
+      <section className="w-full pt-16 sm:pt-24">
         <BackgroundCard
           radius="none"
           imgUrl="url('/my-page.jpg')"
@@ -33,49 +39,13 @@ export default function EditPage() {
         </BackgroundCard>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-4 pt-[162px] sm:px-10">
+      <section className="mx-auto w-full max-w-[1180px] px-4 pt-20 sm:px-10 sm:pt-[162px]">
         <div className="mb-10 flex max-h-fit justify-between">
           <p className="text-[32px] font-bold">내 정보</p>
         </div>
 
         {/* edit my info section */}
         <form className="flex w-full flex-col" action={handleSubmit}>
-          {/* <div className="flex w-full border-b-2 border-t-2 border-t-[#7D7D7D]">
-            <CustomInput
-              name="name"
-              radius="none"
-              width={455}
-              label="이름"
-              labelPlacement="outside-left"
-              placeholder="이름명"
-              type="text"
-            />
-            <Button
-              radius="none"
-              className="my-auto ml-5 h-12 w-[164px] bg-[#7D7D7D] text-base font-bold text-white"
-            >
-              본인인증
-            </Button>
-          </div>
-          <div className="w-full border-b-2">
-            <CustomInput
-              name="phone"
-              radius="none"
-              label="휴대폰 번호"
-              labelPlacement="outside-left"
-              placeholder="000-***-0000"
-              type="text"
-            />
-          </div>
-          <div className="w-full border-b-2">
-            <CustomInput
-              name="birth"
-              radius="none"
-              label="생년월일"
-              labelPlacement="outside-left"
-              placeholder="XXXX.XX.XX"
-            />
-          </div> */}
           <div className="w-full border-b-2 border-t-2 border-t-[#7D7D7D]">
             <Input
               classNames={{
@@ -112,11 +82,7 @@ export default function EditPage() {
               </div>
             </div>
           </div>
-          {/* <div className="flex h-[100px] items-center  border-b-2 border-[#7D7D7D] px-6 py-4">
-            <span className="w-[296px] text-base font-bold text-secondary">
-              개인정보 수집 및 이용 안내
-            </span>
-          </div> */}
+
           <div className="flex justify-center gap-4 py-20">
             <Button
               radius="none"
