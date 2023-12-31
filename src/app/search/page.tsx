@@ -5,6 +5,7 @@ import { mokStores } from '../page';
 import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 import StoreCard from '@/components/StoreCard';
+import MobileNavbar from '@/components/MobileNavbar';
 
 type SearchPageProps = {
   searchParams: SearchParams & { sort: string };
@@ -27,12 +28,11 @@ export default async function page({ searchParams }: SearchPageProps) {
         <h2 className="hidden text-center text-[40px] font-bold sm:block ">
           <span className="text-primary">{`'${query}'`}</span> 에 대한 검색 결과
         </h2>
-        <h2 className="flex h-14 items-center justify-center text-xl font-bold leading-normal text-black sm:hidden">
-          <Link href="/" className="absolute left-0">
-            <IoIosArrowBack />
-          </Link>
-          검색 결과
-        </h2>
+
+        {/* Mobile only navbar */}
+        <MobileNavbar>
+          <p className="mx-auto pr-4 text-xl font-bold leading-normal">검색 결과</p>
+        </MobileNavbar>
       </section>
       {/* Selector (filter) section */}
       <section className="mb-14 mt-10 sm:mb-10 sm:mt-[160px]">

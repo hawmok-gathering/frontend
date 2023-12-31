@@ -18,7 +18,7 @@ export default function MobileNavbar({ children, className, backArrow = true }: 
     <nav className={cn('flex h-14 items-center text-xl font-bold sm:hidden', className)}>
       {backArrow && (
         <button onClick={() => router.back()}>
-          <IoIosArrowBack className="scale-125" />
+          <IoIosArrowBack className="scale-125 text-secondary" />
         </button>
       )}
       {children}

@@ -9,6 +9,11 @@ import Clipboard from '@/components/store/Clipboard';
 import StorDetailSection from '@/components/store/StorDetailSection';
 import ImageSlider from '@/components/store/ImageSlider';
 import LikeButton from '@/components/LikeButton';
+import MobileNavbar from '@/components/MobileNavbar';
+import StoreInfo from '@/components/store/StoreInfo';
+import StoreMenu from '@/components/store/StoreMenu';
+import { GrHomeRounded } from 'react-icons/gr';
+import Link from 'next/link';
 
 type StorePageProps = {
   params: { id: string };
@@ -28,6 +33,14 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
   return (
     <>
+      <MobileNavbar className="px-4">
+        <Link href="/" className="ml-auto mr-2">
+          <GrHomeRounded className="scale-90" />
+        </Link>
+        <Clipboard copyText={fullUrl} isIconOnly className="m-0 bg-transparent p-0">
+          <FiShare2 className="text-xl text-black" />
+        </Clipboard>
+      </MobileNavbar>
       <div className="mx-auto  w-full text-ellipsis px-4 pt-10 sm:max-w-[1180px] sm:px-10 sm:pt-24">
         {/* store name / location section */}
         <section>
