@@ -3,7 +3,7 @@ import { Card } from '@nextui-org/card';
 import Link from 'next/link';
 import { LuDot } from 'react-icons/lu';
 import { RxHeartFilled } from 'react-icons/rx';
-import LikeHeartButton from './LikeHeartButton';
+import LikeButton from './LikeButton';
 import { cn } from '@nextui-org/react';
 export type Store = {
   storeId: number;
@@ -31,6 +31,12 @@ type StoreCardProps = {
 export default function StoreCard({ store, page }: StoreCardProps) {
   // const isMain = false;
   const isMain = page === 'main';
+
+  const handleStoreLike = async () => {
+    'use server';
+    console.log('like clicked');
+  };
+
   return (
     <Card
       radius="none"
@@ -66,7 +72,7 @@ export default function StoreCard({ store, page }: StoreCardProps) {
               {store.hall_capacity}
             </small>
           ) : (
-            <LikeHeartButton isLike={true} iconClassName="text-secondary" />
+            <LikeButton boolean={true} iconClassName="text-secondary" fn={handleStoreLike} />
             //TODO: like 에 따른 색 구분 .하트크기 조절
           )}
         </div>
@@ -89,7 +95,7 @@ export default function StoreCard({ store, page }: StoreCardProps) {
         >
           <p className="leading-4">{store.address}</p>
           {/* {isMain && <RxHeart className="cursor-pointer text-2xl text-primary" />} */}
-          {isMain && <LikeHeartButton isLike={true} />}
+          {isMain && <LikeButton boolean={true} fn={handleStoreLike} />}
         </div>
         {!isMain && (
           <div className="flex items-center justify-between text-xs font-normal text-secondary">

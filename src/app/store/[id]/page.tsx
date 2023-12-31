@@ -8,7 +8,7 @@ import { FiShare2 } from 'react-icons/fi';
 import Clipboard from '@/components/store/Clipboard';
 import StorDetailSection from '@/components/store/StorDetailSection';
 import ImageSlider from '@/components/store/ImageSlider';
-import LikeHeartButton from '@/components/LikeHeartButton';
+import LikeButton from '@/components/LikeButton';
 
 type StorePageProps = {
   params: { id: string };
@@ -85,13 +85,14 @@ export default async function page({ params, searchParams }: StorePageProps) {
                 <p className="pl-7 text-sm leading-[22px]">{storeInfo.phone}</p>
               </div>
             </div>
-            <LikeHeartButton
-              isLike={true}
+            <LikeButton
+              boolean={true}
               iconClassName="text-secondary"
               buttonClassName="mt-4 sm:flex hidden flex items-center justify-center w-full gap-1 border border-[#CCCCCC] text-base font-bold text-secondary h-12"
+              fn={handleLikeButton}
             >
               관심장소
-            </LikeHeartButton>
+            </LikeButton>
             <Clipboard
               copyText={fullUrl!}
               fullWidth
@@ -112,9 +113,10 @@ export default async function page({ params, searchParams }: StorePageProps) {
 
         {/*Mobile only making call button*/}
         <section className="flex gap-[10px] py-[10px] pb-20 sm:hidden">
-          <LikeHeartButton
-            isLike={true}
+          <LikeButton
+            boolean={true}
             buttonClassName="h-[60px] w-[58px] shrink-0 border border-[#CCCCCC] rounded-xl flex items-center justify-center text-base font-bold"
+            fn={handleLikeButton}
           />
           <InteractionButton
             radius="md"
