@@ -42,20 +42,20 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         ></Image>
       ))}
       <button
-        className="absolute bottom-0 left-0 top-0 bg-none pl-4 transition-all hover:bg-black hover:bg-opacity-50 sm:p-3"
+        className="absolute bottom-0 left-0 top-0 bg-none pl-4 transition-all hover:bg-black hover:bg-opacity-30 sm:p-3"
         onClick={showPrevImage}
         aria-label="view previous image"
       >
-        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 sm:p-2">
-          <IoIosArrowBack className="text-white" />
+        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-black sm:h-7 sm:w-7">
+          <IoIosArrowBack className="flex items-center justify-center text-white" />
         </span>
       </button>
       <button
-        className="absolute bottom-0 right-0 top-0 bg-none pr-4 transition-all hover:bg-black hover:bg-opacity-50 sm:p-3"
+        className="absolute bottom-0 right-0 top-0 bg-none pr-4 transition-all hover:bg-black hover:bg-opacity-30 sm:p-3"
         onClick={showNextImage}
         aria-label="view next image"
       >
-        <span className="inline-flex rounded-full bg-[#877560] bg-opacity-50 sm:p-2">
+        <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-black sm:h-7 sm:w-7">
           <IoIosArrowForward className="text-white" />
         </span>
       </button>

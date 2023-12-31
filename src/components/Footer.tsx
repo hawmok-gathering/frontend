@@ -9,21 +9,35 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="flex h-fit w-full justify-center bg-[#302F2D] ">
-      <section className="relative h-[340px] w-full text-ellipsis whitespace-nowrap px-4 py-9 text-[10px] font-normal text-white sm:h-[280px] sm:w-[1100px] sm:px-10 sm:text-xs">
+    <footer className="flex h-fit w-full flex-col justify-center bg-[#635B50] ">
+      <section className="flex h-12 w-full items-center bg-[#FFFAEA] sm:h-[120px]">
+        {/*Desktop only footer*/}
+        <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base sm:flex">
+          <b>회사소개</b>
+          <b>입점상담</b>
+          <b>제휴문의</b>
+          <b>이용약관</b>
+          <b>개인정보처리방침</b>
+          <b>고객센터</b>
+          <b>채용정보</b>
+          <b>GLOBAL</b>
+        </div>
+
+        {/*Mobile only footer*/}
+        <div className="flex w-full items-center justify-center whitespace-nowrap text-center text-xs leading-[19.2px] sm:hidden">
+          <span className="h-fit w-[120px] border-r border-[#635B5080] border-opacity-50">
+            <b>로그아웃</b>
+          </span>
+          <span className="h-fit w-[120px] border-x border-[#635B5080] border-opacity-50">
+            <b>고객센터</b>
+          </span>
+          <span className="h-fit w-[120px] border-l border-[#635B5080] border-opacity-50">
+            <b>NEWS</b>
+          </span>
+        </div>
+      </section>
+      <section className="relative w-full text-ellipsis whitespace-nowrap px-4 py-10 text-[10px] font-normal text-white sm:w-[1100px] sm:px-10 sm:py-20 sm:text-xs">
         {/* 화목 서비스 이용 약관 */}
-        <nav className="mb-8 ">
-          <Link href={'/'} key="이용 약관">
-            화목 서비스 이용 약관
-          </Link>
-          {/* TODO:링크로 바꾸기 */}
-          <Separator />
-          <FooterButton key="개인정보 처리방침">개인정보 처리방침</FooterButton>
-          <Separator />
-          <FooterButton key="고객 센터">고객 센터</FooterButton>
-          <Separator />
-          <FooterButton key="채용정보">채용정보</FooterButton>
-        </nav>
 
         {/* 문의 및 연락처 */}
         <table className="mb-20 w-fit sm:mb-16">

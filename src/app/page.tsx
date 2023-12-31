@@ -262,33 +262,6 @@ export default async function Home({ searchParams }: HomePageProps) {
           </div>
         </BackgroundCard>
       </section>
-      <section className="flex h-12 w-full items-center bg-[#FFFAEA] sm:h-[120px]">
-        {/*Desktop only footer*/}
-
-        <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base sm:flex">
-          <b>회사소개</b>
-          <b>입점상담</b>
-          <b>제휴문의</b>
-          <b>이용약관</b>
-          <b>개인정보처리방침</b>
-          <b>고객센터</b>
-          <b>채용정보</b>
-          <b>GLOBAL</b>
-        </div>
-
-        {/*Mobile only footer*/}
-        <div className="flex w-full items-center justify-center whitespace-nowrap text-center text-xs leading-[19.2px] sm:hidden">
-          <span className="h-fit w-[120px] border-r border-[#635B5080] border-opacity-50">
-            <b>로그아웃</b>
-          </span>
-          <span className="h-fit w-[120px] border-x border-[#635B5080] border-opacity-50">
-            <b>고객센터</b>
-          </span>
-          <span className="h-fit w-[120px] border-l border-[#635B5080] border-opacity-50">
-            <b>NEWS</b>
-          </span>
-        </div>
-      </section>
     </>
   );
 }
