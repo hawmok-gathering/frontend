@@ -12,7 +12,7 @@ export default function Footer() {
     <footer className="flex h-fit w-full flex-col justify-center bg-[#635B50] ">
       <section className="flex h-12 w-full items-center bg-[#FFFAEA] sm:h-[120px]">
         {/*Desktop only footer*/}
-        <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base sm:flex">
+        <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base text-[#484239] sm:flex">
           <b>회사소개</b>
           <b>입점상담</b>
           <b>제휴문의</b>
