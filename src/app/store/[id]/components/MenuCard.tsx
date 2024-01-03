@@ -1,5 +1,5 @@
+import BackgroundCard from '@/components/BackgroundCard';
 import React from 'react';
-import BackgroundCard from '../BackgroundCard';
 
 type MenuProps = {
   imgUrl: string;

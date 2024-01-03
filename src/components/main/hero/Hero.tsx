@@ -174,7 +174,7 @@ export default function Hero(props: HeroBackgroundProps) {
 
           <button
             onClick={handleSearch}
-            className="flex h-14 w-[73px] items-center justify-center rounded-sm bg-primary text-[10px] font-bold text-white sm:h-[44px] sm:w-[127px] sm:text-sm"
+            className="flex w-[73px] grow items-center justify-center rounded-sm bg-primary text-[10px] font-bold text-white sm:w-[127px] sm:text-sm"
           >
             회식 장소 선택
           </button>

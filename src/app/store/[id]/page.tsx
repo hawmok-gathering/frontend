@@ -5,15 +5,13 @@ import { MdOutlinePhone } from 'react-icons/md';
 import React from 'react';
 import InteractionButton from '@/components/InteractionButton';
 import { FiShare2 } from 'react-icons/fi';
-import Clipboard from '@/components/store/Clipboard';
-import StorDetailSection from '@/components/store/StorDetailSection';
-import ImageSlider from '@/components/store/ImageSlider';
 import LikeButton from '@/components/LikeButton';
 import MobileNavbar from '@/components/MobileNavbar';
-import StoreInfo from '@/components/store/StoreInfo';
-import StoreMenu from '@/components/store/StoreMenu';
 import { GrHomeRounded } from 'react-icons/gr';
 import Link from 'next/link';
+import Clipboard from './components/Clipboard';
+import ImageSlider from './components/ImageSlider';
+import StorDetailSection from './components/StorDetailSection';
 
 type StorePageProps = {
   params: { id: string };

@@ -9,7 +9,7 @@ import MobileSearchIcon from '@/components/main/MobileSearchIcon';
 import LocationFilter from '@/components/main/LocationFilter';
 import MobileLocationFilter from '@/components/main/MobileLocationFilter';
 import MobileNavbar from '@/components/MobileNavbar';
-import MyMenu from '@/components/MyMenu';
+import { MdOutlinePersonOutline } from 'react-icons/md';
 
 export const mokStores = [
   {
@@ -185,7 +185,9 @@ export default async function Home({ searchParams }: HomePageProps) {
           <Image src="/brand.png" alt="brand logo" width={44} height={30} />
         </Link>
         <MobileSearchIcon />
-        <MyMenu isLoggedIn={isLogin} />
+        <Link href="/login">
+          <MdOutlinePersonOutline className="ml-4 text-2xl font-extrabold text-secondary" />
+        </Link>
       </MobileNavbar>
 
       {/*Main page hero section*/}

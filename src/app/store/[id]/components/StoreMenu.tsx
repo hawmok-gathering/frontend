@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import MenuCard from './MenuCard';
-import BackgroundCard from '../BackgroundCard';
 import useDrag from '@/hooks/useDrag';
 import useTouch from '@/hooks/useTouch';
 import { useDisclosure } from '@nextui-org/react';
-import BottomSheet from '../BottomSheet';
 import ImageSlider from './ImageSlider';
+import BottomSheet from '@/components/BottomSheet';
+import BackgroundCard from '@/components/BackgroundCard';
 
 const mokMenu = [
   { name: '스테이크', price: 1300, imgUrl: '/steak.jpg' },

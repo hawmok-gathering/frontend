@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';

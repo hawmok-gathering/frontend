@@ -18,16 +18,25 @@ export const metadata: Metadata = {
   description: 'Find gathering place for people who love to drink and eat.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type LayoutProps = {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+};
+
+export default async function RootLayout({ children, modal }: LayoutProps) {
   return (
     <html lang="en" className={`h-[100svh] bg-background light`}>
       <ToastContextProvider>
         <body className={twMerge(myFont.className, 'h-[100svh] w-full light')}>
           <Providers className="flex h-full flex-col bg-background text-foreground">
             <MainNavBar />
-            <main className="grow">{children}</main>
+            <main className="grow">
+              {children}
+              {modal}
+            </main>
             <ToastViewer />
             <Footer />
+            <div id="modal-root" />
           </Providers>
         </body>
       </ToastContextProvider>

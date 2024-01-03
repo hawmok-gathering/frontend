@@ -1,11 +1,10 @@
-import Selector, { SearchParams } from '@/components/search/select/Selector';
 import { SearchParams as ConstValueOfParams } from '@/constants/constant';
 import React from 'react';
 import { mokStores } from '../page';
-import { IoIosArrowBack } from 'react-icons/io';
 import Link from 'next/link';
 import StoreCard from '@/components/StoreCard';
 import MobileNavbar from '@/components/MobileNavbar';
+import Selector, { SearchParams } from './components/Selector';
 
 type SearchPageProps = {
   searchParams: SearchParams & { sort: string };

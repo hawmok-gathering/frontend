@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import React from 'react';
-import StoreInfo from './StoreInfo';
 import StoreMenu from './StoreMenu';
+import StoreInfo from './StoreInfo';
 
 export default function StorDetailSection() {
   const [tab, setTab] = useState('info');
