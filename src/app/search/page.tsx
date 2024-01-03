@@ -39,7 +39,7 @@ export default async function page({ searchParams }: SearchPageProps) {
       </section>
 
       {/* SearchResult section */}
-      <section className="mb-10 sm:mb-20">
+      <section>
         {/* Sort section */}
         <div className="flex max-w-full justify-end">
           <div

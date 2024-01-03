@@ -118,12 +118,12 @@ export default async function page({ params, searchParams }: StorePageProps) {
         </section>
 
         {/* store menu / info selection section */}
-        <section className="pb-[45px] sm:pb-40">
+        <section>
           <StorDetailSection />
         </section>
 
         {/*Mobile only making call button*/}
-        <section className="flex gap-[10px] py-[10px] pb-20 sm:hidden">
+        <section className="mt-[56px] flex gap-[10px] sm:hidden">
           <LikeButton
             boolean={true}
             buttonClassName="h-[60px] w-[58px] shrink-0 border border-[#CCCCCC] rounded-xl flex items-center justify-center text-base font-bold"

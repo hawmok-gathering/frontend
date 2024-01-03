@@ -4,7 +4,7 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { LuDot } from 'react-icons/lu';
 
-export default function page() {
+export default function LoginPage() {
   return (
     <div className="flex h-[588px] flex-col justify-between px-4 py-20 sm:px-8">
       <Image src="/brand.png" alt="brand logo" width={104} height={70} className="mx-auto" />

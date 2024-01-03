@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="flex h-fit w-full flex-col justify-center bg-[#635B50] ">
+    <footer className="mt-20 flex h-fit w-full flex-col justify-center bg-[#635B50] sm:mt-40">
       <section className="flex h-12 w-full items-center bg-[#FFFAEA] sm:h-[120px]">
         {/*Desktop only footer*/}
         <div className="hidden w-full items-center justify-center gap-20 whitespace-nowrap text-base text-[#484239] sm:flex">

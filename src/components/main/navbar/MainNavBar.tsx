@@ -1,14 +1,7 @@
 'use client';
 
 import { Input } from '@nextui-org/input';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-  NavbarMenu,
-} from '@nextui-org/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu } from '@nextui-org/navbar';
 import { GrSearch } from 'react-icons/gr';
 import { useState, useEffect, useRef, useCallback, FormEvent } from 'react';
 import { MainNavBarComponent, SearchParams } from '@/constants/constant';
@@ -16,9 +9,9 @@ import PreviousSearch from './PreviousSearch';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function MainNavBar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const router = useRouter();
   const [cursor, setCursor] = useState(-1);
@@ -168,11 +161,11 @@ export default function MainNavBar() {
       <NavbarContent justify="end">
         <NavbarItem className="flex items-center text-base">
           {/* TODO: 로그인 여부 확인하여 로그인 아웃 변경 및 마이페이지 버튼 */}
-          <Link href="/auth/signin" color="foreground">
+          <Link href="/login" color="foreground">
             로그인
           </Link>
           <div className="mx-4 h-4 w-0.5 shrink-0 border"></div>
-          <Link href="/auth/signup">회원가입</Link>
+          <Link href="/login">회원가입</Link>
         </NavbarItem>
       </NavbarContent>
 

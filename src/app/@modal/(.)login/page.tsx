@@ -1,11 +1,10 @@
-import React from 'react';
-import { Modal } from './modal';
 import { LuDot } from 'react-icons/lu';
 import Image from 'next/image';
 import { Button } from '@nextui-org/button';
 import { FcGoogle } from 'react-icons/fc';
+import { Modal } from './modal';
 
-export default function page() {
+export default function LoginModal() {
   return (
     <Modal>
       <div className="flex h-[588px] flex-col justify-between px-4 py-20 sm:px-8">

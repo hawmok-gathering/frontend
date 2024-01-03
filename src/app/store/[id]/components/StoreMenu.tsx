@@ -96,26 +96,6 @@ export default function StoreMenu() {
             </>
           }
         ></BottomSheet>
-        {/* <div
-          onClick={() => console.log('hit!')}
-          ref={menuContainerRef}
-          draggable={false}
-          style={{ transform: `translateX(${containerX}px)` }}
-          className="flex h-[120px] cursor-pointer gap-2 sm:h-60"
-          {...useDrag(handleImageDrag)}
-          {...useTouch(handleImageDrag)}
-        > */}
-        {/* {mokMenu2.map(({ imgUrl }, index) => (
-          <BackgroundCard
-            onPress={() => console.log('hit!')}
-            key={imgUrl + index}
-            draggable={false}
-            radius="none"
-            imgUrl={`url(${imgUrl})`}
-            className=" relative h-full w-40 shrink-0 bg-cover bg-center sm:w-80"
-          />
-        ))} */}
-        {/* </div> */}
       </div>
       <small className="text-secondary">
         * 메뉴와 가격은 매장의 사정에 따라 변동될 수 있습니다

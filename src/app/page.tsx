@@ -214,7 +214,7 @@ export default async function Home({ searchParams }: HomePageProps) {
       </section>
 
       {/*Famous place section*/}
-      <section className="sm: h-fit py-10 sm:pb-40 sm:pt-20">
+      <section className="sm: h-fit pt-10 sm:pt-20">
         <BackgroundCard
           imgUrl="url(/table.jfif)"
           radius={'none'}

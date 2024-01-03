@@ -20,6 +20,8 @@ export function Modal({ children }: { children: React.ReactNode }) {
     router.back();
   }
 
+  if (typeof window === 'undefined') return null;
+
   return createPortal(
     <div className="fixed bottom-0 flex h-full w-full items-center justify-center bg-black bg-opacity-40">
       <dialog ref={dialogRef} onClose={onDismiss}>
