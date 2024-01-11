@@ -3,6 +3,7 @@ import React from 'react';
 import { cn } from '@nextui-org/react';
 import { GrHomeRounded } from 'react-icons/gr';
 import ImageSlider from './ImageSlider';
+import Map from './Map';
 
 const tempInfoOne = [
   {
@@ -39,7 +40,7 @@ export default function StoreInfo() {
         <div>
           <ImageSlider key="1st" imgUrls={['/steak.jpg', '/beer.webp', '/wine.jpg', '/soju.jpg']} />
         </div>
-      </div> 
+      </div>
       <div className="mb-10 flex h-40 sm:mb-20 sm:h-[372px]">
         <span className="flex w-14 shrink-0 items-center justify-center bg-[#302F2D] text-base font-bold text-white sm:w-[140px] sm:text-[32px]">
           홀 2
@@ -65,6 +66,7 @@ export default function StoreInfo() {
         <div className="flex items-center gap-2 text-xs font-normal sm:text-base">
           <GrHomeRounded className="inline" /> <span>주소</span>
         </div>
+        <Map />
       </div>
     </>
   );

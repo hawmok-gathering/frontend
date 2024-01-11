@@ -47,7 +47,12 @@ export default function StoreCard({ store, page }: StoreCardProps) {
         className="relative h-[168px] w-full max-w-[156px] sm:h-[296px] sm:max-w-[260px]"
         href={`/store/${store.storeId}`}
       >
-        <Image src={store.store_image_url} alt={store.content} fill></Image>
+        <Image
+          src={store.store_image_url}
+          alt={store.content}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        ></Image>
       </Link>
       <div className="flex h-full flex-col pt-1 sm:pt-5">
         <div className="flex items-center justify-between sm:pb-1">

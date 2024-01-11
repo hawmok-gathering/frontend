@@ -34,6 +34,7 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
         <Image
           key={url + idx}
           src={url}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           alt={`restaurant image ${idx}`}
           width={838}
           height={628}
