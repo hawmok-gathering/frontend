@@ -49,7 +49,6 @@ export type SelectorProps = {
 };
 
 export default function Selector({ search }: SelectorProps) {
-  // const { searchQuery } = search;
   const [selectState, setSelectState] = useState({ ...search });
   const [tabKey, setTabKey] = useState<string | number>('지역'); // ['지역', '인원', '회식 유형', '분위기', '좌석 타입']
   const { isOpen, onOpen, onClose } = useDisclosure();

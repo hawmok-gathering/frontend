@@ -51,7 +51,7 @@ export const mokStores = [
   },
   {
     storeId: 3,
-    name: '할머니 서울 순대국',
+    name: '할머니 서울 순대국 어서 오세요 맛집입니다.',
     store_image_url: '/number3.jpeg',
     phone: '02-1234-5678',
     content: '이곳은 밥집입니다.',

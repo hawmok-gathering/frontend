@@ -81,7 +81,7 @@ export default function StoreCard({ store, page }: StoreCardProps) {
         <Link href={`/store/${store.storeId}`}>
           <h3
             className={cn(
-              'line-clamp-2 h-10 text-sm font-bold leading-[22.4px] sm:h-[50px] sm:text-base sm:leading-[25px] ',
+              'overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold leading-[22.4px] sm:text-base sm:leading-[25px]',
               isMain ? 'text-white' : 'text-black',
             )}
           >
