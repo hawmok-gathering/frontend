@@ -13,10 +13,26 @@ export default function Map() {
     };
     const map = new naver.maps.Map(containerRef.current, mapOptions);
 
-    new naver.maps.Marker({
+    const marker = new naver.maps.Marker({
       position: center,
       map: map,
     });
+
+    const infoWindow = new naver.maps.InfoWindow({
+      content: '<div style="padding:8px;">식당 위치</div>',
+      borderWidth: 2,
+      borderColor: '#F84F05',
+    });
+
+    const toggleInfoWindow = () => {
+      if (infoWindow.getMap()) {
+        infoWindow.close();
+      } else {
+        infoWindow.open(map, marker);
+      }
+    };
+
+    naver.maps.Event.addListener(marker, 'click', toggleInfoWindow);
   }, []);
 
   return (
