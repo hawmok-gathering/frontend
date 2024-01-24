@@ -60,14 +60,14 @@ export default function ImageSlider({ imgUrls }: ImageSliderPros) {
           <IoIosArrowForward className="text-white" />
         </span>
       </button>
-      <div className="absolute bottom-4 flex w-full justify-center gap-4 sm:bottom-10 ">
+      <div className="absolute bottom-4 flex w-full justify-center gap-5 sm:bottom-10 ">
         {imgUrls.map((v, i) => (
           <button
             aria-label={`view image ${i + 1} of ${imgUrls.length}`}
             key={i + v}
             className={`${
               imgIndex === i ? ' bg-[#827C0A]' : 'bg-[#877560]'
-            } h-2  w-2 rounded-full  transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:h-[14px] sm:w-[14px]`}
+            } h-[6px]  w-[6px] rounded-full  transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:h-[6px] sm:w-[6px]`}
             onClick={() => setImageIndex(i)}
           ></button>
         ))}

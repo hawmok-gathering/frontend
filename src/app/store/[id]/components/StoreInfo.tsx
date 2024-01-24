@@ -63,7 +63,7 @@ export default function StoreInfo() {
           <li>3번 편의시설</li>
         </ul>
         <MiniTitle text="매장 위치" className="mb-8 mt-10 sm:mb-[30px] sm:mt-20" />
-        <div className="flex items-center gap-2 text-xs font-normal sm:text-base">
+        <div className="mb-10 flex items-center gap-2 text-xs font-normal sm:text-base">
           <GrHomeRounded className="inline" /> <span>주소</span>
         </div>
         <Map />
