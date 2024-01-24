@@ -91,7 +91,7 @@ export default function StoreCard({ store, page }: StoreCardProps) {
         </Link>
         <div
           className={cn(
-            'mt-1 flex justify-between text-xs font-normal',
+            'mt-4 flex justify-between text-xs font-normal',
             isMain ? 'text-[#D9D9D9]' : ' text-secondary',
           )}
         >
@@ -100,7 +100,7 @@ export default function StoreCard({ store, page }: StoreCardProps) {
           {isMain && <LikeButton boolean={true} fn={handleStoreLike} />}
         </div>
         {!isMain && (
-          <div className="flex items-center justify-between text-xs font-normal text-secondary">
+          <div className="mt-1 flex items-center justify-between text-xs font-normal text-secondary">
             <RxHeartFilled className="inline text-lg" />
             <span className="ml-1 mr-auto">{' store.likes 명'}</span>
 
