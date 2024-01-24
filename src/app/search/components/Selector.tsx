@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@nextui-org/button';
-import React, { useState } from 'react';
+import React, { ComponentPropsWithRef, ComponentPropsWithoutRef, useState } from 'react';
 import { MdRotateLeft } from 'react-icons/md';
 import { Tab, Tabs, ModalBody, useDisclosure, cn, Badge } from '@nextui-org/react';
 import AreaTab, { Locations } from './LocationTab';
@@ -55,7 +55,6 @@ export default function Selector({ search }: SelectorProps) {
   const router = useRouter();
 
   const handleOpen = (key: string) => {
-    console.log(key);
     setTabKey(key);
     onOpen();
   };
@@ -95,16 +94,14 @@ export default function Selector({ search }: SelectorProps) {
                   base: 'px-[30px] border-b mb-2',
                   tab: 'font-bold text-base h-[70px] w-fit p-0',
                   tabList:
-                    'p-0 m-0 flex sm:justify-start justify-between sm:gap-6 w-full relative ',
+                    'p-0 m-0 flex sm:justify-start justify-between sm:gap-6 w-full relative overflow-x-visible',
                   cursor: 'w-full bg-black h-1',
                   tabContent: 'text-[#E9E9E9] text-base',
                 }}
               >
                 <Tab
                   title={
-                    <Badge color="primary" content="" className="-right-1 -top-2 h-3 w-3">
-                      {SearchPageProps.location}
-                    </Badge>
+                    <BadgeTitle tabKey={tabKey as string}>{SearchPageProps.location}</BadgeTitle>
                   }
                   key={SearchPageProps.location}
                   className="py-0 "
@@ -115,16 +112,32 @@ export default function Selector({ search }: SelectorProps) {
                     setSelectState={setSelectState}
                   />
                 </Tab>
-                <Tab title={SearchPageProps.party} key={SearchPageProps.party} className="py-0">
+                <Tab
+                  title={<BadgeTitle tabKey={tabKey as string}>{SearchPageProps.party}</BadgeTitle>}
+                  key={SearchPageProps.party}
+                  className="py-0"
+                >
                   <PeopleTab selectState={selectState} setSelectState={setSelectState} />
                 </Tab>
-                <Tab title={SearchPageProps.type} key={SearchPageProps.type} className="py-0">
+                <Tab
+                  title={<BadgeTitle tabKey={tabKey as string}>{SearchPageProps.type}</BadgeTitle>}
+                  key={SearchPageProps.type}
+                  className="py-0"
+                >
                   <ModalBody>Modal Body</ModalBody>
                 </Tab>
-                <Tab title={SearchPageProps.mood} key={SearchPageProps.mood} className="py-0">
+                <Tab
+                  title={<BadgeTitle tabKey={tabKey as string}>{SearchPageProps.mood}</BadgeTitle>}
+                  key={SearchPageProps.mood}
+                  className="py-0"
+                >
                   <MoodTab selectState={selectState} setSelectState={setSelectState} />
                 </Tab>
-                <Tab title={SearchPageProps.seat} key={SearchPageProps.seat} className="py-0">
+                <Tab
+                  title={<BadgeTitle tabKey={tabKey as string}>{SearchPageProps.seat}</BadgeTitle>}
+                  key={SearchPageProps.seat}
+                  className="py-0"
+                >
                   <TableTypesTab selectState={selectState} setSelectState={setSelectState} />
                 </Tab>
               </Tabs>
@@ -196,3 +209,15 @@ export default function Selector({ search }: SelectorProps) {
     </div>
   );
 }
+
+type BadgeTitleProps = { tabKey: string } & ComponentPropsWithoutRef<typeof Badge>;
+const BadgeTitle = (props: BadgeTitleProps) => {
+  const { tabKey, children, ...rest } = props;
+  return tabKey === children ? (
+    <Badge {...rest} color="primary" className="-right-1 -top-2 h-3 w-3">
+      {children}
+    </Badge>
+  ) : (
+    <>{children}</>
+  );
+};
